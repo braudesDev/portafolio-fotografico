@@ -1,13 +1,15 @@
+<h1 class="titulo">Déjanos un comentario</h1>
+
 <!-- Formulario para agregar testimonios -->
 <form (ngSubmit)="enviarTestimonio()">
   <label>Nombre:</label>
-  <input type="text" [(ngModel)]="nuevoTestimonio.nombre" name="nombre" required>
+  <input type="text" [(ngModel)]="nuevoTestimonio.nombre" name="nombre" required />
 
   <label>Comentario:</label>
   <textarea [(ngModel)]="nuevoTestimonio.comentario" name="comentario" required></textarea>
 
   <label>Foto (URL opcional):</label>
-  <input type="text" [(ngModel)]="nuevoTestimonio.foto" name="foto">
+  <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" />
 
   <button type="submit">Enviar Testimonio</button>
 </form>
@@ -19,15 +21,22 @@
 <div class="testimonios-container">
   <div class="carrusel">
     <!-- Iterar sobre los testimonios -->
-    <div *ngFor="let testimonio of testimonios" class="testimonio">
-      <img [src]="testimonio.foto || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'" alt="{{ testimonio.nombre }}" class="testimonio-imagen" />
+    <div *ngFor="let testimonio of testimonios; let i = index" class="testimonio">
+      <img
+        [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
+        alt="{{ testimonio.nombre }}"
+        class="testimonio-imagen"
+      />
       <h3 class="testimonio-nombre">{{ testimonio.nombre }}</h3>
       <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
     </div>
-
-    <!-- Duplicar los testimonios para el efecto de bucle -->
+    <!-- Duplicar los testimonios para el efecto infinito -->
     <div *ngFor="let testimonio of testimonios" class="testimonio">
-      <img [src]="testimonio.foto || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'" alt="{{ testimonio.nombre }}" class="testimonio-imagen" />
+      <img
+        [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
+        alt="{{ testimonio.nombre }}"
+        class="testimonio-imagen"
+      />
       <h3 class="testimonio-nombre">{{ testimonio.nombre }}</h3>
       <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
     </div>

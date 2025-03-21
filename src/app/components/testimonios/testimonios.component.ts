@@ -12,7 +12,7 @@ import { TestimoniosService } from '../../servicios/testimonios.service';
 })
 export class TestimoniosComponent implements OnInit {
   testimonios: any[] = [];
-  nuevoTestimonio = { nombre: '', comentario: '', foto: '' };
+  nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
   mensaje = '';
 
   constructor(private testimoniosService: TestimoniosService) {}
@@ -28,10 +28,12 @@ export class TestimoniosComponent implements OnInit {
   }
 
   enviarTestimonio(): void {
+    console.log("DAtos enviados", this.nuevoTestimonio);
+
     this.testimoniosService.addTestimonio(this.nuevoTestimonio).subscribe(response => {
       this.mensaje = 'Testimonio enviado correctamente.';
       this.loadTestimonios(); // Recargar la lista de testimonios
-      this.nuevoTestimonio = { nombre: '', comentario: '', foto: '' }; // Limpiar el formulario
+      this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' }; // Limpiar el formulario
     }, error => {
       this.mensaje = 'Error al enviar el testimonio.';
     });

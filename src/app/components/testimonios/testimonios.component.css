@@ -1,6 +1,5 @@
 /* Estilos generales */
 body {
-  background-color: #000; /* Fondo negro */
   color: #fff; /* Texto blanco */
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -8,14 +7,24 @@ body {
   overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
 
+.titulo {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 30px;
+}
+
 /* Estilos para el formulario */
 form {
   max-width: 500px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #1a1a1a;
+  background-color: rgba(255, 255, 255, 0.192); /* Fondo muy semitransparente */
+  backdrop-filter: blur(15px); /* Desenfoque más fuerte */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(15px); /* Para navegadores basados en WebKit (como Safari) */
 }
 
 label {
@@ -24,19 +33,20 @@ label {
   font-weight: bold;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #333;
   border-radius: 4px;
-  background-color: #333;
-  color: #fff;
+  background-color: #e6e6e6;
+  color: #000000;
 }
 
 button {
-  background-color: #28a745;
-  color: white;
+  background-color: #44ffd6;
+  color: rgb(0, 0, 0);
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
@@ -65,7 +75,8 @@ button:hover {
 /* Carrusel */
 .carrusel {
   display: flex;
-  animation: desplazar 20s linear infinite; /* Animación del carrusel */
+  width: max-content; /* Asegura que el carrusel sea lo suficientemente ancho */
+  animation: desplazar 70s linear infinite; /* Animación del carrusel */
 }
 
 /* Estilos para cada testimonio */
@@ -74,7 +85,7 @@ button:hover {
   width: 300px; /* Ancho de cada testimonio */
   margin: 0 20px;
   padding: 20px;
-  background-color: #1a1a1a; /* Fondo oscuro para los testimonios */
+  background-color: #ffffff8a; /* Fondo oscuro para los testimonios */
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -97,8 +108,8 @@ button:hover {
 
 /* Comentario del testimonio */
 .testimonio-comentario {
-  font-size: 1rem;
-  color: #ccc;
+  font-size: 1.1rem;
+  color: #020202dc;
 }
 
 /* Animación del carrusel */
@@ -107,7 +118,7 @@ button:hover {
     transform: translateX(0); /* Comienza en la posición inicial */
   }
   100% {
-    transform: translateX(-50%); /* Desplaza el carrusel a la izquierda */
+    transform: translateX(-50%); /* Desplaza completamente */
   }
 }
 
@@ -115,8 +126,6 @@ button:hover {
   transform: scale(1.05); /* Escalar ligeramente el testimonio */
   transition: transform 0.5s ease;
 }
-
-
 
 @media (max-width: 768px) {
   form {

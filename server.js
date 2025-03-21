@@ -85,7 +85,7 @@ app.put('/testimonios/:id', (req, res) => {
 
   connection.query(
     'UPDATE testimonios_tabla SET nombre = ?, comentario = ?, imagen_url = ? WHERE id = ?',
-    [nombr, comentario, imagen_url || '', id],
+    [nombre, comentario, imagen_url || '', id],
     (err, results) => {
       if(err) {
         return res.status(500).json({ error: err.message });
