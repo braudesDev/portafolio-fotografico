@@ -1,0 +1,38 @@
+<div *ngIf="album">
+  <h2>{{ album.name }}</h2>
+  <div class="photo-grid">
+    <div *ngFor="let photo of album.photos; let i = index" class="photo-item" (click)="openModal(i)">
+      <!-- Usar NgOptimizedImage para las imágenes de la galería -->
+      <img
+        [ngSrc]="photo.url"
+        [alt]="photo.alt"
+        width="400"
+        height="600"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!album">
+  <p>Álbum no encontrado.</p>
+</div>
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal" (click)="closeModal()">
+  <span class="close" (click)="closeModal()">&times;</span>
+  <img
+    #imagenModal
+    class="modal-content"
+    [ngSrc]="album!.photos[currentImageIndex].url"
+    [alt]="album!.photos[currentImageIndex].alt"
+    width="800"
+    height="1200"
+    priority
+    (click)="toggleZoom($event)"
+  >
+  <div class="modal-controls">
+    <button class="prev" (click)="prevImage($event)">&#10094;</button>
+    <button class="next" (click)="nextImage($event)">&#10095;</button>
+  </div>
+</div>

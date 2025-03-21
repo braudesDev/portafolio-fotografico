@@ -1,0 +1,129 @@
+/* Estilos generales */
+body {
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+/* Estilos para el formulario */
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Mensajes de éxito o error */
+.mensaje {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Contenedor del carrusel */
+.testimonios-container {
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden; /* Oculta el desbordamiento del carrusel */
+}
+
+/* Carrusel */
+.carrusel {
+  display: flex;
+  animation: desplazar 20s linear infinite; /* Animación del carrusel */
+}
+
+/* Estilos para cada testimonio */
+.testimonio {
+  flex: 0 0 auto;
+  width: 300px; /* Ancho de cada testimonio */
+  margin: 0 20px;
+  padding: 20px;
+  background-color: #1a1a1a; /* Fondo oscuro para los testimonios */
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para la imagen del testimonio */
+.testimonio-imagen {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+
+/* Nombre del testimonio */
+.testimonio-nombre {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+/* Comentario del testimonio */
+.testimonio-comentario {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Animación del carrusel */
+@keyframes desplazar {
+  0% {
+    transform: translateX(0); /* Comienza en la posición inicial */
+  }
+  100% {
+    transform: translateX(-50%); /* Desplaza el carrusel a la izquierda */
+  }
+}
+
+.testimonio:hover {
+  transform: scale(1.05); /* Escalar ligeramente el testimonio */
+  transition: transform 0.5s ease;
+}
+
+
+
+@media (max-width: 768px) {
+  form {
+    width: 90%; /* Reducir el ancho del formulario en dispositivos pequeños */
+  }
+
+  .testimonio {
+    width: 250px; /* Reducir el ancho de los testimonios en dispositivos pequeños */
+  }
+}

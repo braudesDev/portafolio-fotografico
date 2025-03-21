@@ -1,0 +1,38 @@
+<div class="hero-image">
+  <img src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/hixbsq6xagopkuzxoz5d" alt="Fotografía destacada">
+</div>
+
+<!-- Indicador de scroll -->
+<div class="scroll-indicator" *ngIf="showScrollIndicator" (click)="scrollToContent()">
+  <span>Ver secciones de fotos</span>
+  <div class="arrow"></div>
+</div>
+
+<section id="gallery-section">
+  <div class="gallery">
+    <div *ngFor="let category of images" class="category">
+      <h2 class="category-title">{{ category.title }}</h2>
+      <div class="albums">
+        <div *ngFor="let album of category.albums" class="album" (click)="navigateToAlbum(album.id)">
+          <!-- Contenedor de la imagen principal y el nombre del álbum -->
+          <div class="album-cover">
+            <img [src]="album.photos[0].url" [alt]="album.photos[0].alt" class="album-image">
+            <div class="album-name">{{ album.name }}</div>
+          </div>
+
+          <!-- Contenedor para las 3 primeras imágenes (ocultas por defecto) -->
+          <div class="album-preview">
+            <div *ngFor="let photo of album.photos.slice(0, 3)" class="preview-image">
+              <img [src]="photo.url" [alt]="photo.alt">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--Boton para volver al inicio-->
+    <button mat-fav color="primary" class="volver-inicio" (click)="scrollToTop()">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+</section>

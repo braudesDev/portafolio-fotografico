@@ -1,0 +1,115 @@
+
+/* Estilos para el contenedor del álbum */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Columnas flexibles */
+  gap: 15px; /* Espaciado entre imágenes */
+  padding: 15px;
+  margin-top: 2rem;
+}
+
+h2 {
+  position: relative;
+  color: rgb(0, 0, 0);
+  font-size: 4rem;
+  font-family: 'QuickSand', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+/* Estilos para cada imagen */
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: scale(1.07);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+  border-radius: 8px;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.modal-content.vertical {
+  height: 90%;
+  width: auto;
+}
+
+.modal-content.horizontal {
+  width: 90%;
+  height: auto;
+}
+
+.modal-content.zoomed {
+  transform: scale(1.5);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ccc;
+}
+
+.modal-controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+.modal-controls button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

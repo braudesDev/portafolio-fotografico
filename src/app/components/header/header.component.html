@@ -1,0 +1,22 @@
+<nav [class.nav-hidden]="navHidden">
+  <ul>
+    <li><a routerLink="/" (click)="onNavClick()">
+      <mat-icon fontIcon="home"></mat-icon> Inicio
+    </a></li> <!--Ya este este componente / home-->
+    <li><a routerLink="/gallery" (click)="onNavClick()"><mat-icon fontIcon="camera"></mat-icon> Fotografía
+    </a></li>  <!--Ya este este componente / gallery-->
+    <li><a routerLink="/video" (click)="onNavClick()"><mat-icon fontIcon="videocam"></mat-icon> Video
+    </a></li> <!--Ya este este componente / video-->
+    <li><a routerLink="/about-me" (click)="onNavClick()"><mat-icon fontIcon="person"></mat-icon> Acerca de mí
+    </a></li>  <!--Ya este este componente / about-me-->
+    <li><a routerLink="/my-services" (click)="onNavClick()"><mat-icon fontIcon="photo_camera"></mat-icon> Servicios
+    </a></li>  <!--Ya este este componente / my-services-->
+    <li><a routerLink="/testimonios" (click)="onNavClick()"><mat-icon fontIcon="rate_review"></mat-icon> Testimonios
+    </a></li> <!--Ya este este componente / testimonios-->
+    <li><a routerLink="/contact" (click)="onNavClick()"><mat-icon fontIcon="contact_mail"></mat-icon> Contacto
+    </a></li> <!--Ya este este componente / contact-->
+  </ul>
+</nav>
+
+
+

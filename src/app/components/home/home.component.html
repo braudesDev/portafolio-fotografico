@@ -1,0 +1,35 @@
+<div class="hero-image">
+  <img src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/pznmcwbqi1cdzhig6xiw" alt="Fotografía destacada">
+</div>
+
+<!-- Indicador de scroll -->
+<div class="scroll-indicator" *ngIf="showScrollIndicator" (click)="scrollToContent()">
+  <span>Ver fotos</span>
+  <div class="arrow"></div>
+</div>
+
+<section class="content">
+  <div class="container">
+    <div class="photography">
+      <h2 class="titulo-fotografia">Fotografías</h2>
+      <div class="grid">
+        <!-- Usar *ngFor para recorrer el arreglo de imágenes -->
+        <div class="image-item" *ngFor="let image of images">
+          <img [src]="image.mainImage" alt="Fotografía" class="main-image">
+          <img [src]="image.hoverImage" alt="Vista previa" class="hover-image">
+          <!--Mostrar el nombre de la imagen-->
+          <p class="image-name"> {{ image.name }} </p>
+        </div>
+      </div>
+    </div>
+    <div class="video">
+      <h2 class="titulo-video">Vídeos</h2>
+      <!-- Aquí puedes agregar contenido de vídeo -->
+    </div>
+  </div>
+
+  <!--Boton para volver al inicio-->
+  <button mat-fav color="primary" class="volver-inicio" (click)="scrollToTop()">
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
+</section>
