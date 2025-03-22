@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
+import Typewriter from 'typewriter-effect/dist/core';
 
 @Component({
   selector: 'app-home',
@@ -69,8 +70,13 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('parallaxHeroImage', { static: false }) parallaxHeroImage!: ElementRef<HTMLImageElement>;
 
   ngAfterViewInit(): void {
-    // Eliminar el código relacionado con el parallax, ya no es necesario
-  }
+  // Inicializa Typewriter.js
+    const typewriter = new Typewriter('#typewriter-text', {
+      strings: ['Braulio Rodríguez', 'Fotógrafo Profesional', 'Creativo', 'Apasionado'],
+      autoStart: true,
+      loop: true,
+    });
+}
 
   @HostListener('window:scroll', [])
   onScroll() {
@@ -91,4 +97,7 @@ export class HomeComponent implements AfterViewInit {
       behavior: 'smooth' // Desplazamiento suave
     });
   }
-}
+
+
+ }
+

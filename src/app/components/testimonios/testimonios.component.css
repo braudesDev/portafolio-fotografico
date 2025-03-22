@@ -11,8 +11,29 @@ body {
   font-size: 45px;
   font-weight: bold;
   text-align: center;
-  margin-top: 7rem;
+  margin-top: 6rem;
   margin-bottom: 30px;
+}
+
+/* Estilos para el contenedor del SVG */
+.svg-container {
+  position: fixed; /* Fija el SVG en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
+  height: 125vh;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  z-index: -1; /* Coloca el SVG detrás del contenido */
+
+}
+
+/* Estilos para el SVG */
+.svg-container svg {
+  width: 100%; /* Ajusta el ancho del SVG */
+  height: auto; /* Mantiene la proporción del SVG */
+  display: block; /* Elimina el espacio adicional */
 }
 
 /* Estilos para el formulario */
@@ -42,6 +63,7 @@ textarea {
   border-radius: 4px;
   background-color: #e6e6e6;
   color: #000000;
+  margin-right: 5px;
 }
 
 button {
@@ -51,18 +73,26 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: block; /* Convierte el botón en un bloque */
+  margin: 0 auto; /* Centra horizontalmente */
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #f18bff;
 }
+
+
+
 
 /* Mensajes de éxito o error */
 .mensaje {
   margin-top: 20px;
-  color: rgb(7, 216, 7);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   text-align: center;
+
 }
 
 /* Contenedor del carrusel */
@@ -70,6 +100,7 @@ button:hover {
   width: 100%;
   padding: 20px 0;
   overflow: hidden; /* Oculta el desbordamiento del carrusel */
+
 }
 
 /* Carrusel */
@@ -77,6 +108,7 @@ button:hover {
   display: flex;
   width: max-content; /* Asegura que el carrusel sea lo suficientemente ancho */
   animation: desplazar 70s linear infinite; /* Animación del carrusel */
+
 }
 
 /* Estilos para cada testimonio */
@@ -85,7 +117,8 @@ button:hover {
   width: 300px; /* Ancho de cada testimonio */
   margin: 0 20px;
   padding: 20px;
-  background-color: #ffffff8a; /* Fondo oscuro para los testimonios */
+  backdrop-filter: blur(15px); /* Desenfoque más suave */
+  background-color: rgba(255, 255, 255, 0.377); /* Fondo semitransparente */
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -137,14 +170,14 @@ button:hover {
   }
 }
 
-/* Estilos para el botón de ayuda */
+/* Estilos para el campo de URL con ícono de ayuda */
 .input-con-ayuda {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espacio entre el input y el ícono */
+  gap: 10px; /* Espacio entre el input y el ícono */
+  margin-bottom: 10px;
 }
 
-/* Estilos para el ícono de ayuda */
 .icono-ayuda {
   color: #007bff; /* Color azul */
   cursor: pointer;
@@ -153,4 +186,65 @@ button:hover {
 
 .icono-ayuda:hover {
   color: #0056b3; /* Color azul más oscuro al hacer hover */
+}
+
+/* Estilos para el selector de avatares */
+.selector-avatar {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.boton-avatar {
+  background-color: #44ffd6;
+  color: rgb(0, 0, 0);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.boton-avatar:hover {
+  background-color: #ff85eb;
+}
+
+/* Estilos para el menú de avatares */
+.menu-avatares {
+  position: absolute;
+  top: -90px; /* Despliega el menú hacia abajo */
+  right: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1000;
+  display: grid; /* Usamos CSS Grid para crear la cuadrícula */
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  grid-template-rows: repeat(3, 1fr); /* 3 filas */
+  gap: 10px; /* Espacio entre los avatares */
+  max-width: 400px; /* Ancho máximo del menú (ajusta según tus necesidades) */
+  max-height: 250px; /* Altura máxima del menú (ajusta según tus necesidades) */
+  overflow: auto; /* Permite desplazamiento si hay muchos avatares */
+}
+
+/* Estilos para cada opción de avatar */
+.avatar-opcion {
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 60px; /* Tamaño del avatar */
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.avatar-opcion:hover {
+  transform: scale(1.1); /* Efecto de escala al hacer hover */
+}
+
+.avatar-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

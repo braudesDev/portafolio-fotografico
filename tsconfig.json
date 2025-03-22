@@ -22,7 +22,8 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "typeRoots": ["./node_modules/@types", "./types"] // Se agrego esta linea para el efecto de escritura del home
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

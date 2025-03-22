@@ -16,6 +16,26 @@ export class TestimoniosComponent implements OnInit {
   testimonios: any[] = [];
   nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
   mensaje = '';
+  mostrarSelectorAvatares = false;
+  //lista de avatares predeterminados
+  avatares: string[] = [
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/cusmeaakt5okr48fremr',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/eamjfrhrlk9cvcahqkdo',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/svzffqp07wkpzpga2cc5',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/p6ydhdoqw3wcouoijjsa',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/gpqoy4matzudueeuntjx',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/ehpxoyjsevns6gktuih7',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/wrajsnauszdnshvlbg9o',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/ltb0rpmcaa0b7sdfcpz0',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/gyw6vwacimgxhnwejqsb',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/ohjpik5rewpe5jfgk3pr',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/kwj7qnnvzsqlbrveoxkw',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/ktvrnqpd0qmehh9oassj',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/osz4gdaijlnjfqgcwvqb',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/bpsim4nqrocckm0umdpd',
+     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/su8j3bv4cfvm062i1gcy'
+  ]
+
   instruccionesTooltip = `
     1. Sube tu foto a un servicio como Imgur o Postimages.
     2. Copia la URL de la imagen (debe terminar en .jpg, .png, etc.).
@@ -42,7 +62,7 @@ export class TestimoniosComponent implements OnInit {
       this.loadTestimonios(); // Recargar la lista de testimonios
       this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' }; // Limpiar el formulario
     }, error => {
-      this.mensaje = 'Error al enviar el testimonio.';
+      this.mensaje = 'Error al enviar el testimonio!';
     });
   }
 
@@ -62,6 +82,11 @@ export class TestimoniosComponent implements OnInit {
     }, error => {
       this.mensaje = 'Error al eliminar el testimonio.';
     });
+  }
+
+  seleccionarAvatar(avatar: string): void {
+    this.nuevoTestimonio.imagen_url = avatar; //Asignar el avatar seleccionado
+    this.mostrarSelectorAvatares = false; // Ocultar el selector de avatareas
   }
 
 }

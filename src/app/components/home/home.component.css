@@ -20,6 +20,33 @@
 }
 
 
+/*Efecto mecanografia en texto*/
+.typewriter-container {
+  position: absolute; /* Posiciona el texto sobre la imagen */
+  top: 15rem; /* Margen de 50px desde la parte superior */
+  left: 50%;
+  transform: translateX(-50%); /* Centra horizontalmente */
+  text-align: center;
+  color: white; /* Color del texto */
+  font-size: 3rem; /* Tamaño del texto */
+  min-height: 10rem;
+  z-index: 10; /* Asegura que el texto esté sobre la imagen */
+  box-sizing: border-box;
+  padding: 1rem;
+}
+#typewriter-text {
+  display: inline-block; /* Para que el cursor funcione correctamente */
+  border-right: 0.15em solid orange; /* Cursor de mecanografía */
+  white-space: nowrap; /* Evita saltos de línea */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  letter-spacing: 0.15em; /* Espaciado entre letras */
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 7rem;
+  line-height: 1.2;
+}
+
+
 /* Barra de navegación fija */
 nav {
   position: fixed;
