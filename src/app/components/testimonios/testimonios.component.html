@@ -9,7 +9,16 @@
   <textarea [(ngModel)]="nuevoTestimonio.comentario" name="comentario" required></textarea>
 
   <label>Foto (URL opcional):</label>
-  <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" />
+  <div class="input-con-ayuda">
+    <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" />
+    <mat-icon
+      [matTooltip]="instruccionesTooltip"
+      matTooltipPosition="right"
+      class="icono-ayuda"
+    >
+      help_outline
+    </mat-icon>
+  </div>
 
   <button type="submit">Enviar Testimonio</button>
 </form>
@@ -22,16 +31,6 @@
   <div class="carrusel">
     <!-- Iterar sobre los testimonios -->
     <div *ngFor="let testimonio of testimonios; let i = index" class="testimonio">
-      <img
-        [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
-        alt="{{ testimonio.nombre }}"
-        class="testimonio-imagen"
-      />
-      <h3 class="testimonio-nombre">{{ testimonio.nombre }}</h3>
-      <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
-    </div>
-    <!-- Duplicar los testimonios para el efecto infinito -->
-    <div *ngFor="let testimonio of testimonios" class="testimonio">
       <img
         [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
         alt="{{ testimonio.nombre }}"

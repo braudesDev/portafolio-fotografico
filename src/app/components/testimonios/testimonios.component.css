@@ -8,10 +8,10 @@ body {
 }
 
 .titulo {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: bold;
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 7rem;
   margin-bottom: 30px;
 }
 
@@ -60,7 +60,7 @@ button:hover {
 /* Mensajes de éxito o error */
 .mensaje {
   margin-top: 20px;
-  color: green;
+  color: rgb(7, 216, 7);
   font-weight: bold;
   text-align: center;
 }
@@ -135,4 +135,22 @@ button:hover {
   .testimonio {
     width: 250px; /* Reducir el ancho de los testimonios en dispositivos pequeños */
   }
+}
+
+/* Estilos para el botón de ayuda */
+.input-con-ayuda {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre el input y el ícono */
+}
+
+/* Estilos para el ícono de ayuda */
+.icono-ayuda {
+  color: #007bff; /* Color azul */
+  cursor: pointer;
+  font-size: 20px; /* Tamaño del ícono */
+}
+
+.icono-ayuda:hover {
+  color: #0056b3; /* Color azul más oscuro al hacer hover */
 }
