@@ -39,6 +39,8 @@ nav {
   border-radius: 8px;
   position: relative;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  gap: 7px;
 }
 
 /* Animación de hover */
@@ -99,3 +101,5 @@ nav {
     display: block; /* Muestra el ícono en móviles */
   }
 }
+
+

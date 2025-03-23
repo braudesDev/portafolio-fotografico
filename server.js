@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const cors = require('cors');
+require('dotenv').config(); // Cargar variables de entorno desde un archivo .env
+
 
 const app = express();
 const port = 3000;
@@ -15,10 +17,10 @@ app.use(cors({
 
 // Configuración de la base de datos
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'rodriguez196', // Asegúrate de que sea la contraseña correcta
-  database: 'testimonios'
+  host: process.env.DB_HOST, // Servidor de la base de datos
+  user: process.env.DB_USER, // Usuario de la base de datos
+  password: process.env.DB_PASSWORD, // Contraseña de la base de datos
+  database: process.env.DB_DATABASE // Nombre de la base de datos
 });
 
 connection.connect(err => {

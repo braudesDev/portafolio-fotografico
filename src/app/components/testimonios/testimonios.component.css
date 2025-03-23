@@ -67,18 +67,21 @@ textarea {
 }
 
 button {
-  background-color: #44ffd6;
+  background-color: #C0EB2F;
   color: rgb(0, 0, 0);
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  display: block; /* Convierte el botón en un bloque */
+  display: flex; /* Convierte el botón en un bloque */
+  align-items: center;
   margin: 0 auto; /* Centra horizontalmente */
+  gap: 7px; /* Espacio entre el texto y el ícono */
 }
 
+
 button:hover {
-  background-color: #f18bff;
+  background-color: #EACB3C;
 }
 
 
@@ -94,6 +97,8 @@ button:hover {
   text-align: center;
 
 }
+
+
 
 /* Contenedor del carrusel */
 .testimonios-container {
@@ -188,26 +193,28 @@ button:hover {
   color: #0056b3; /* Color azul más oscuro al hacer hover */
 }
 
+
 /* Estilos para el selector de avatares */
 .selector-avatar {
   position: relative;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .boton-avatar {
-  background-color: #44ffd6;
+  background-color: #C0EB2F;
   color: rgb(0, 0, 0);
-  padding: 10px 15px;
+  padding: 7px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 5px;
 }
 
 .boton-avatar:hover {
-  background-color: #ff85eb;
+  background-color: #EACB3C;
 }
 
 /* Estilos para el menú de avatares */
@@ -234,8 +241,8 @@ button:hover {
   cursor: pointer;
   border-radius: 50%;
   overflow: hidden;
-  width: 60px; /* Tamaño del avatar */
-  height: 60px;
+  width: 50px; /* Tamaño del avatar */
+  height: 50px;
   transition: transform 0.3s ease;
 }
 
@@ -247,4 +254,139 @@ button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+
+/* Ajustes para tablets (modo retrato y apaisado) */
+@media (max-width: 1024px) {
+  .testimonio {
+    width: 280px; /* Reducir el ancho de los testimonios */
+    margin: 0 15px;
+    padding: 18px;
+  }
+
+    .menu-avatares {
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en dispositivos pequeños */
+    max-width: 250px; /* Reducir el ancho máximo */
+    max-height: 150px; /* Reducir la altura máxima */
+    top: -60px;
+    right: 90%;
+    overflow: auto; /* Permite desplazamiento si hay muchos avatares */
+  }
+
+
+  .testimonio-imagen {
+    width: 90px; /* Reducir el tamaño de la imagen */
+    height: 90px;
+  }
+
+  .testimonio-nombre {
+    font-size: 1.3rem; /* Reducir el tamaño del nombre */
+  }
+
+  .testimonio-comentario {
+    font-size: 1rem; /* Reducir el tamaño del comentario */
+  }
+
+  .carrusel {
+    animation: desplazar 60s linear infinite; /* Reducir la velocidad de la animación */
+  }
+}
+
+/* Ajustes para dispositivos pequeños (móviles) */
+@media (max-width: 768px) {
+
+  .titulo {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 6rem;
+    margin-bottom: 30px;
+  }
+
+  .menu-avatares {
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en dispositivos pequeños */
+    max-width: 250px; /* Reducir el ancho máximo */
+    max-height: 150px; /* Reducir la altura máxima */
+    top: -50px;
+    right: 50%;
+    overflow: auto; /* Permite desplazamiento si hay muchos avatares */
+  }
+
+  .avatar-opcion {
+    width: 40px; /* Reducir el tamaño del avatar */
+    height: 40px;
+  }
+
+  .testimonio {
+    width: 250px; /* Reducir el ancho de los testimonios */
+    margin: 0 10px;
+    padding: 15px;
+  }
+
+  .testimonio-imagen {
+    width: 80px; /* Reducir el tamaño de la imagen */
+    height: 80px;
+  }
+
+  .testimonio-nombre {
+    font-size: 1.2rem; /* Reducir el tamaño del nombre */
+  }
+
+  .testimonio-comentario {
+    font-size: 1rem; /* Reducir el tamaño del comentario */
+  }
+
+  .carrusel {
+    animation: desplazar 50s linear infinite; /* Reducir la velocidad de la animación */
+  }
+}
+
+/* Ajustes para dispositivos muy pequeños (ej. smartphones pequeños) */
+@media (max-width: 480px) {
+
+  .titulo {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 6rem;
+    margin-bottom: 30px;
+  }
+
+  .menu-avatares {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en dispositivos muy pequeños */
+    top: -50px;
+    right: 10%;
+    max-width: 200px; /* Reducir aún más el ancho máximo */
+    max-height: 120px; /* Reducir aún más la altura máxima */
+    overflow: auto; /* Permite desplazamiento si hay muchos avatares */
+  }
+
+  .avatar-opcion {
+    width: 35px; /* Reducir aún más el tamaño del avatar */
+    height: 35px;
+  }
+
+  .testimonio {
+    width: 200px; /* Reducir aún más el ancho de los testimonios */
+    margin: 0 5px;
+    padding: 10px;
+  }
+
+  .testimonio-imagen {
+    width: 60px; /* Reducir aún más el tamaño de la imagen */
+    height: 60px;
+  }
+
+  .testimonio-nombre {
+    font-size: 1rem; /* Reducir aún más el tamaño del nombre */
+  }
+
+  .testimonio-comentario {
+    font-size: 0.9rem; /* Reducir aún más el tamaño del comentario */
+  }
+
+  .carrusel {
+    animation: desplazar 40s linear infinite; /* Reducir aún más la velocidad de la animación */
+  }
 }
