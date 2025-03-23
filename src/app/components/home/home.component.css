@@ -1,3 +1,11 @@
+* {
+  outline: 1px solid red;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
 
 .hero-image {
   position: fixed;
@@ -22,46 +30,29 @@
 
 /*Efecto mecanografia en texto*/
 .typewriter-container {
-  position: absolute; /* Posiciona el texto sobre la imagen */
-  top: 15rem; /* Margen de 50px desde la parte superior */
+  position: absolute;
+  top: 20%; /* Usa porcentajes en lugar de valores fijos */
   left: 50%;
-  transform: translateX(-50%); /* Centra horizontalmente */
+  transform: translateX(-50%);
   text-align: center;
-  color: white; /* Color del texto */
-  font-size: 3rem; /* Tamaño del texto */
+  color: white;
+  font-size: 5vw; /* Tamaño de fuente responsivo */
   min-height: 10rem;
-  z-index: 10; /* Asegura que el texto esté sobre la imagen */
+  z-index: 10;
   box-sizing: border-box;
   padding: 1rem;
 }
+
 #typewriter-text {
-  display: inline-block; /* Para que el cursor funcione correctamente */
-  border-right: 0.15em solid orange; /* Cursor de mecanografía */
-  white-space: nowrap; /* Evita saltos de línea */
-  overflow: hidden; /* Oculta el texto que se desborda */
-  letter-spacing: 0.15em; /* Espaciado entre letras */
+  display: inline-block;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0.15em;
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
-  font-size: 7rem;
+  font-size: 8vw; /* Tamaño de fuente responsivo */
   line-height: 1.2;
-}
-
-
-/* Barra de navegación fija */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  -webkit-backdrop-filter: blur(10px); /* Para Safari */
-  padding: 15px 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
 }
 
 
@@ -146,16 +137,20 @@ nav {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hace que las columnas sean responsivas */
+  gap: 20px; /* Espacio entre elementos */
+  padding: 0 20px; /* Agrega un padding para evitar que el contenido toque los bordes */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 
 /* Contenedor de cada imagen */
 .image-item {
   position: relative;
-  width: 500px; /* Ancho fijo para el contenedor */
-  margin: 50px; /* Espacio entre imágenes */
+  width: 100%; /* Ancho fijo para el contenedor */
+  max-width: 500px;
+  margin: 20px auto; /* Espacio entre imágenes */
+  box-sizing: border-box;
 }
 
 /* Imagen principal */

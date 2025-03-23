@@ -1,22 +1,29 @@
 <nav [class.nav-hidden]="navHidden">
-  <ul>
+  <!-- Ícono del menú hamburguesa -->
+  <div class="menu-icon" (click)="toggleMenu()">☰</div>
+  
+  <!-- Lista de enlaces -->
+  <ul class="nav-links" [class.active]="isMenuOpen">
     <li><a routerLink="/" (click)="onNavClick()">
       <mat-icon fontIcon="home"></mat-icon> Inicio
-    </a></li> <!--Ya este este componente / home-->
-    <li><a routerLink="/gallery" (click)="onNavClick()"><mat-icon fontIcon="camera"></mat-icon> Fotografía
-    </a></li>  <!--Ya este este componente / gallery-->
-    <li><a routerLink="/video" (click)="onNavClick()"><mat-icon fontIcon="videocam"></mat-icon> Video
-    </a></li> <!--Ya este este componente / video-->
-    <li><a routerLink="/about-me" (click)="onNavClick()"><mat-icon fontIcon="person"></mat-icon> Acerca de mí
-    </a></li>  <!--Ya este este componente / about-me-->
-    <li><a routerLink="/my-services" (click)="onNavClick()"><mat-icon fontIcon="photo_camera"></mat-icon> Servicios
-    </a></li>  <!--Ya este este componente / my-services-->
-    <li><a routerLink="/testimonios" (click)="onNavClick()"><mat-icon fontIcon="rate_review"></mat-icon> Testimonios
-    </a></li> <!--Ya este este componente / testimonios-->
-    <li><a routerLink="/contact" (click)="onNavClick()"><mat-icon fontIcon="contact_mail"></mat-icon> Contacto
-    </a></li> <!--Ya este este componente / contact-->
+    </a></li>
+    <li><a routerLink="/gallery" (click)="onNavClick()">
+      <mat-icon fontIcon="camera"></mat-icon> Fotografía
+    </a></li>
+    <li><a routerLink="/video" (click)="onNavClick()">
+      <mat-icon fontIcon="videocam"></mat-icon> Video
+    </a></li>
+    <li><a routerLink="/about-me" (click)="onNavClick()">
+      <mat-icon fontIcon="person"></mat-icon> Acerca de mí
+    </a></li>
+    <li><a routerLink="/my-services" (click)="onNavClick()">
+      <mat-icon fontIcon="photo_camera"></mat-icon> Servicios
+    </a></li>
+    <li><a routerLink="/testimonios" (click)="onNavClick()">
+      <mat-icon fontIcon="rate_review"></mat-icon> Testimonios
+    </a></li>
+    <li><a routerLink="/contact" (click)="onNavClick()">
+      <mat-icon fontIcon="contact_mail"></mat-icon> Contacto
+    </a></li>
   </ul>
 </nav>
-
-
-
