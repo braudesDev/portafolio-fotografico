@@ -10,14 +10,14 @@
 <!-- Formulario para agregar testimonios -->
 <form (ngSubmit)="enviarTestimonio()">
   <label>Nombre:</label>
-  <input type="text" [(ngModel)]="nuevoTestimonio.nombre" name="nombre" required />
+  <input type="text" [(ngModel)]="nuevoTestimonio.nombre" name="nombre" placeholder="Ingresa tu nombre" required />
 
   <label>Comentario:</label>
-  <textarea [(ngModel)]="nuevoTestimonio.comentario" name="comentario" required></textarea>
+  <textarea [(ngModel)]="nuevoTestimonio.comentario" name="comentario" placeholder="Agrega aqui tu comentario" required></textarea>
 
-  <label>Foto (URL opcional):</label>
+  <label>URL de tu foto (opcional):</label>
   <div class="input-con-ayuda">
-    <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" />
+    <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" placeholder="Agrega el link de una imagen de internet" />
     <mat-icon
       [matTooltip]="instruccionesTooltip"
       matTooltipPosition="right"

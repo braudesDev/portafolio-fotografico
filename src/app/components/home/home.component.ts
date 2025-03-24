@@ -84,8 +84,22 @@ export class HomeComponent implements AfterViewInit {
       loop: true,
     });
 
-    
+
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach((video) => {
+      video.muted = true; // Asegura que siempre inicie silenciado
+      video.play().catch((error) => console.log("Autoplay bloqueado:", error));
+    });
 }
+
+  toggleMute(video: HTMLVideoElement) {
+    video.muted = !video.muted;
+
+    //Cambiar el icono del boton de mute
+    const button = video.nextElementSibling as HTMLButtonElement;
+    button.textContent = video.muted ? "🔇" : "🔊";
+  }
 
   @HostListener('window:scroll', [])
   onScroll() {
@@ -107,7 +121,5 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  
-
- }
+}
 
