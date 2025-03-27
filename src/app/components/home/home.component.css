@@ -260,7 +260,7 @@ html, body {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
-  font-size:35px;
+  font-size:25px;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -275,15 +275,15 @@ html, body {
 /*Estilo para la flecha de volver a la pagina de inicio*/
 /* Estilos para el ícono dentro del botón */
 .volver-inicio mat-icon {
-  font-size: 20px; /* Tamaño del ícono */
-  width: 20px; /* Ancho del ícono */
-  height: 20px; /* Alto del ícono */
+  font-size: 30px; /* Tamaño del ícono */
+  width: 30px; /* Ancho del ícono */
+  height: 30px; /* Alto del ícono */
 }
 
 .volver-inicio {
   position: fixed;
-  bottom: 5px; /* Ajusta la posición vertical */
-  right: 5px; /* Ajusta la posición horizontal */
+  bottom: 10px; /* Ajusta la posición vertical */
+  right: 10px; /* Ajusta la posición horizontal */
   padding: 0; /* Elimina el padding para hacerlo más pequeño */
   width: 40px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
@@ -348,6 +348,24 @@ html, body {
     bottom: 20px; /* Ajusta la posición */
     right: 10px; /* Ajusta la posición */
   }
+
+  .mute-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size:25px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .mute-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.10);
+
 }
 
 /* Pantallas muy pequeñas (móviles pequeños) */
@@ -396,7 +414,10 @@ html, body {
     width: 30px; /* Reduce aún más el tamaño del botón */
     height: 30px; /* Reduce aún más el tamaño del botón */
     font-size: 8px; /* Reduce aún más el tamaño de la fuente */
+  
   }
+
 }
 
+}
 
