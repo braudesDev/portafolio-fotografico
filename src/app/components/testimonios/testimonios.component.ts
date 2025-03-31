@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
 import { TestimoniosService } from '../../servicios/testimonios.service';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Testimonio } from '../../interfaces/testimonio.interface'; // Importa la interfaz Testimonio
+
 
 @Component({
   selector: 'app-testimonios',
@@ -12,11 +14,22 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './testimonios.component.html',
   styleUrls: ['./testimonios.component.css']
 })
+
+
+
 export class TestimoniosComponent implements OnInit {
-  testimonios: any[] = [];
-  nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
+
+
+  // Tipamos las variables
+  testimonios: Testimonio[] = [];
+  nuevoTestimonio: Omit<Testimonio, 'id' | 'fecha'> = {
+  nombre: '',
+  comentario: '',
+  imagen_url: ''
+  };
   mensaje = '';
-  mostrarSelectorAvatares = false;
+  mostrarSelectorAvatares = false; // Controla la visibilidad del selector de avatares
+  cargando = false;
   //lista de avatares predeterminados
   avatares: string[] = [
      'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/cusmeaakt5okr48fremr',
@@ -55,18 +68,22 @@ export class TestimoniosComponent implements OnInit {
   }
 
   enviarTestimonio(): void {
-    console.log("DAtos enviados", this.nuevoTestimonio);
-
-    this.testimoniosService.addTestimonio(this.nuevoTestimonio).subscribe(response => {
-      this.mensaje = 'Testimonio enviado correctamente.';
-      this.loadTestimonios(); // Recargar la lista de testimonios
-      this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' }; // Limpiar el formulario
-    }, error => {
-      this.mensaje = 'Error al enviar el testimonio!';
+    this.cargando = true;
+    this.testimoniosService.addTestimonio(this.nuevoTestimonio).subscribe({
+      next: () => {
+        this.mensaje = 'Testimonio enviado correctamente.';
+        this.loadTestimonios();
+        this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
+        this.cargando = false;
+      },
+      error: (err) => {
+        this.mensaje = `Error al enviar el testimonio: ${err.message}`;
+        this.cargando = false;
+      }
     });
   }
 
-  editarTestimonio(id: number, testimonio: any): void {
+  editarTestimonio(id: number, testimonio: Testimonio): void {
     this.testimoniosService.updateTestimonio(id, testimonio).subscribe(response => {
       this.mensaje = 'Testimonio actualizado correctamente.';
       this.loadTestimonios(); // Recargar la lista de testimonios
