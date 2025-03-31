@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "server dist/portafolio-fotografia - l",
+    "start": "serve dist/portafolio-fotografia -l 8080",
+    "start:prod": "serve dist/portafolio-fotografia -l $PORT",
     "build": "ng build",
     "build:render": "rm -rf node_modules && npm install && ./node_modules/.bin/ng build --configuration production && cp static.json dist/portafolio-fotografia/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
-
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.14.0",
     "rxjs": "~7.8.0",
+    "serve": "^14.2.4",
     "simple-parallax-js": "^6.0.1",
     "tslib": "^2.3.0",
     "typewriter-effect": "^2.21.0",
