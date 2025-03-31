@@ -11,20 +11,19 @@ import Typewriter from 'typewriter-effect/dist/core';
 
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
-  ],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatGridListModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDividerModule,
+    ],
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
 

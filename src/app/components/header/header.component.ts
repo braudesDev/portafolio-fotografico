@@ -4,15 +4,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatIconModule,
-    CommonModule
-  ],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    imports: [
+        RouterModule,
+        MatIconModule,
+        CommonModule
+    ],
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   lastScrollTop = 0;

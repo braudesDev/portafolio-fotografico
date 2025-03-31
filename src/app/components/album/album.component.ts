@@ -3,11 +3,10 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-album',
-  standalone: true,
-  imports: [CommonModule, NgOptimizedImage], //Aniadimos para optimizar imagenes
-  templateUrl: './album.component.html',
-  styleUrls: ['./album.component.css']
+    selector: 'app-album',
+    imports: [CommonModule, NgOptimizedImage], //Aniadimos para optimizar imagenes
+    templateUrl: './album.component.html',
+    styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
   album: { id: string; name: string; photos: { url: string; alt: string }[] } | undefined;

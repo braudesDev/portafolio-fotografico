@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-gallery',
-  standalone: true,
-  imports: [RouterModule, CommonModule, MatIconModule],
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.css']
+    selector: 'app-gallery',
+    imports: [RouterModule, CommonModule, MatIconModule],
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent {
   // Definimos la estructura de las imágenes
