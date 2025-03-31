@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "server dist/portafolio-fotografia - l $PORT",
+    "start": "server dist/portafolio-fotografia - l",
     "build": "ng build",
+    "build:render": "rm -rf node_modules && npm install && ./node_modules/.bin/ng build --configuration production && cp static.json dist/portafolio-fotografia/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
 
