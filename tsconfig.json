@@ -23,7 +23,8 @@
       "ES2022",
       "dom"
     ],
-    "typeRoots": ["./node_modules/@types", "./types"] // Se agrego esta linea para el efecto de escritura del home
+    "typeRoots": ["./node_modules/@types", "./types"], // Se agrego esta linea para el efecto de escritura del home
+    "types": ["node"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
