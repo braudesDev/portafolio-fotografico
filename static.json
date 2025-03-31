@@ -1,0 +1,22 @@
+{
+  "root": "dist/portafolio-fotografia",
+  "clean_urls": true,
+  "routes": {
+    "/**": "index.html"
+  },
+  "https_only": true,
+  "error_page": "index.html",
+  "headers": {
+    "/**": {
+      "Cache-Control": "public, max-age=3600",
+      "X-Frame-Options": "DENY",
+      "X-Content-Type-Options": "nosniff"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ]
+}
