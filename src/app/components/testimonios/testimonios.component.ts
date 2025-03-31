@@ -1,24 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importa CommonModule aquí
-import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
-import { TestimoniosService } from '../../servicios/testimonios.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+// import { TestimoniosService } from '../../servicios/testimonios.service';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Testimonio } from '../../interfaces/testimonio.interface'; // Importa la interfaz Testimonio
+import { Testimonio } from '../../interfaces/testimonio.interface';
+import { addDoc, collection } from 'firebase/firestore'; // Importa Firestore si lo vas a usar
+import { FirebaseApp } from '@angular/fire/app';
+import { environment } from './../../../enviroments/enviroment';
+import { initializeApp } from 'firebase/app';  // Importa initializeApp de firebase
+import { getFirestore } from 'firebase/firestore';  // Importa Firestore si lo vas a usar
+import { getDocs } from 'firebase/firestore'; // Importa Firestore si lo vas a usar
+
 
 
 @Component({
   selector: 'app-testimonios',
-  standalone: true, // Indica que el componente es standalone
-  imports: [FormsModule, CommonModule, MatIcon, MatTooltipModule], // Añades FormsModule aquí
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatIcon,
+    MatTooltipModule,
+  ],
   templateUrl: './testimonios.component.html',
   styleUrls: ['./testimonios.component.css']
 })
 
-
-
 export class TestimoniosComponent implements OnInit {
 
+  // Inicializa Firebase
+  private FirebaseApp = initializeApp(environment.firebaseConfig); // Inicializamos firebase con nuestra configuracion
+  private db = getFirestore(this.FirebaseApp); // Obtenemos firestore
 
   // Tipamos las variables
   testimonios: Testimonio[] = [];
@@ -55,55 +68,47 @@ export class TestimoniosComponent implements OnInit {
     3. Pega la URL en el campo "Foto (URL opcional)".
   `;
 
-  constructor(private testimoniosService: TestimoniosService) {}
+
 
   ngOnInit(): void {
     this.loadTestimonios();
   }
-
-  loadTestimonios(): void {
-    this.testimoniosService.getTestimonios().subscribe(data => {
-      this.testimonios = data;
-    });
+  // Método para cargar los testimonios desde Firestore
+  async loadTestimonios(): Promise<void> {
+    try {
+      const querySnapshot = await getDocs(collection(this.db, 'testimonios'));
+      this.testimonios = querySnapshot.docs.map(doc => doc.data() as Testimonio);
+    } catch (err) {
+      console.error("Error al cargar los testimonios: ", err);
+    }
   }
 
-  enviarTestimonio(): void {
+  // Método para agregar un testimonio usando Firestore
+  async enviarTestimonio(): Promise<void> {
     this.cargando = true;
-    this.testimoniosService.addTestimonio(this.nuevoTestimonio).subscribe({
-      next: () => {
-        this.mensaje = 'Testimonio enviado correctamente.';
-        this.loadTestimonios();
-        this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
-        this.cargando = false;
-      },
-      error: (err) => {
+    try {
+      const testimonioConFecha = {
+        ...this.nuevoTestimonio,
+        fecha: new Date()
+      };
+      const docRef = await addDoc(collection(this.db, 'testimonios'), testimonioConFecha);
+      this.mensaje = 'Testimonio enviado correctamente.';
+      this.loadTestimonios(); // Recargar la lista de testimonios
+      this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' }; // Limpiar el formulario
+    } catch (err: unknown) {
+      if (err instanceof Error) {
         this.mensaje = `Error al enviar el testimonio: ${err.message}`;
-        this.cargando = false;
+      } else {
+        this.mensaje = 'Error desconocido al enviar el testimonio.';
       }
-    });
+    } finally {
+      this.cargando = false;
+    }
   }
 
-  editarTestimonio(id: number, testimonio: Testimonio): void {
-    this.testimoniosService.updateTestimonio(id, testimonio).subscribe(response => {
-      this.mensaje = 'Testimonio actualizado correctamente.';
-      this.loadTestimonios(); // Recargar la lista de testimonios
-    }, error => {
-      this.mensaje = 'Error al actualizar el testimonio.';
-    });
-  }
-
-  eliminarTestimonio(id: number): void {
-    this.testimoniosService.deleteTestimonio(id).subscribe(response => {
-      this.mensaje = 'Testimonio eliminado correctamente.';
-      this.loadTestimonios(); // Recargar la lista de testimonios
-    }, error => {
-      this.mensaje = 'Error al eliminar el testimonio.';
-    });
-  }
 
   seleccionarAvatar(avatar: string): void {
-    this.nuevoTestimonio.imagen_url = avatar; //Asignar el avatar seleccionado
-    this.mostrarSelectorAvatares = false; // Ocultar el selector de avatareas
+    this.nuevoTestimonio.imagen_url = avatar;
+    this.mostrarSelectorAvatares = false;
   }
-
 }
