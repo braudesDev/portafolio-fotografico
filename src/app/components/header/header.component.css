@@ -1,18 +1,18 @@
-/* Estilos de la barra de navegación */
+/* Estilos base para el nav */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.192); /* Fondo semitransparente */
-  backdrop-filter: blur(5px); /* Efecto de desenfoque */
-  -webkit-backdrop-filter: blur(10px); /* Para Safari */
+  background: rgba(255, 255, 255, 0.192);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 15px 30px;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centra el contenido en pantallas grandes */
   align-items: center;
   z-index: 1000;
-  transition: transform 0.3s ease-in-out; /* Transición suave */
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Clase para ocultar la barra de navegación */
@@ -20,13 +20,8 @@ nav {
   transform: translateY(-100%);
 }
 
-/* Asegurar que el contenido no quede oculto detrás del nav */
-body {
-  padding-top: 80px; /* Ajusta según la altura del nav */
-}
-
-
-nav ul {
+/* Estilos para la lista de enlaces */
+.nav-links {
   display: flex;
   gap: 20px;
   list-style: none;
@@ -34,11 +29,8 @@ nav ul {
   margin: 0;
 }
 
-nav ul li {
-  display: inline-block;
-}
-
-nav ul li a {
+/* Estilos para los enlaces */
+.nav-links li a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-weight: bold;
@@ -47,16 +39,18 @@ nav ul li a {
   border-radius: 8px;
   position: relative;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  gap: 7px;
 }
 
 /* Animación de hover */
-nav ul li a:hover {
+.nav-links li a:hover {
   background: rgba(255, 255, 255, 0);
-  transform: scale(1.1); /* Agrandar el texto */
+  transform: scale(1.1);
 }
 
 /* Subrayado animado */
-nav ul li a::after {
+.nav-links li a::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -68,12 +62,44 @@ nav ul li a::after {
   transform: translateX(-50%);
 }
 
-nav ul li a:hover::after {
+.nav-links li a:hover::after {
   width: 100%;
 }
 
-.mat-icon {
-  font-size: 32;
-  margin-right: 5px;
-  vertical-align: middle;
+/* Estilos para el ícono del menú hamburguesa */
+.menu-icon {
+  display: none; /* Oculta el ícono en pantallas grandes */
+  font-size: 1.5rem;
+  cursor: pointer;
 }
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between; /* Alinea el ícono a la izquierda y los enlaces a la derecha */
+  }
+
+  .nav-links {
+    display: none; /* Oculta los enlaces en móviles */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Fondo más sólido (95% opaco) */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(5px); /* Para Safari */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para mejor contraste */
+  }
+
+  .nav-links.active {
+    display: flex; /* Muestra los enlaces cuando el menú está activo */
+  }
+
+  .menu-icon {
+    display: block; /* Muestra el ícono en móviles */
+  }
+}
+
+

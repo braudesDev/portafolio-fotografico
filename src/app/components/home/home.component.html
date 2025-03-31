@@ -1,10 +1,11 @@
+<!-- Hero Image -->
 <div class="hero-image">
   <img src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/pznmcwbqi1cdzhig6xiw" alt="Fotografía destacada">
 </div>
 
-<!--Contenedor de texto mecanografiado-->
+<!-- Contenedor de texto mecanografiado -->
 <div class="typewriter-container">
-  <h1 id="typewriter-text">  </h1>
+  <h1 id="typewriter-text"></h1>
 </div>
 
 <!-- Indicador de scroll -->
@@ -13,8 +14,10 @@
   <div class="arrow"></div>
 </div>
 
+<!-- Sección de contenido -->
 <section class="content">
   <div class="container">
+    <!-- Sección de fotografías -->
     <div class="photography">
       <h2 class="titulo-fotografia">Fotografías</h2>
       <div class="grid">
@@ -22,19 +25,48 @@
         <div class="image-item" *ngFor="let image of images">
           <img [src]="image.mainImage" alt="Fotografía" class="main-image">
           <img [src]="image.hoverImage" alt="Vista previa" class="hover-image">
-          <!--Mostrar el nombre de la imagen-->
+          <!-- Mostrar el nombre de la imagen -->
           <p class="image-name"> {{ image.name }} </p>
         </div>
       </div>
     </div>
-    <div class="video">
-      <h2 class="titulo-video">Vídeos</h2>
-      <!-- Aquí puedes agregar contenido de vídeo -->
+
+<!-- Sección de videos -->
+<div class="video">
+  <h2 class="titulo-video">Vídeos</h2>
+  <div class="videos-container">
+
+    <!-- Video 1 -->
+    <div class="video-item">
+      <video #video1 class="video-loop" autoplay loop muted playsinline poster="ruta/a/tu-miniatura.jpg">
+        <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/tywebmwgikksqifrbdod" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+      </video>
+      <button (click)="toggleMute(video1)" class="mute-btn">
+        🔇
+      </button>
+      <h3 class="video-title">Videos con Drone</h3>
     </div>
+
+    <!-- Video 2 -->
+    <div class="video-item">
+      <video #video2 class="video-loop" autoplay loop muted playsinline poster="ruta/a/tu-miniatura2.jpg">
+        <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/h7s61tnopuheu9pbpffs" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+      </video>
+      <button (click)="toggleMute(video2)" class="mute-btn">
+        🔇
+      </button>
+      <h3 class="video-title">Videos de XV anios</h3>
+    </div>
+
+  </div>
+</div>
+
   </div>
 
-  <!--Boton para volver al inicio-->
-  <button mat-fav color="primary" class="volver-inicio" (click)="scrollToTop()">
+  <!-- Botón para volver al inicio -->
+  <button mat-fab color="primary" class="volver-inicio" (click)="scrollToTop()">
     <mat-icon>arrow_upward</mat-icon>
   </button>
 </section>

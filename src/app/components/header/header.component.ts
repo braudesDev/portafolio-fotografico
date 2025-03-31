@@ -1,13 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
@@ -15,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class HeaderComponent {
   lastScrollTop = 0;
   navHidden = false;
+  isMenuOpen = false; // Controla si el menú hamburguesa está abierto
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -31,7 +34,14 @@ export class HeaderComponent {
     this.lastScrollTop = currentScrollTop;
   }
 
-  onNavClick() {
-    this.navHidden = false; //Muestra el navbas cuando se hace click en un enlace
+  // Método para alternar el menú hamburguesa
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
-}
+
+  // Método para cerrar el menú al hacer clic en un enlace
+  onNavClick() {
+    this.isMenuOpen = false; // Cierra el menú hamburguesa
+    this.navHidden = false; // Muestra el navbar cuando se hace clic en un enlace
+  }
+} 

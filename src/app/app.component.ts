@@ -4,6 +4,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { GalleryComponent } from './components/gallery/gallery.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

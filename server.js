@@ -1,10 +1,28 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const cors = require('cors');
+require('dotenv').config(); // Cargar variables de entorno desde un archivo .env
+
 
 const app = express();
 const port = 3000;
+
+
+// Configuración CSP segura
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", 
+    "default-src 'self'; " +
+    "script-src 'self' 'wasm-unsafe-eval'; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "connect-src 'self' http://localhost:3000; " +
+    "frame-src 'none'; " +
+    "object-src 'none'; " +
+    "report-uri /csp-violation-report");
+  next();
+});
 
 //Configuaracion del CORS
 app.use(cors({
@@ -15,10 +33,10 @@ app.use(cors({
 
 // Configuración de la base de datos
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'rodriguez196', // Asegúrate de que sea la contraseña correcta
-  database: 'testimonios'
+  host: process.env.DB_HOST, // Servidor de la base de datos
+  user: process.env.DB_USER, // Usuario de la base de datos
+  password: process.env.DB_PASSWORD, // Contraseña de la base de datos
+  database: process.env.DB_DATABASE // Nombre de la base de datos
 });
 
 connection.connect(err => {
@@ -108,6 +126,12 @@ app.delete('/testimonios/:id', (req, res) => {
     }
     res.json({ message: 'Testimonio eliminado', id });
   });
+});
+
+// Antes de app.listen...
+app.post('/csp-violation-report', bodyParser.json({ type: 'application/csp-report' }), (req, res) => {
+  console.log('Violación CSP detectada:', req.body);
+  res.status(204).end();
 });
 
 // Iniciar el servidor

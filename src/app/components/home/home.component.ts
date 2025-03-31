@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import Typewriter from 'typewriter-effect/dist/core';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -20,12 +21,18 @@ import Typewriter from 'typewriter-effect/dist/core';
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
+
+  navHidden = false; // Controla si la barra de navegacion esta oculta
+  isMenuOpen = false; //Controla si el menu hanburguesa esta abieto
+
+
+
   showScrollIndicator = true;
 
   // Arreglo de imágenes
@@ -76,7 +83,23 @@ export class HomeComponent implements AfterViewInit {
       autoStart: true,
       loop: true,
     });
+
+
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach((video) => {
+      video.muted = true; // Asegura que siempre inicie silenciado
+      video.play().catch((error) => console.log("Autoplay bloqueado:", error));
+    });
 }
+
+  toggleMute(video: HTMLVideoElement) {
+    video.muted = !video.muted;
+
+    //Cambiar el icono del boton de mute
+    const button = video.nextElementSibling as HTMLButtonElement;
+    button.textContent = video.muted ? "🔇" : "🔊";
+  }
 
   @HostListener('window:scroll', [])
   onScroll() {
@@ -98,6 +121,5 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-
- }
+}
 
