@@ -1,8 +1,7 @@
 <!-- Hero Video -->
 <div class="hero-video">
-  <video autoplay muted loop>
-    <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/tywebmwgikksqifrbdo" type="video/mp4">
-    Tu navegador no soporta el video.
+  <video #videoPlayer autoplay loop playsinline>
+    <source src="https://res.cloudinary.com/drsyb53ae/video/upload/v1743671149/fotos-comprimidas/videos-codecs/cc1zxr3cebaf1gwwmmm2.mp4" type="video/mp4">
   </video>
 
   <!-- Indicador de Scroll -->
@@ -17,38 +16,106 @@
   <h1 id="typewriter-text"></h1>
 </div>
 
+<section id="video-section">
+  <!-- Contenedor del SVG animado como fondo -->
+  <div class="svg-background">
+    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><style>
+      .path-0{
+        animation:pathAnim-0 4s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      @keyframes pathAnim-0{
+        0%{
+          d: path("M 0,700 L 0,0 C 115.73333333333329,66.93333333333332 231.46666666666658,133.86666666666665 393,171 C 554.5333333333334,208.13333333333335 761.8666666666668,215.46666666666667 944,182 C 1126.1333333333332,148.53333333333333 1283.0666666666666,74.26666666666667 1440,0 L 1440,700 L 0,700 Z");
+        }
+        25%{
+          d: path("M 0,700 L 0,0 C 206.13333333333333,36.53333333333333 412.26666666666665,73.06666666666666 563,110 C 713.7333333333333,146.93333333333334 809.0666666666666,184.26666666666665 946,166 C 1082.9333333333334,147.73333333333335 1261.4666666666667,73.86666666666667 1440,0 L 1440,700 L 0,700 Z");
+        }
+        50%{
+          d: path("M 0,700 L 0,0 C 138.66666666666663,88.8 277.33333333333326,177.6 456,214 C 634.6666666666667,250.4 853.3333333333335,234.4 1024,190 C 1194.6666666666665,145.6 1317.3333333333333,72.8 1440,0 L 1440,700 L 0,700 Z");
+        }
+        75%{
+          d: path("M 0,700 L 0,0 C 159.0666666666666,101.06666666666668 318.1333333333332,202.13333333333335 483,226 C 647.8666666666668,249.86666666666665 818.5333333333335,196.53333333333333 979,146 C 1139.4666666666665,95.46666666666667 1289.7333333333331,47.733333333333334 1440,0 L 1440,700 L 0,700 Z");
+        }
+        100%{
+          d: path("M 0,700 L 0,0 C 115.73333333333329,66.93333333333332 231.46666666666658,133.86666666666665 393,171 C 554.5333333333334,208.13333333333335 761.8666666666668,215.46666666666667 944,182 C 1126.1333333333332,148.53333333333333 1283.0666666666666,74.26666666666667 1440,0 L 1440,700 L 0,700 Z");
+        }
+      }</style><path d="M 0,700 L 0,0 C 115.73333333333329,66.93333333333332 231.46666666666658,133.86666666666665 393,171 C 554.5333333333334,208.13333333333335 761.8666666666668,215.46666666666667 944,182 C 1126.1333333333332,148.53333333333333 1283.0666666666666,74.26666666666667 1440,0 L 1440,700 L 0,700 Z" stroke="none" stroke-width="0" fill="#0693e3" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><style>
+      .path-1{
+        animation:pathAnim-1 4s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      @keyframes pathAnim-1{
+        0%{
+          d: path("M 0,700 L 0,0 C 154.66666666666669,115.86666666666665 309.33333333333337,231.7333333333333 454,335 C 598.6666666666666,438.2666666666667 733.3333333333333,528.9333333333334 896,471 C 1058.6666666666667,413.06666666666666 1249.3333333333335,206.53333333333333 1440,0 L 1440,700 L 0,700 Z");
+        }
+        25%{
+          d: path("M 0,700 L 0,0 C 134.26666666666665,180 268.5333333333333,360 422,430 C 575.4666666666667,500 748.1333333333334,460 921,370 C 1093.8666666666666,280 1266.9333333333334,140 1440,0 L 1440,700 L 0,700 Z");
+        }
+        50%{
+          d: path("M 0,700 L 0,0 C 155.46666666666664,127.73333333333332 310.9333333333333,255.46666666666664 470,331 C 629.0666666666667,406.53333333333336 791.7333333333333,429.8666666666667 954,366 C 1116.2666666666667,302.1333333333333 1278.1333333333332,151.06666666666666 1440,0 L 1440,700 L 0,700 Z");
+        }
+        75%{
+          d: path("M 0,700 L 0,0 C 159.06666666666666,124.53333333333333 318.1333333333333,249.06666666666666 465,354 C 611.8666666666667,458.93333333333334 746.5333333333333,544.2666666666667 907,482 C 1067.4666666666667,419.7333333333334 1253.7333333333333,209.8666666666667 1440,0 L 1440,700 L 0,700 Z");
+        }
+        100%{
+          d: path("M 0,700 L 0,0 C 154.66666666666669,115.86666666666665 309.33333333333337,231.7333333333333 454,335 C 598.6666666666666,438.2666666666667 733.3333333333333,528.9333333333334 896,471 C 1058.6666666666667,413.06666666666666 1249.3333333333335,206.53333333333333 1440,0 L 1440,700 L 0,700 Z");
+        }
+      }</style><path d="M 0,700 L 0,0 C 154.66666666666669,115.86666666666665 309.33333333333337,231.7333333333333 454,335 C 598.6666666666666,438.2666666666667 733.3333333333333,528.9333333333334 896,471 C 1058.6666666666667,413.06666666666666 1249.3333333333335,206.53333333333333 1440,0 L 1440,700 L 0,700 Z" stroke="none" stroke-width="0" fill="#0693e3" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path></svg>
+  </div>
+
 <!-- Sección de Videos de Bodas -->
 <section id="bodas-section">
   <h2 class="section-title">Bodas</h2>
   <div class="videos-container">
-    <div class="video-item" *ngFor="let video of bodasVideos" (click)="loadVideo(video)">
-      <div class="video-frame" *ngIf="selectedVideo === video">
-        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="video-player" *ngFor="let video of bodasVideos">
+      <h3>{{video.title}}</h3>
+      <iframe
+        width="100%"
+        height="300"
+        [src]="video.url | safeUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
 
-<!-- Sección de Videos de XV Años -->
+<!-- Repite la misma estructura para las otras secciones -->
 <section id="xvanios-section">
   <h2 class="section-title">XV Años</h2>
   <div class="videos-container">
-    <div class="video-item" *ngFor="let video of xvaniosVideos" (click)="loadVideo(video)">
-      <div class="video-frame" *ngIf="selectedVideo === video">
-        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="video-player" *ngFor="let video of xvaniosVideos">
+      <h3>{{video.title}}</h3>
+      <iframe
+        width="100%"
+        height="400"
+        [src]="video.url | safeUrl"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
 
-<!-- Sección de Videos de Bautizos -->
 <section id="bautizos-section">
   <h2 class="section-title">Bautizos</h2>
   <div class="videos-container">
-    <div class="video-item" *ngFor="let video of bautizosVideos" (click)="loadVideo(video)">
-      <div class="video-frame" *ngIf="selectedVideo === video">
-        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="video-player" *ngFor="let video of bautizosVideos">
+      <h3>{{video.title}}</h3>
+      <iframe
+        width="100%"
+        height="400"
+        [src]="video.url | safeUrl"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
