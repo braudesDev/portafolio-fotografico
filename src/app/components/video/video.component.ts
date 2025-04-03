@@ -1,62 +1,132 @@
-import { Component } from '@angular/core';
-import { SafeUrlPipe } from '../../safe-url.pipe'; // Asegúrate de que la ruta sea correcta
-import { CommonModule
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
+import { SafeUrlPipe } from '../../safe-url.pipe';
+import { CommonModule } from '@angular/common';
+import Typewriter from 'typewriter-effect/dist/core';
 
- } from '@angular/common';
+
+//Interfaz para el tipo writetinte
+interface Typewriter {
+  //Definir los metodos que vamos a usar
+  start(): void;
+  stop(): void;
+  //Agragar mas metodos si se necesitan
+}
+
+interface Video {
+  title: string;
+  url: string;
+}
 
 @Component({
   selector: 'app-video',
   standalone: true,
-  imports: [SafeUrlPipe, CommonModule],  // Importa el pipe aquí
+  imports: [SafeUrlPipe, CommonModule],
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent {
+export class VideoComponent implements OnInit, AfterViewInit {
+  // View Children
+  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
+  // Properties
   showScrollIndicator = true;
-  selectedVideo: any = null;
+  selectedVideo: Video | null = null;
 
-  // Videos por categoría
-  bodasVideos = [
+  // Video collections
+  readonly bodasVideos: Video[] = [
     {
-      title: 'Boda 1',
-      url: 'https://www.youtube.com/embed/FXW01_U1jSA', //Se esta haciendo prueba solo con este por el momento
+      title: 'Boda de Paulina y Christian',
+      url: 'https://www.youtube.com/embed/FXW01_U1jSA'
     },
     {
-      title: 'Boda 2',
-      url: 'https://www.youtube.com/embed/yyyyyy',
+      title: 'Boda de ejemplo 2',
+      url: 'https://www.youtube.com/embed/yyyyyy'
+    },
+    {
+      title: 'Boda de ejemplo 3',
+      url: 'https://www.youtube.com/embed/zzzzzz'
     }
   ];
 
-  xvaniosVideos = [
+  readonly xvaniosVideos: Video[] = [
     {
-      title: 'XV Años 1',
-      url: 'https://www.youtube.com/embed/zzzzzz',
+      title: 'XV Años de ejemplo 1',
+      url: 'https://www.youtube.com/embed/aaaaaa'
     },
     {
-      title: 'XV Años 2',
-      url: 'https://www.youtube.com/embed/aaaaaa',
+      title: 'XV Años de ejemplo 2',
+      url: 'https://www.youtube.com/embed/bbbbbb'
     }
   ];
 
-  bautizosVideos = [
+  readonly bautizosVideos: Video[] = [
     {
-      title: 'Bautizo 1',
-      url: 'https://www.youtube.com/embed/bbbbbb',
+      title: 'Bautizo de ejemplo 1',
+      url: 'https://www.youtube.com/embed/cccccc'
     },
     {
-      title: 'Bautizo 2',
-      url: 'https://www.youtube.com/embed/ccccc',
+      title: 'Bautizo de ejemplo 2',
+      url: 'https://www.youtube.com/embed/dddddd'
     }
   ];
 
+  // Private properties
+  private typewriter!: Typewriter;
 
-  loadVideo(video: any) {
+  // Lifecycle hooks
+  ngOnInit(): void {
+    this.initializeTypewriter();
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeVideo();
+  }
+
+  // Public methods
+  loadVideo(video: Video): void {
     this.selectedVideo = video;
   }
 
-  scrollToContent() {
-    document.getElementById('bodas-section')?.scrollIntoView({ behavior: 'smooth' });
-    this.showScrollIndicator = false; //Opcional: ocultar el indicador después de hacer scroll
+  scrollToContent(): void {
+    document.getElementById('bodas-section')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  getVideoId(url: string): string {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : '';
+  }
+
+  trackById(index: number, video: Video): string {
+    return this.getVideoId(video.url) || index.toString();
+  }
+
+  // Private methods
+  private initializeTypewriter(): void {
+    this.typewriter = new Typewriter('#typewriter-text', {
+      strings: [
+        'Videos que emocionan ',
+        'Edición creativa ',
+        'Cada detalle cuenta'
+      ],
+      autoStart: true,
+      loop: true,
+      delay: 75,
+    });
+  }
+
+  private initializeVideo(): void {
+    try {
+      const video = this.videoPlayer.nativeElement;
+      video.muted = true;
+      video.play().catch(error => {
+        console.error('Error al reproducir video:', error);
+      });
+    } catch (error) {
+      console.error('Error al inicializar video:', error);
+    }
   }
 }

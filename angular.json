@@ -25,6 +25,11 @@
                 "glob": "**/*",
                 "input": "src/assets/images",
                 "output": "assets/images"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/videos",
+                "output": "assets/videos"
               }
             ],
             "styles": [
@@ -39,34 +44,43 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1MB",
-                  "maximumError": "2MB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "1MB",
-                  "maximumError": "2MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "5KB",
-                  "maximumError": "6KB"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": false,
+              "optimization": true,
               "baseHref": "/",
               "deployUrl": "/"
             },
             "development": {
               "optimization": false,
+              "sourceMap": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "serviceWorker": false
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "hmr": true,
+            "liveReload": true,
+            "open": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "portafolio-fotografia:build:production"
@@ -90,6 +104,7 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/assets/images",
+              "src/assets/videos",
               "src/favicon.ico"
             ],
             "styles": [
