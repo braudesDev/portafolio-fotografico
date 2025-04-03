@@ -1,46 +1,98 @@
-/* Estilos para la sección de videos */
-#videos-section {
-  padding: 20px;
-  background-color: #f9f9f9;
-  text-align: center;
+/* Hero Video */
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #333;
-  font-family: 'Quicksand', sans-serif;
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  border: solid #000;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(45deg);
+  margin-top: 5px;
+}
+
+
+.scroll-indicator:hover {
+  opacity: 0.7;
+}
+
+.scroll-indicator .arrow {
+  margin-top: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+}
+
+/* Efecto mecanografiado */
+.typewriter-container h1 {
+  font-family: 'Courier New', monospace;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  margin-top: 20%;
+  animation: typing 4s steps(40) 1s forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Secciones de Videos */
+section {
+  padding: 50px;
 }
 
 .videos-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 10px;
 }
 
 .video-item {
-  position: relative;
-  border-radius: 10px;
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.video-item:hover {
-  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .video-thumbnail {
   position: relative;
-  cursor: pointer;
 }
 
-.thumbnail {
+.video-thumbnail img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 .play-button {
@@ -48,37 +100,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  border: none;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  font-size: 2rem;
-  padding: 10px 20px;
+  border: none;
+  padding: 10px;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.play-button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.video-player {
+.video-frame iframe {
   width: 100%;
-  display: none; /* Oculto por defecto */
+  height: 315px; /* Ajusta la altura si es necesario */
+  border: none;  /* Asegúrate de que no haya borde */
 }
 
-.video-title {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
-  font-family: 'Quicksand', sans-serif;
-}
 
-/* Mostrar el video cuando se hace clic en la miniatura */
-.video-item.active .video-player {
+.video-item:hover .video-frame {
   display: block;
-}
-
-.video-item.active .video-thumbnail {
-  display: none;
 }

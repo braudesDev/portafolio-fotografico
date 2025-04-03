@@ -1,33 +1,58 @@
-<!-- Sección de videos -->
-<section id="videos-section">
-  <h2 class="section-title">Videos</h2>
+<!-- Hero Video -->
+<div class="hero-video">
+  <video autoplay muted loop>
+    <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/tywebmwgikksqifrbdo" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+
+  <!-- Indicador de Scroll -->
+  <div class="scroll-indicator" *ngIf="showScrollIndicator" (click)="scrollToContent()">
+    <span>Ver Videos</span>
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<!-- Contenedor de texto mecanografiado -->
+<div class="typewriter-container">
+  <h1 id="typewriter-text"></h1>
+</div>
+
+<!-- Sección de Videos de Bodas -->
+<section id="bodas-section">
+  <h2 class="section-title">Bodas</h2>
   <div class="videos-container">
-    <!-- Video 1 -->
-    <div class="video-item">
-      <div class="video-thumbnail">
-        <img src="ruta/a/tu-miniatura.jpg" alt="Miniatura del video 1" class="thumbnail">
-        <button class="play-button">▶</button>
+    <div class="video-item" *ngFor="let video of bodasVideos" (click)="loadVideo(video)">
+      <div class="video-frame" *ngIf="selectedVideo === video">
+        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
       </div>
-      <video controls class="video-player" preload="none" poster="ruta/a/tu-miniatura.jpg">
-        <source src="ruta/a/tu-video.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento de video.
-      </video>
-      <h3 class="video-title">Título del video 1</h3>
     </div>
-
-    <!-- Video 2 -->
-    <div class="video-item">
-      <div class="video-thumbnail">
-        <img src="ruta/a/tu-miniatura2.jpg" alt="Miniatura del video 2" class="thumbnail">
-        <button class="play-button">▶</button>
-      </div>
-      <video controls class="video-player" preload="none" poster="ruta/a/tu-miniatura2.jpg">
-        <source src="ruta/a/tu-video2.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento de video.
-      </video>
-      <h3 class="video-title">Título del video 2</h3>
-    </div>
-
-    <!-- Puedes agregar más videos aquí -->
   </div>
 </section>
+
+<!-- Sección de Videos de XV Años -->
+<section id="xvanios-section">
+  <h2 class="section-title">XV Años</h2>
+  <div class="videos-container">
+    <div class="video-item" *ngFor="let video of xvaniosVideos" (click)="loadVideo(video)">
+      <div class="video-frame" *ngIf="selectedVideo === video">
+        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Videos de Bautizos -->
+<section id="bautizos-section">
+  <h2 class="section-title">Bautizos</h2>
+  <div class="videos-container">
+    <div class="video-item" *ngFor="let video of bautizosVideos" (click)="loadVideo(video)">
+      <div class="video-frame" *ngIf="selectedVideo === video">
+        <iframe width="100%" height="315" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
