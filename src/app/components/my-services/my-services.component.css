@@ -1,0 +1,282 @@
+/* Estilos generales */
+.packages {
+  padding: 4rem 1rem;
+  background: #f8f9fa;
+}
+
+.packages h2 {
+  text-align: center;
+  color: #2F4F4F;
+  font-size: 2.5rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+/* Grid de paquetes */
+.packages-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjetas de paquetes */
+.package-card {
+  position: relative;
+  border-radius: 15px !important;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+}
+
+.package-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.highlighted {
+  border: 2px solid #C6A769;
+}
+
+/* Imagen de paquete */
+.package-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.package-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.package-card:hover .package-image img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: 1.5rem;
+  color: white;
+}
+
+.image-overlay h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.image-overlay p {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Ribbon para paquete destacado */
+.ribbon {
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: #C6A769;
+  color: white;
+  padding: 8px 30px;
+  transform: rotate(45deg);
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Contenido de tarjetas */
+mat-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-content h3 {
+  color: #2F4F4F;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+mat-card-content ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+mat-card-content li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-card-content li mat-icon {
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+  color: #C6A769;
+}
+
+/* Botones */
+.full-width-btn {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px !important;
+  background-color: #2F4F4F !important;
+  color: white !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s;
+}
+
+.full-width-btn:hover {
+  background-color: #1E3E3E !important;
+}
+
+
+
+
+
+
+
+/* Calculadora */
+.calculator {
+  padding: 4rem 1rem;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.calculator h2 {
+  text-align: center;
+  color: #2F4F4F;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.options-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.extra-option {
+  padding: 1rem;
+  border-radius: 8px;
+  background: white;
+  transition: background-color 0.3s;
+}
+
+.extra-option:hover {
+  background-color: #f5f5f5;
+}
+
+.season-alert {
+  padding: 1rem;
+  background: #fff8e1;
+  color: #e65100;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sliders-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.slider-item {
+  margin-bottom: 2rem;
+}
+
+.slider-item label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.total-section {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #2F4F4F;
+  border-radius: 10px;
+  color: white;
+}
+
+.price {
+  font-size: 2.5rem;
+  color: #C6A769;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.action-button {
+  padding: 12px 24px !important;
+  font-size: 1.1rem !important;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #1E3E3E !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calculator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .options-section {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+  }
+
+  .packages h2, .calculator h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .package-image {
+    height: 200px;
+  }
+
+  .image-overlay h3 {
+    font-size: 1.5rem;
+  }
+
+  .image-overlay p {
+    font-size: 1.2rem;
+  }
+}

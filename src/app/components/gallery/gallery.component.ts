@@ -27,11 +27,11 @@ export class GalleryComponent {
         },
         {
           id: '2', // Agrega un ID único para cada álbum
-          name: 'Boda de Jesus y Maria',
+          name: 'Boda de Paulina y Christian',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812223/portafolio-fotografico/tpba4mnsfsffcpv4grnm.png', alt: 'Paisaje montañoso' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812219/portafolio-fotografico/jndkzgk0orqbck3wtr7v.jpg', alt: 'Atardecer en la playa' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812219/portafolio-fotografico/wpkezvdesgw9akpybvmu.jpg', alt: 'Noche en el pueblo' }
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/ccq3dl12ceaotykdbp75', alt: 'Imagen de boda' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/eha0qednduq4gigeb4pl', alt: 'Imagen de boda' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe', alt: 'Imagen de boda' }
           ]
         }
       ]
@@ -63,7 +63,7 @@ export class GalleryComponent {
       title: 'Retratos',
       albums: [
         {
-          id: '3', // Agrega un ID único para cada álbum
+          id: '5', // Agrega un ID único para cada álbum
           name: 'Andrea',
           photos: [
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/kd5uuj5czhtkn10dffnu', alt: 'Retrato de una persona 1' },
@@ -72,12 +72,12 @@ export class GalleryComponent {
           ]
         },
         {
-          id: '4', // Agrega un ID único para cada álbum
+          id: '6', // Agrega un ID único para cada álbum
           name: 'Mariano',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812228/portafolio-fotografico/izfhn6jgwuqr6duwq0kx.png', alt: 'Hermoso paisaje 1' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812228/portafolio-fotografico/hql2eoeywrdvpc2qcvvc.jpg', alt: 'Hermoso paisaje 2' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812228/portafolio-fotografico/odqsdbcudoi5x8zri0zt.png', alt: 'Hermoso paisaje 3' }
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/cokx7svt235iiryfe7hi', alt: 'Retrato de una persona' },
+            { url: '', alt: 'Retrato de una persona' },
+            { url: '', alt: 'Retrato de una persona' }
           ]
         }
       ]
