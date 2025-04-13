@@ -1,1 +1,156 @@
-<p>my-services works!</p>
+<!-- my-services.component.html -->
+<section class="packages">
+  <h2>Paquetes para Bodas y XV Años</h2>
+
+  <div class="packages-grid">
+    <!-- Paquete Básico -->
+    <mat-card class="package-card">
+      <div class="package-image">
+        <img
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe"
+          alt="Ejemplo de cobertura básica"
+          loading="lazy"
+        >
+        <div class="image-overlay">
+          <h3>Básico</h3>
+          <p>{{formatPrice(paquetes[0].price)}}</p>
+        </div>
+      </div>
+
+      <mat-card-content>
+        <h3>📸 Fotografía</h3>
+        <ul>
+          <li *ngFor="let feature of paquetes[0].features">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+
+        <button mat-flat-button color="primary" class="full-width-btn">
+          Seleccionar
+        </button>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Paquete Premium -->
+    <mat-card class="package-card highlighted">
+      <div class="package-image">
+        <img
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/gczawnuavntxnuycsfsd"
+          alt="Ejemplo de cobertura premium"
+          loading="lazy"
+        >
+        <div class="image-overlay">
+          <h3>Premium</h3>
+          <p>{{formatPrice(paquetes[1].price)}}</p>
+        </div>
+        <div class="ribbon" *ngIf="paquetes[1].popular">¡Más vendido!</div>
+      </div>
+
+      <mat-card-content>
+        <h3>🎥 Video</h3>
+        <ul>
+          <li *ngFor="let feature of paquetes[1].features">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+
+        <button mat-flat-button color="primary" class="full-width-btn">
+          Seleccionar
+        </button>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Paquete Deluxe -->
+    <mat-card class="package-card">
+      <div class="package-image">
+        <img
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/rhokwm4uiqbes7zm9dml"
+          alt="Ejemplo de cobertura deluxe"
+          loading="lazy"
+        >
+        <div class="image-overlay">
+          <h3>Deluxe</h3>
+          <p>{{formatPrice(paquetes[2].price)}}</p>
+        </div>
+      </div>
+
+      <mat-card-content>
+        <h3>✨ Extras</h3>
+        <ul>
+          <li *ngFor="let feature of paquetes[2].features">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+
+        <button mat-flat-button color="primary" class="full-width-btn">
+          Seleccionar
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+
+<!-- Calculadora de Presupuesto -->
+<section class="calculator">
+  <h2>¿Necesitas un servicio personalizado?</h2>
+
+  <div class="calculator-grid">
+    <!-- Columna Izquierda: Fecha y Extras -->
+    <div class="options-section">
+      <mat-form-field>
+        <mat-label>Fecha del Evento</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-checkbox [checked]="includeDrone()" (change)="updateDrone($event)" class="extra-option">
+        <mat-icon>videocam</mat-icon> Incluir cobertura con dron (+$1,500)
+      </mat-checkbox>
+
+      <mat-checkbox [checked]="includeAlbum()" (change)="updateAlbum($event)" class="extra-option">
+        <mat-icon>photo_album</mat-icon> Álbum físico premium (+$1,000)
+      </mat-checkbox>
+
+      <div *ngIf="isHighSeason" class="season-alert">
+        <mat-icon>warning</mat-icon> Temporada alta (Diciembre aplica recargo)
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Sliders -->
+    <div class="sliders-section">
+      <div class="slider-item">
+        <label>Horas de cobertura: {{duration()}}h</label>
+        <mat-slider
+          min="1"
+          max="12"
+          step="1"
+          [disabled]="false"
+          (input)="updateDuration($event)">
+          <input matSliderThumb [ngModel]="duration()" (ngModelChange)="duration.set($event)">
+        </mat-slider>
+      </div>
+
+      <div class="slider-item">
+        <label>Fotos digitales: {{formatPhotos(photos())}}</label>
+        <mat-slider
+          min="1"
+          max="500"
+          step="1"
+          [disabled]="false"
+          (input)="updatePhotos($event)">
+          <input matSliderThumb [ngModel]="photos()" (ngModelChange)="photos.set($event)">
+        </mat-slider>
+      </div>
+
+      <div class="total-section">
+        <h3>Total estimado:</h3>
+        <div class="price">{{formatPrice(calculatePrice())}}</div>
+        <button mat-raised-button color="primary" class="action-button">
+          <mat-icon>send</mat-icon> Solicitar Cotización
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -39,8 +39,8 @@ export class VideoComponent implements OnInit, AfterViewInit {
       url: 'https://www.youtube.com/embed/FXW01_U1jSA'
     },
     {
-      title: 'Boda de ejemplo 2',
-      url: 'https://www.youtube.com/embed/yyyyyy'
+      title: 'Boda de Mirna y Luis',
+      url: 'https://www.youtube.com/embed/v0p3TTt_qsQ'
     },
     {
       title: 'Boda de ejemplo 3',
@@ -50,8 +50,8 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
   readonly xvaniosVideos: Video[] = [
     {
-      title: 'XV Años de ejemplo 1',
-      url: 'https://www.youtube.com/embed/aaaaaa'
+      title: 'XV Años de Flor Nathalia',
+      url: 'https://www.youtube.com/embed/eTeUraUAH2I'
     },
     {
       title: 'XV Años de ejemplo 2',
