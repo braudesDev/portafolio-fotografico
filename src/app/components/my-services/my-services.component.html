@@ -18,16 +18,39 @@
       </div>
 
       <mat-card-content>
-        <h3>📸 Fotografía</h3>
+        <h3>Servicios: </h3>
+        <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[0].features">
             <mat-icon>check</mat-icon> {{feature}}
           </li>
         </ul>
+        <h4>🎥 Video </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[0].videoFeatures">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+        <h4> Entrega </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[0].entrega">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+        <h4> Extras </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[0].extras">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
 
-        <button mat-flat-button color="primary" class="full-width-btn">
-          Seleccionar
-        </button>
+  <!-- En cada botón de paquete -->
+    <button mat-flat-button
+            color="primary"
+            class="full-width-btn"
+            (click)="selectPackage(0)"> <!-- Cambia el índice según el paquete -->
+      <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+    </button>
       </mat-card-content>
     </mat-card>
 
@@ -47,16 +70,38 @@
       </div>
 
       <mat-card-content>
-        <h3>🎥 Video</h3>
+        <h3>Servicios: </h3>
+        <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[1].features">
             <mat-icon>check</mat-icon> {{feature}}
           </li>
         </ul>
+        <h4>🎥 Video </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[1].videoFeatures">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+        <h4> Entrega </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[1].entrega">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+        <h4> Extras </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[1].extras">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
 
-        <button mat-flat-button color="primary" class="full-width-btn">
-          Seleccionar
-        </button>
+        <button mat-flat-button
+        color="primary"
+        class="full-width-btn"
+        (click)="selectPackage(1)"> <!-- Cambia el índice según el paquete -->
+  <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+</button>
       </mat-card-content>
     </mat-card>
 
@@ -75,20 +120,38 @@
       </div>
 
       <mat-card-content>
-        <h3>✨ Extras</h3>
+        <h3>Servicios: </h3>
+        <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[2].features">
             <mat-icon>check</mat-icon> {{feature}}
           </li>
         </ul>
+        <h4>🎥 Video </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[2].videoFeatures">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
+        <h4> Entrega </h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[2].entrega">
+            <mat-icon>check</mat-icon> {{feature}}
+          </li>
+        </ul>
 
-        <button mat-flat-button color="primary" class="full-width-btn">
-          Seleccionar
-        </button>
+        <button mat-flat-button
+        color="primary"
+        class="full-width-btn"
+        (click)="selectPackage(2)"> <!-- Cambia el índice según el paquete -->
+  <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+</button>
       </mat-card-content>
     </mat-card>
   </div>
 </section>
+
+
 
 
 <!-- Calculadora de Presupuesto -->
@@ -147,8 +210,8 @@
       <div class="total-section">
         <h3>Total estimado:</h3>
         <div class="price">{{formatPrice(calculatePrice())}}</div>
-        <button mat-raised-button color="primary" class="action-button">
-          <mat-icon>send</mat-icon> Solicitar Cotización
+        <button mat-raised-button color="primary" class="action-button" (click)="generateCustomServicePDF()">
+          <mat-icon>picture_as_pdf</mat-icon> Descargar Presupuesto
         </button>
       </div>
     </div>
