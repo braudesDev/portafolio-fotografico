@@ -174,3 +174,98 @@ section {
 }
 
 
+
+/* Pequeños desktop: 900px en adelante */
+@media (min-width: 900px) {
+  .hero-video {
+    height: 100vh;
+  }
+
+  .typewriter-container {
+    top: 20%;
+    font-size: 4vw;
+  }
+
+  #typewriter-text {
+    font-size: 5vw;
+    border-right-width: 0.15em;
+  }
+
+  .scroll-indicator {
+    bottom: 30px;
+  }
+
+  .scroll-indicator span {
+    font-size: 1.5rem;
+  }
+
+  .scroll-indicator .arrow {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Desktop grande: 1200px en adelante */
+@media (min-width: 1200px) {
+  .typewriter-container {
+    font-size: 3rem; /* Tamaño fijo para pantallas grandes */
+  }
+
+  #typewriter-text {
+    font-size: 4rem; /* Tamaño fijo para pantallas grandes */
+  }
+}
+
+/* Pantallas muy grandes: 1600px en adelante */
+@media (min-width: 1600px) {
+  .typewriter-container {
+    font-size: 3.5rem;
+  }
+
+  #typewriter-text {
+    font-size: 4.5rem;
+  }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-video {
+    height: 120vh; /* Mayor altura para landscape */
+  }
+
+  .typewriter-container {
+    top: 25%;
+  }
+
+  #typewriter-text {
+    font-size: 6vw;
+  }
+}
+
+/* Ajustes para videos-container */
+@media (max-width: 768px) {
+  section {
+    padding: 30px 20px;
+  }
+
+  .videos-container {
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin: 30px 0 15px;
+  }
+}
+
+/* Ajustes para el efecto typewriter en móviles pequeños */
+@media (max-width: 400px) {
+  #typewriter-text {
+    font-size: 10vw;
+    border-right: none; /* Ocultar cursor en móviles muy pequeños */
+  }
+
+  .typewriter-container {
+    top: 12%;
+  }
+}
