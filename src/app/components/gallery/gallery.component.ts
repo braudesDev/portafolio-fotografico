@@ -43,24 +43,24 @@ export class GalleryComponent {
           id: '3', // Agrega un ID único para cada álbum
           name: 'Xvs de Ximena',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812225/portafolio-fotografico/ok19giw3dcceukshipbt.jpg', alt: 'Retrato de una persona 1' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812227/portafolio-fotografico/vya06jiidskyzq5millv.png', alt: 'Retrato de una persona 2' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812229/portafolio-fotografico/aa8vmhbkyfh2vsh3o59c.png', alt: 'Retrato de una persona 3' }
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/japil54aowsrhop4gpfu', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/vxl2uprkyre0wkf126xu', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/j6rye6wtao3x3yk0usk9', alt: 'Retrato de quinceanera' }
           ]
         },
         {
           id: '4', // Agrega un ID único para cada álbum
-          name: 'Xvs de Lolita',
+          name: 'Xvs de Flor Nathalia',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812226/portafolio-fotografico/fhpwq5gih1folxh41yvr.jpg', alt: 'Retrato de una persona 3' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812227/portafolio-fotografico/sgpmyy3ocnpn5pqyiclc.jpg', alt: 'Retrato de una persona 4' },
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812229/portafolio-fotografico/npt8skkm9ccoovglpchu.png', alt: 'Retrato de una persona 5' }
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/lkn8s5hta4acrs7y85f7', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/zz35wqeun1qkkumvvhcw', alt: 'Retrato de una quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/cxhw7mtlumufpwpruyoy', alt: 'Retrato de una quinceanera' }
           ]
         }
       ]
     },
     {
-      title: 'Retratos',
+      title: 'Sesiones',
       albums: [
         {
           id: '5', // Agrega un ID único para cada álbum

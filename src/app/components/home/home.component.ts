@@ -61,8 +61,8 @@ export class HomeComponent implements AfterViewInit {
     // },
     {
       name: 'Bandas/Conciertos',
-      mainImage: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812226/portafolio-fotografico/djzndmb45hlhbvfyblyd.jpg',
-      hoverImage: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1741812225/portafolio-fotografico/ok19giw3dcceukshipbt.jpg'
+      mainImage: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imperioEncartado/p2hlxftzcw4r1ftiohfg',
+      hoverImage: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imperioEncartado/hfz8m0xj8lyng9eciqzw'
     },
     // {
     //   name: 'Paisajes',
@@ -78,7 +78,24 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit(): void {
   // Inicializa Typewriter.js
     const typewriter = new Typewriter('#typewriter-text', {
-      strings: ['Braulio Rodríguez', 'Fotógrafo Profesional', 'Creativo', 'Apasionado'],
+      strings: [
+        'ON OFF SHOT',
+        'Fotografía',
+        'Profesional',
+        'Creativa',
+        'Auténtica',
+        'Minimal',
+        'Estilo',
+        'Momentos',
+        'Emoción',
+        'Luz',
+        'Sombra',
+        'Tu esencia',
+        'En foco',
+        'Captura',
+        'Retrato',
+        'Arte visual'
+      ],
       autoStart: true,
       loop: true,
     });

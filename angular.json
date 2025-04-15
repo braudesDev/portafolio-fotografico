@@ -37,7 +37,14 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["typewriter-effect"]
+            "allowedCommonJsDependencies": [
+              "typewriter-effect",
+              "core-js",
+              "raf",
+              "rgbcolor",
+              "html2canvas",
+              "canvg"
+            ]
           },
           "configurations": {
             "production": {

@@ -92,6 +92,51 @@ export class AlbumComponent implements OnInit {
           ]
         },
         {
+          id: '3',
+          name: 'Xvs de Ximena',
+          photos: [
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/japil54aowsrhop4gpfu', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/vxl2uprkyre0wkf126xu', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/j6rye6wtao3x3yk0usk9', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/jvdl19mwh74er7q3y3n0', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/fpwqnwqc9erwq7i5otaa', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/jhkna6sszm3hbp4xx3oi', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/ihlbqrgkzly5xngnok7w', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/d0xlnt9sxkrdz2mavuy7', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/plj9fsi8efthftrrpoy3', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/uw5eeseiqtecnkq5lbne', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/wbuetpmdafpforwoixvx', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/fvw3xocq2lhlenxasfv5', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/mddxbexq74nfku5edeby', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/zivi2pynyct0ga6t7ffb', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/zmuc6vgvrumm4ysqq25b', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/cpbpdr4p7jbrvwk4hzvb', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/v2osn9evrp0aqsi1fotg', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/caetzgcpjqtfaqm3b4qh', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/vreu78dyidokcoqzvlsy', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/fqiah9qjsyxzmwavdsdj', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/jq2hbdylmjibkfy0geyr', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/ubamta2vye2tzpudmg0v', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/h39oygndrt2qavm54ivj', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/gytry1iud7lwmziq9k6a', alt: 'Retrato de quinceanera' },
+          ]
+        },
+        {
+          id: '4',
+          name: 'Xvs de Flor Nathalia',
+          photos: [
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+            { url: '', alt: 'Retrato de quinceanera' },
+          ]
+        },
+        {
           id: '5',
           name: 'Andrea',
           photos: [
