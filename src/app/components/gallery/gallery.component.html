@@ -1,5 +1,12 @@
 <div class="hero-image">
-  <img src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/hixbsq6xagopkuzxoz5d" alt="Fotografía destacada">
+  <picture>
+    <!-- Imagen para móvil (vertical) -->
+    <source media="(max-width: 767px)" srcset="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sfai1yjxd70n1plvjskq">
+    <!-- Imagen para tablet (horizontal) -->
+    <source media="(max-width: 1023px)" srcset="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/hixbsq6xagopkuzxoz5d">
+    <!-- Imagen para desktop (predeterminada) -->
+    <img src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/hixbsq6xagopkuzxoz5d" alt="Descripción de la imagen" class="hero-img">
+  </picture>
 </div>
 
 <!-- Indicador de scroll -->
