@@ -284,9 +284,10 @@ section {
     left: 5%;
     transform: translateX(0); /* Eliminamos transformación que centraba */
     padding: 0.5rem;
+
   }
 
   .scroll-indicator {
-    bottom: 40px; /* Posición más alta */
+    bottom: 10px; /* Posición más alta */
   }
 }
