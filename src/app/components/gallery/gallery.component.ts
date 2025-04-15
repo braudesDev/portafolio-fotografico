@@ -33,15 +33,24 @@ export class GalleryComponent {
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/eha0qednduq4gigeb4pl', alt: 'Imagen de boda' },
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe', alt: 'Imagen de boda' }
           ]
+        },
+        {
+          id: '3', // Agrega un ID único para cada álbum
+          name: 'Boda de Santiago y Andrea',
+          photos: [
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasBodaPapasDavid/izhnsezjifjxs0unrgju', alt: 'Imagen de boda' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasBodaPapasDavid/iyambz3e0o4jaz7u9f4l', alt: 'Imagen de boda' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasBodaPapasDavid/xyacx1ypkqwkcwmwhjif', alt: 'Imagen de boda' }
+          ]
         }
       ]
     },
     {
-      title: 'Xv anios',
+      title: 'Xv años',
       albums: [
         {
-          id: '3', // Agrega un ID único para cada álbum
-          name: 'Xvs de Ximena',
+          id: '4', // Agrega un ID único para cada álbum
+          name: 'Xvs de Jareli',
           photos: [
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/japil54aowsrhop4gpfu', alt: 'Retrato de quinceanera' },
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvBrujita/vxl2uprkyre0wkf126xu', alt: 'Retrato de quinceanera' },
@@ -49,10 +58,10 @@ export class GalleryComponent {
           ]
         },
         {
-          id: '4', // Agrega un ID único para cada álbum
-          name: 'Xvs de Flor Nathalia',
+          id: '5', // Agrega un ID único para cada álbum
+          name: 'Xvs de Nathalia',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/lkn8s5hta4acrs7y85f7', alt: 'Retrato de quinceanera' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/lkn8s5hta4acrs7y85f7', alt: 'Retrato de una quinceanera' },
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/zz35wqeun1qkkumvvhcw', alt: 'Retrato de una quinceanera' },
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xvAniosMalvas/cxhw7mtlumufpwpruyoy', alt: 'Retrato de una quinceanera' }
           ]
@@ -63,7 +72,7 @@ export class GalleryComponent {
       title: 'Sesiones',
       albums: [
         {
-          id: '5', // Agrega un ID único para cada álbum
+          id: '6', // Agrega un ID único para cada álbum
           name: 'Andrea',
           photos: [
             { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/kd5uuj5czhtkn10dffnu', alt: 'Retrato de una persona 1' },
@@ -72,12 +81,30 @@ export class GalleryComponent {
           ]
         },
         {
-          id: '6', // Agrega un ID único para cada álbum
+          id: '7', // Agrega un ID único para cada álbum
           name: 'Mariano',
           photos: [
-            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/cokx7svt235iiryfe7hi', alt: 'Retrato de una persona' },
-            { url: '', alt: 'Retrato de una persona' },
-            { url: '', alt: 'Retrato de una persona' }
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/ysjyagr0qmudpiqx8tit', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/kvfeqzu9lurshsxqplhu', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/rqn2ordusfhozy5ajgnw', alt: 'Retrato de una persona' }
+          ]
+        },
+        {
+          id: '8',
+          name: 'Christian',
+          photos: [
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasChristian/gmv1yiaawtfacmyqpr7f', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasChristian/w9tmrkocixni7uevo5my', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasChristian/bqjwbsasf058tiztxbyc', alt: 'Retrato de una persona' },
+          ]
+        },
+        {
+          id: '9',
+          name: 'Gabriela',
+          photos: [
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasGaby/suxil3uau17qzxhulmfj', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasGaby/uozqdompcm9y08bryk7t', alt: 'Retrato de una persona' },
+            { url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasGaby/oo9eyjwsggvmtbi5nbpk', alt: 'Retrato de una persona' },
           ]
         }
       ]
