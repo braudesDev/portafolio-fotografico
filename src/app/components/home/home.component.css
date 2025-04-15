@@ -254,22 +254,31 @@ html, body {
 
 
 .mute-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
   background: rgba(0, 0, 0, 0.5);
   border: none;
-  color: white;
-  font-size:25px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  padding: 6px;
+  transition: all 0.3s ease;
 }
 
 .mute-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.10);
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
 }
+
+.volume-icon {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+
 
 
 /*Estilo para la flecha de volver a la pagina de inicio*/
@@ -361,7 +370,7 @@ html, body {
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
   .mute-btn:hover {
     background: rgba(0, 0, 0, 0.8);
     transform: scale(1.10);
@@ -414,7 +423,7 @@ html, body {
     width: 30px; /* Reduce aún más el tamaño del botón */
     height: 30px; /* Reduce aún más el tamaño del botón */
     font-size: 8px; /* Reduce aún más el tamaño de la fuente */
-  
+
   }
 
 }
