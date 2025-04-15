@@ -288,6 +288,6 @@ section {
   }
 
   .scroll-indicator {
-    bottom: 10px; /* Posición más alta */
+    bottom: 60px; /* Posición más alta */
   }
 }
