@@ -10,14 +10,17 @@ body, html {
 /* Estilos para el hero-image */
 .hero-image {
   width: 100%;
-  max-width: 100%; /* Asegura que no exceda el ancho de la pantalla */
+  height: 100vh; /* Altura del hero-image */
+  position: relative; /* Asegura que no exceda el ancho de la pantalla */
   overflow: hidden; /* Oculta cualquier desbordamiento */
 }
 
 .hero-image img {
   width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
-  height: 100vh; /* Mantiene la proporción de la imagen */
-  display: block; /* Elimina el espacio adicional debajo de la imagen */
+  height: 100%; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Cubre el contenedor sin distorsionar la imagen */
+  object-position: center; /* Centra la imagen */
+
 }
 
 /* Estilos para el SVG de fondo */

@@ -43,8 +43,18 @@
         <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/tywebmwgikksqifrbdod" type="video/mp4">
         Tu navegador no soporta el elemento de video.
       </video>
-      <button (click)="toggleMute(video1)" class="mute-btn">
-        🔇
+      <button (click)="toggleMute(video1, 'video1')" class="mute-btn">
+        <svg #volumeIcon xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="volume-icon">
+          <!-- Icono de volumen activo (volume-2) -->
+          <path *ngIf="!video1.muted" d="M11 5 6 9H2v6h4l5 4V5z"/>
+          <path *ngIf="!video1.muted" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path *ngIf="!video1.muted" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+
+          <!-- Icono de volumen muteado (volume-x) -->
+          <path *ngIf="video1.muted" d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/>
+          <line *ngIf="video1.muted" x1="22" x2="16" y1="9" y2="15"/>
+          <line *ngIf="video1.muted" x1="16" x2="22" y1="9" y2="15"/>
+        </svg>
       </button>
       <h3 class="video-title">Videos con Drone</h3>
     </div>
@@ -55,8 +65,18 @@
         <source src="https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/h7s61tnopuheu9pbpffs" type="video/mp4">
         Tu navegador no soporta el elemento de video.
       </video>
-      <button (click)="toggleMute(video2)" class="mute-btn">
-        🔇
+      <button (click)="toggleMute(video2, 'video2')" class="mute-btn">
+        <svg #volumeIcon xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="volume-icon">
+          <!-- Icono de volumen activo (volume-2) -->
+          <path *ngIf="!video2.muted" d="M11 5 6 9H2v6h4l5 4V5z"/>
+          <path *ngIf="!video2.muted" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path *ngIf="!video2.muted" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+
+          <!-- Icono de volumen muteado (volume-x) -->
+          <path *ngIf="video2.muted" d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/>
+          <line *ngIf="video2.muted" x1="22" x2="16" y1="9" y2="15"/>
+          <line *ngIf="video2.muted" x1="16" x2="22" y1="9" y2="15"/>
+        </svg>
       </button>
       <h3 class="video-title">Videos de XV anios</h3>
     </div>

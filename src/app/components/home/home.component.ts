@@ -109,13 +109,22 @@ export class HomeComponent implements AfterViewInit {
     });
 }
 
-  toggleMute(video: HTMLVideoElement) {
-    video.muted = !video.muted;
+// Array de videos
+videoStates = [
+  { id: 'video1', muted: true },
+  { id: 'video2', muted: true }
+];
 
-    //Cambiar el icono del boton de mute
-    const button = video.nextElementSibling as HTMLButtonElement;
-    button.textContent = video.muted ? "🔇" : "🔊";
-  }
+toggleMute(video: HTMLVideoElement, id: string) {
+  video.muted = !video.muted;
+  const state = this.videoStates.find(s => s.id === id);
+  if (state) state.muted = video.muted;
+}
+
+isMuted(id: string): boolean {
+  const state = this.videoStates.find(s => s.id === id);
+  return state ? state.muted : true;
+}
 
   @HostListener('window:scroll', [])
   onScroll() {
