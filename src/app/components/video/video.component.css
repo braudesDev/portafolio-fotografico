@@ -288,6 +288,17 @@ section {
   }
 
   .scroll-indicator {
-    bottom: 60px; /* Posición más alta */
+    bottom: 80px; /* Posición más alta */
+  }
+
+  .scroll-indicator span {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    display: block; /* Asegura que ocupe todo el ancho disponible */
+    width: 100%;
+    bottom: 80px;
   }
 }
