@@ -80,7 +80,7 @@ svg-background svg {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -242,30 +242,51 @@ section {
   }
 }
 
-/* Ajustes para videos-container */
+/* Ajustes específicos para móviles */
 @media (max-width: 768px) {
-  section {
-    padding: 30px 20px;
+  .hero-video {
+    height: 100vh; /* Mantenemos 100vh para mejor visualización */
   }
 
-  .videos-container {
-    gap: 20px;
+  .typewriter-container {
+    top: 25%; /* Bajamos un poco el texto */
+    font-size: 7vw;
+    min-height: 6rem;
   }
 
-  .section-title {
-    font-size: 1.8rem;
-    margin: 30px 0 15px;
+  #typewriter-text {
+    font-size: 8vw;
+    white-space: normal; /* Permite múltiples líneas si es necesario */
+  }
+
+  /* Ajuste del scroll indicator */
+  .scroll-indicator {
+    bottom: 60px; /* Subimos la flecha (aumenta este valor si necesitas más) */
+  }
+
+  .scroll-indicator span {
+    font-size: 1rem; /* Texto más pequeño */
+    display: none; /* Opcional: ocultar texto en móviles */
+  }
+
+  .scroll-indicator .arrow {
+    width: 20px;
+    height: 20px;
+    border-width: 2px; /* Líneas más delgadas */
   }
 }
 
 /* Ajustes para el efecto typewriter en móviles pequeños */
-@media (max-width: 400px) {
-  #typewriter-text {
-    font-size: 10vw;
-    border-right: none; /* Ocultar cursor en móviles muy pequeños */
+@media (max-width: 480px) {
+  .typewriter-container {
+    top: 20%;
+    width: 90%; /* Más ancho para mejor legibilidad */
+    left: 5%;
+    transform: translateX(0); /* Eliminamos transformación que centraba */
+    padding: 0.5rem;
   }
 
-  .typewriter-container {
-    top: 12%;
+  .scroll-indicator {
+    bottom: 40px; /* Posición más alta */
   }
 }
