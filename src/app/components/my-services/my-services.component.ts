@@ -170,7 +170,7 @@ export class MyServicesComponent {
 
     // Logo
     try {
-      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/jwq7u0lyazmosmp1tlhw';
+      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
       const logoData = await this.getBase64Image(logoUrl);
       const logoWidth = 30;
       const logoHeight = 30;
@@ -294,7 +294,7 @@ export class MyServicesComponent {
 
     // --- LOGO ---
     try {
-      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/jwq7u0lyazmosmp1tlhw';
+      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
       const logoData = await this.getBase64Image(logoUrl);
       const logoWidth = 30;
       const logoHeight = 30;
