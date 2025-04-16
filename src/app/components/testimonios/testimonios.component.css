@@ -104,14 +104,19 @@ button:hover {
   width: 100%;
   padding: 20px 0;
   overflow: hidden; /* Oculta el desbordamiento del carrusel */
+  -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave en dispositivos táctiles */
+  scroll-snap-type: x mandatory; /* Habilita el desplazamiento suave */
+  white-space: nowrap; /* Evita el salto de línea */
 
 }
 
 /* Carrusel */
 .carrusel {
-  display: flex;
+  display: inline-flex;
   width: max-content; /* Asegura que el carrusel sea lo suficientemente ancho */
+  will-change: transform; /* Mejora el rendimiento de la animación */
   animation: desplazar 70s linear infinite; /* Animación del carrusel */
+  animation-play-state: running; /* Inicia la animación */
 
 }
 
@@ -152,10 +157,10 @@ button:hover {
 /* Animación del carrusel */
 @keyframes desplazar {
   0% {
-    transform: translateX(0); /* Comienza en la posición inicial */
+    transform: translateX(100vw0); /* Comienza en la posición inicial */
   }
   100% {
-    transform: translateX(-50%); /* Desplaza completamente */
+    transform: translateX(calc(-100%)); /* Desplaza completamente */
   }
 }
 
@@ -286,7 +291,26 @@ button:hover {
   }
 
   .carrusel {
-    animation: desplazar 60s linear infinite; /* Reducir la velocidad de la animación */
+    animation: desplazar 30s linear infinite; /* Reducir la velocidad de la animación */
+  }
+}
+
+/* Carrusel para PC/iPad */
+@media (min-width: 769px) {
+  .testimonios-container {
+    overflow-x: hidden;
+  }
+
+  .carrusel {
+    display: flex;
+    animation: desplazar 60s linear infinite;
+    will-change: transform;
+    padding-right: 100vw;
+  }
+
+  @keyframes desplazar {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 100px)); }
   }
 }
 
@@ -341,13 +365,38 @@ button:hover {
     font-size: 1rem; /* Reducir el tamaño del comentario */
   }
 
-  .carrusel {
-    animation: desplazar 50s linear infinite; /* Reducir la velocidad de la animación */
+  .testimonios-container {
+    overflow-x: hidden !important; /* Fuerza el scroll */
+
   }
+
+  .carrusel {
+    animation: desplazar-ipad 60s linear infinite; /* Reducir la velocidad de la animación */
+    display: flex;
+    will-change: transform;
+    padding-right: 100vw;
+  }
+
+  @keyframes desplazar-ipad {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 100px)); /* Ajuste preciso para iPad */
+    }
+  }
+
 }
+
 
 /* Ajustes para dispositivos muy pequeños (ej. smartphones pequeños) */
 @media (max-width: 480px) {
+
+  .testimonios-container {
+    overflow-x: auto; /* Cambiado de hidden a auto */
+    width: 100%;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+  }
 
 
   .titulo {
@@ -380,9 +429,11 @@ button:hover {
   }
 
   .testimonio {
-    width: 200px; /* Reducir aún más el ancho de los testimonios */
-    margin: 0 5px;
-    padding: 10px;
+    width: 85vw;
+    min-width: 85vw; /* Fuerza el ancho mínimo */
+    margin: 0 10px;
+    flex-shrink: 0; /* Evita que se reduzcan los testimonios */
+    scroll-snap-align: start; /* Mejor alineación al hacer scroll */
   }
 
   .testimonio-imagen {
@@ -398,7 +449,15 @@ button:hover {
     font-size: 0.9rem; /* Reducir aún más el tamaño del comentario */
   }
 
+    /* Ocultar barra de scroll */
+    .testimonios-container::-webkit-scrollbar {
+      display: none;
+    }
+
   .carrusel {
-    animation: desplazar 40s linear infinite; /* Reducir aún más la velocidad de la animación */
+    display: flex;
+    width: max-content;
+    padding-right: 20px;
+    animation: desplazar-ipad 60s linear infinite; /* Reducir la velocidad de la animación */
   }
 }

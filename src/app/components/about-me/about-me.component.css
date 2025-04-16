@@ -14,7 +14,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sobreMiComprimidas/lnuc0kwyhn2hxlffstmq');
+    background-image: url('https://res.cloudinary.com/drsyb53ae/image/upload/v1744774849/backgrounds/plcvzhz6avldxh0tucpe.svg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -39,8 +39,9 @@
   }
 
   .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
@@ -74,7 +75,7 @@
     backdrop-filter: blur(8px);
     padding: 30px;
     border-radius: 15px;
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     line-height: 1.8;
@@ -102,6 +103,31 @@
     background: white;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .signature-phrase {
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    position: relative;
+    color: #000000; /* Ajusta al color de tu marca */
+    font-style: italic;
+  }
+
+  .signature-phrase strong {
+    color: #ffffff; /* Rojo o color principal de tu marca */
+    font-style: normal;
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1.3em;
+  }
+
+  .signature-phrase::before,
+  .signature-phrase::after {
+    content: "—";
+    margin: 0 10px;
+    color: #ccc;
   }
 
   @media (max-width: 768px) {

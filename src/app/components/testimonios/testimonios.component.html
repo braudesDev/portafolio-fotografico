@@ -42,14 +42,24 @@
   <button type="submit"> Enviar Comentario <mat-icon>send</mat-icon></button>
 </form>
 
-<!-- Mostrar mensajes de éxito o error -->
 <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
 
 <!-- Carrusel de testimonios -->
 <div class="testimonios-container">
-  <div class="carrusel">
-    <!-- Iterar sobre los testimonios -->
-    <div *ngFor="let testimonio of testimonios; let i = index" class="testimonio">
+  <div #carrusel class="carrusel">
+    <!-- Primer conjunto de testimonios -->
+    <div *ngFor="let testimonio of testimonios" class="testimonio">
+      <img
+        [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
+        alt="{{ testimonio.nombre }}"
+        class="testimonio-imagen"
+      />
+      <h3 class="testimonio-nombre">{{ testimonio.nombre }}</h3>
+      <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
+    </div>
+
+    <!-- Segundo conjunto (duplicado para efecto infinito) -->
+    <div *ngFor="let testimonio of testimonios" class="testimonio">
       <img
         [src]="testimonio.imagen_url || 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/i3rtocblrenfj7kh7xn0'"
         alt="{{ testimonio.nombre }}"
