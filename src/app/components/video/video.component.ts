@@ -1,15 +1,11 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SafeUrlPipe } from '../../safe-url.pipe';
 import { CommonModule } from '@angular/common';
 import Typewriter from 'typewriter-effect/dist/core';
 
-
-//Interfaz para el tipo writetinte
 interface Typewriter {
-  //Definir los metodos que vamos a usar
   start(): void;
   stop(): void;
-  //Agragar mas metodos si se necesitan
 }
 
 interface Video {
@@ -25,14 +21,15 @@ interface Video {
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit, AfterViewInit {
-  // View Children
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
-  // Properties
+  // Propiedades de video
+  videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/videoIpad";
+  showPlayButton = false;
   showScrollIndicator = true;
   selectedVideo: Video | null = null;
 
-  // Video collections
+  // Colecciones de videos
   readonly bodasVideos: Video[] = [
     {
       title: 'Boda de Paulina y Christian',
@@ -70,10 +67,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  // Private properties
   private typewriter!: Typewriter;
 
-  // Lifecycle hooks
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
   ngOnInit(): void {
     this.initializeTypewriter();
   }
@@ -82,7 +79,59 @@ export class VideoComponent implements OnInit, AfterViewInit {
     this.initializeVideo();
   }
 
-  // Public methods
+  private isiPad(): boolean {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isSafari = /safari/.test(userAgent);
+    const isIPad = /ipad|macintosh/.test(userAgent) && isSafari;
+    const hasTouch = 'ontouchend' in document;
+    return isIPad && hasTouch;
+  }
+
+  private async initializeVideo(): Promise<void> {
+    try {
+      const video = this.videoPlayer.nativeElement;
+
+      if (this.isiPad()) {
+        this.videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/videoIpad";
+        this.changeDetector.detectChanges();
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+
+      video.muted = true;
+      video.playsInline = true;
+
+      const playVideo = async () => {
+        try {
+          await video.play();
+          this.showPlayButton = false;
+        } catch (err) {
+          console.warn('Autoplay falló, mostrando botón de reproducción:', err);
+          this.showPlayButton = true;
+          this.changeDetector.detectChanges();
+        }
+      };
+
+      if (video.readyState >= 3) {
+        await playVideo();
+      } else {
+        const loadedHandler = () => {
+          video.removeEventListener('loadeddata', loadedHandler);
+          playVideo();
+        };
+        video.addEventListener('loadeddata', loadedHandler);
+      }
+    } catch (error) {
+      console.error('Error en initializeVideo:', error);
+      this.showPlayButton = true;
+    }
+  }
+
+  playVideo(): void {
+    this.videoPlayer.nativeElement.play()
+      .then(() => this.showPlayButton = false)
+      .catch(err => console.error('Error al reproducir manualmente:', err));
+  }
+
   loadVideo(video: Video): void {
     this.selectedVideo = video;
   }
@@ -104,7 +153,6 @@ export class VideoComponent implements OnInit, AfterViewInit {
     return this.getVideoId(video.url) || index.toString();
   }
 
-  // Private methods
   private initializeTypewriter(): void {
     this.typewriter = new Typewriter('#typewriter-text', {
       strings: [
@@ -116,17 +164,5 @@ export class VideoComponent implements OnInit, AfterViewInit {
       loop: true,
       delay: 75,
     });
-  }
-
-  private initializeVideo(): void {
-    try {
-      const video = this.videoPlayer.nativeElement;
-      video.muted = true;
-      video.play().catch(error => {
-        console.error('Error al reproducir video:', error);
-      });
-    } catch (error) {
-      console.error('Error al inicializar video:', error);
-    }
   }
 }
