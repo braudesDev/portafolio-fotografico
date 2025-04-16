@@ -1,8 +1,19 @@
 <!-- Hero Video -->
 <div class="hero-video">
-  <video #videoPlayer autoplay loop playsinline>
-    <source src="https://res.cloudinary.com/drsyb53ae/video/upload/v1744057813/fotos-comprimidas/videos-codecs/njhrcqjlwrebyhvvqcji.webm" type="video/mp4">
-  </video>
+  <video #videoPlayer autoplay muted loop playsinline webkit-playsinline
+  (click)="playVideo()" [class.hidden]="showPlayButton">
+<source [src]="videoSource" type="video/mp4">
+</video>
+
+<div *ngIf="showPlayButton" class="play-overlay" (click)="playVideo()">
+<button class="play-button">▶ Reproducir Video</button>
+</div>
+
+<div *ngIf="showPlayButton" class="play-overlay" (click)="playVideo()">
+  <button class="play-button">▶ Reproducir Video</button>
+</div>
+
+<!-- Resto de tu HTML existente... -->
 
   <!-- Indicador de Scroll -->
   <div class="scroll-indicator" *ngIf="showScrollIndicator" (click)="scrollToContent()">
