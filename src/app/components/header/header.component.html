@@ -1,7 +1,7 @@
 <nav [class.nav-hidden]="navHidden">
   <!-- Ícono del menú hamburguesa -->
   <div class="menu-icon" (click)="toggleMenu()">☰</div>
-  
+
   <!-- Lista de enlaces -->
   <ul class="nav-links" [class.active]="isMenuOpen">
     <li><a routerLink="/" (click)="onNavClick()">
@@ -14,7 +14,7 @@
       <mat-icon fontIcon="videocam"></mat-icon> Video
     </a></li>
     <li><a routerLink="/about-me" (click)="onNavClick()">
-      <mat-icon fontIcon="person"></mat-icon> Acerca de mí
+      <mat-icon fontIcon="person"></mat-icon> Sobre nosotros
     </a></li>
     <li><a routerLink="/my-services" (click)="onNavClick()">
       <mat-icon fontIcon="photo_camera"></mat-icon> Servicios
