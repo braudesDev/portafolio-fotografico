@@ -1,1 +1,134 @@
-<p>contact works!</p>
+<section class="contacto-container">
+  <div class="contacto-header">
+    <h2>Contáctanos</h2>
+    <p>Estamos aquí para ayudarte. Completa el formulario o usa nuestros otros medios de contacto.</p>
+  </div>
+
+  <div class="contacto-grid">
+    <!-- Formulario de contacto -->
+    <div class="contacto-form">
+      <form
+        action="https://formspree.io/f/xanoedwp"
+        method="POST"
+        (ngSubmit)="enviarMensaje($event)"
+        #contactForm="ngForm"
+      >
+        <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
+        <input type="hidden" name="_language" value="es">
+
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="name"
+            [(ngModel)]="contacto.nombre"
+            required
+            [class.error]="errores['nombre']"
+          >
+          <span class="error-message" *ngIf="errores['nombre']">
+            {{ errores['nombre'] }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="contacto.email"
+            required
+            [class.error]="errores['email']"
+          >
+          <span class="error-message" *ngIf="errores['email']">
+            {{ errores['email'] }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="message"
+            [(ngModel)]="contacto.mensaje"
+            required
+            [class.error]="errores['mensaje']"
+          ></textarea>
+          <span class="error-message" *ngIf="errores['mensaje']">
+            {{ errores['mensaje'] }}
+          </span>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button type="submit" [disabled]="cargando || contactForm.invalid">
+          <span *ngIf="!cargando">Enviar Mensaje</span>
+          <span *ngIf="cargando">Enviando...</span>
+          <mat-icon *ngIf="!cargando">send</mat-icon>
+        </button>
+
+        <div class="form-feedback">
+          <div class="success-message" *ngIf="mensajeEnviado">
+            <mat-icon>check_circle</mat-icon>
+            <span>¡Mensaje enviado con éxito!</span>
+          </div>
+          <div class="error-message" *ngIf="errorEnvio">
+            <mat-icon>error</mat-icon>
+            <span>Error al enviar. Intenta nuevamente.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="contacto-info">
+      <div class="info-item">
+        <mat-icon>place</mat-icon>
+        <div>
+          <h3>Dirección</h3>
+          <p>Irapuato, Guanajuato</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+        <div>
+          <h3>Teléfono</h3>
+          <p>+52 462 243 99 05</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>email</mat-icon>
+        <div>
+          <h3>Email</h3>
+          <p>{{emailContacto}}</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>schedule</mat-icon>
+        <div>
+          <h3>Horario</h3>
+          <p>Lunes a Viernes: 9am - 6pm</p>
+        </div>
+      </div>
+
+      <!-- Sección de Redes Sociales -->
+      <div class="social-section">
+        <h3>Síguenos</h3>
+        <div class="social-icons">
+          <a *ngFor="let red of redesSociales"
+             [href]="red.url"
+             class="social-icon {{red.cssClass}}"
+             [attr.aria-label]="red.nombre"
+             target="_blank" rel="noopener noreferrer">
+            <mat-icon>{{red.icono}}</mat-icon>
+            <span class="tooltip">{{red.nombre}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
