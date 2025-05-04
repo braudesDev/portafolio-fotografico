@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+
+import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,30 +10,30 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import Typewriter from 'typewriter-effect/dist/core';
 
-
 @Component({
-    selector: 'app-home',
-    imports: [
-        CommonModule,
-        RouterModule,
-        MatToolbarModule,
-        MatCardModule,
-        MatGridListModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDividerModule,
-    ],
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
-
-  navHidden = false; // Controla si la barra de navegacion esta oculta
-  isMenuOpen = false; //Controla si el menu hanburguesa esta abieto
-
-
-
+  navHidden = false;
+  isMenuOpen = false;
   showScrollIndicator = true;
+  videoStates = [
+    { id: 'video1', muted: true },
+    { id: 'video2', muted: true }
+  ];
 
   // Arreglo de imágenes
   images = [
@@ -75,9 +76,16 @@ export class HomeComponent implements AfterViewInit {
 
   @ViewChild('parallaxHeroImage', { static: false }) parallaxHeroImage!: ElementRef<HTMLImageElement>;
 
+  constructor(private cdRef: ChangeDetectorRef) {}
+
   ngAfterViewInit(): void {
-  // Inicializa Typewriter.js
-    const typewriter = new Typewriter('#typewriter-text', {
+    this.initializeTypewriter();
+    this.initializeVideos();
+    this.cdRef.detectChanges(); // Importante para evitar el error
+  }
+
+  private initializeTypewriter(): void {
+    new Typewriter('#typewriter-text', {
       strings: [
         'ON OFF SHOT',
         'Fotografía',
@@ -99,52 +107,53 @@ export class HomeComponent implements AfterViewInit {
       autoStart: true,
       loop: true,
     });
-
-
-    const videos = document.querySelectorAll('video');
-
-    videos.forEach((video) => {
-      video.muted = true; // Asegura que siempre inicie silenciado
-      video.play().catch((error) => console.log("Autoplay bloqueado:", error));
-    });
-}
-
-// Array de videos
-videoStates = [
-  { id: 'video1', muted: true },
-  { id: 'video2', muted: true }
-];
-
-toggleMute(video: HTMLVideoElement, id: string) {
-  video.muted = !video.muted;
-  const state = this.videoStates.find(s => s.id === id);
-  if (state) state.muted = video.muted;
-}
-
-isMuted(id: string): boolean {
-  const state = this.videoStates.find(s => s.id === id);
-  return state ? state.muted : true;
-}
-
-  @HostListener('window:scroll', [])
-  onScroll() {
-    this.showScrollIndicator = window.scrollY < 50; // Ocultar la flecha al hacer scroll
   }
 
-  scrollToContent() {
+  private initializeVideos(): void {
+    setTimeout(() => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach((video) => {
+        video.muted = true;
+        video.play().catch(error => console.log("Autoplay bloqueado:", error));
+      });
+    });
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const newValue = window.scrollY < 50;
+    if (this.showScrollIndicator !== newValue) {
+      this.showScrollIndicator = newValue;
+      this.cdRef.detectChanges(); // Notificar a Angular del cambio
+    }
+  }
+
+  toggleMute(video: HTMLVideoElement, id: string): void {
+    video.muted = !video.muted;
+    const state = this.videoStates.find(s => s.id === id);
+    if (state) {
+      state.muted = video.muted;
+      this.cdRef.detectChanges();
+    }
+  }
+
+  isMuted(id: string): boolean {
+    const state = this.videoStates.find(s => s.id === id);
+    return state ? state.muted : true;
+  }
+
+  scrollToContent(): void {
     const contentSection = document.querySelector('.content');
     if (contentSection) {
       contentSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  // Crear una funcion para desplazar al inicio de la pagina
-  scrollToTop() {
+  scrollToTop(): void {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Desplazamiento suave
+      behavior: 'smooth'
     });
   }
-
 }
 

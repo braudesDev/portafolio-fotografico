@@ -7,39 +7,82 @@
   </svg>
 </div>
 
+<div class="svg-container">
+  <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+    <!-- Tus paths SVG aquí -->
+  </svg>
+</div>
+
 <!-- Formulario para agregar testimonios -->
-<form (ngSubmit)="enviarTestimonio()">
-  <label>Nombre:</label>
-  <input type="text" [(ngModel)]="nuevoTestimonio.nombre" name="nombre" placeholder="Ingresa tu nombre" required />
-
-  <label>Comentario:</label>
-  <textarea [(ngModel)]="nuevoTestimonio.comentario" name="comentario" placeholder="Agrega aqui tu comentario" required></textarea>
-
-  <label>URL de tu foto (opcional):</label>
-  <div class="input-con-ayuda">
-    <input type="text" [(ngModel)]="nuevoTestimonio.imagen_url" name="foto" placeholder="Agrega el link de una imagen de internet" />
-    <mat-icon
-      [matTooltip]="instruccionesTooltip"
-      matTooltipPosition="right"
-      class="icono-ayuda"
-    >
-      help_outline
-    </mat-icon>
+<form (ngSubmit)="enviarTestimonio()" class="formulario-testimonio">
+  <div class="form-group">
+    <label for="nombre">Nombre <span class="requerido">*</span></label>
+    <input
+      type="text"
+      id="nombre"
+      [(ngModel)]="nuevoTestimonio.nombre"
+      name="nombre"
+      placeholder="Ingresa tu nombre"
+      (blur)="mostrarErrorNombre = nuevoTestimonio.nombre.trim() === ''"
+      [class.campo-invalido]="mostrarErrorNombre"
+      required />
+    <small *ngIf="mostrarErrorNombre" class="error-message">Por favor ingresa tu nombre</small>
   </div>
 
-  <label>O elige un avatar:</label>
-  <div class="selector-avatar">
-    <button type="button" (click)="mostrarSelectorAvatares = !mostrarSelectorAvatares" class="boton-avatar">
-      <mat-icon>account_circle</mat-icon> Elegir avatar
-    </button>
-    <div *ngIf="mostrarSelectorAvatares" class="menu-avatares">
-      <div *ngFor="let avatar of avatares" class="avatar-opcion" (click)="seleccionarAvatar(avatar)">
-        <img [src]="avatar" alt="Avatar" class="avatar-imagen" />
+  <div class="form-group">
+    <label for="comentario">Comentario <span class="requerido">*</span></label>
+    <textarea
+      id="comentario"
+      [(ngModel)]="nuevoTestimonio.comentario"
+      name="comentario"
+      placeholder="Agrega aquí tu comentario"
+      (blur)="mostrarErrorComentario = nuevoTestimonio.comentario.trim() === ''"
+      [class.campo-invalido]="mostrarErrorComentario"
+      required></textarea>
+    <small *ngIf="mostrarErrorComentario" class="error-message">Por favor escribe tu comentario</small>
+  </div>
+
+  <div class="form-group">
+    <label for="foto">URL de tu foto (opcional)</label>
+    <div class="input-con-ayuda">
+      <input
+        type="text"
+        id="foto"
+        [(ngModel)]="nuevoTestimonio.imagen_url"
+        name="foto"
+        placeholder="Agrega el link de una imagen de internet" />
+      <mat-icon
+        [matTooltip]="instruccionesTooltip"
+        matTooltipPosition="right"
+        class="icono-ayuda"
+      >
+        help_outline
+      </mat-icon>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>O elige un avatar:</label>
+    <div class="selector-avatar">
+      <button type="button" (click)="mostrarSelectorAvatares = !mostrarSelectorAvatares" class="boton-avatar">
+        <mat-icon>account_circle</mat-icon> Elegir avatar
+      </button>
+      <div *ngIf="mostrarSelectorAvatares" class="menu-avatares">
+        <div *ngFor="let avatar of avatares" class="avatar-opcion" (click)="seleccionarAvatar(avatar)">
+          <img [src]="avatar" alt="Avatar" class="avatar-imagen" />
+        </div>
       </div>
     </div>
   </div>
 
-  <button type="submit"> Enviar Comentario <mat-icon>send</mat-icon></button>
+  <button
+    type="submit"
+    [disabled]="!formularioValido || cargando"
+    [class.boton-deshabilitado]="!formularioValido"
+    matTooltip="{{ !formularioValido ? 'Complete los campos marcados como requeridos' : '' }}"
+    class="boton-enviar">
+    {{ cargando ? 'Enviando...' : 'Enviar Testimonio' }}
+  </button>
 </form>
 
 <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>

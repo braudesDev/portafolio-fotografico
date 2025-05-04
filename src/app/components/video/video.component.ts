@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SafeUrlPipe } from '../../safe-url.pipe';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 import Typewriter from 'typewriter-effect/dist/core';
 
 interface Typewriter {
@@ -16,7 +19,7 @@ interface Video {
 @Component({
   selector: 'app-video',
   standalone: true,
-  imports: [SafeUrlPipe, CommonModule],
+  imports: [SafeUrlPipe, CommonModule, MatIconModule, MatButtonModule, RouterModule],
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
@@ -24,7 +27,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
   // Propiedades de video
-  videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/videoIpad";
+  videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4";
   showPlayButton = false;
   showScrollIndicator = true;
   selectedVideo: Video | null = null;
@@ -39,10 +42,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
       title: 'Boda de Mirna y Luis',
       url: 'https://www.youtube.com/embed/v0p3TTt_qsQ'
     },
-    {
-      title: 'Boda de ejemplo 3',
-      url: 'https://www.youtube.com/embed/zzzzzz'
-    }
+    // {
+    //   title: 'Boda de ejemplo 3',
+    //   url: 'https://www.youtube.com/embed/zzzzzz'
+    // }
   ];
 
   readonly xvaniosVideos: Video[] = [
@@ -50,21 +53,21 @@ export class VideoComponent implements OnInit, AfterViewInit {
       title: 'XV Años de Flor Nathalia',
       url: 'https://www.youtube.com/embed/eTeUraUAH2I'
     },
-    {
-      title: 'XV Años de ejemplo 2',
-      url: 'https://www.youtube.com/embed/bbbbbb'
-    }
+    // {
+    //   title: 'XV Años de ejemplo 2',
+    //   url: 'https://www.youtube.com/embed/bbbbbb'
+    // }
   ];
 
   readonly bautizosVideos: Video[] = [
-    {
-      title: 'Bautizo de ejemplo 1',
-      url: 'https://www.youtube.com/embed/cccccc'
-    },
-    {
-      title: 'Bautizo de ejemplo 2',
-      url: 'https://www.youtube.com/embed/dddddd'
-    }
+    // {
+    //   title: 'Bautizo de ejemplo 1',
+    //   url: 'https://www.youtube.com/embed/cccccc'
+    // },
+    // {
+    //   title: 'Bautizo de ejemplo 2',
+    //   url: 'https://www.youtube.com/embed/dddddd'
+    // }
   ];
 
   private typewriter!: Typewriter;
@@ -92,7 +95,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
       const video = this.videoPlayer.nativeElement;
 
       if (this.isiPad()) {
-        this.videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/f_auto:video,q_auto/v1/fotos-comprimidas/videos-codecs/videoIpad";
+        this.videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4";
         this.changeDetector.detectChanges();
         await new Promise(resolve => setTimeout(resolve, 100));
       }
@@ -163,6 +166,13 @@ export class VideoComponent implements OnInit, AfterViewInit {
       autoStart: true,
       loop: true,
       delay: 75,
+    });
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   }
 }

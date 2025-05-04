@@ -329,6 +329,7 @@ html, body {
 
   .scroll-indicator {
     font-size: 20px; /* Reduce el tamaño de la fuente */
+    bottom: 80px;
   }
 
   .scroll-indicator span {
@@ -380,7 +381,7 @@ html, body {
 /* Pantallas muy pequeñas (móviles pequeños) */
 @media (max-width: 480px) {
   .typewriter-container {
-    top: 10%; /* Ajusta la posición vertical */
+    top: 20%; /* Ajusta la posición vertical */
     font-size: 7vw; /* Aumenta el tamaño de la fuente */
     padding: 0 10px; /* Agrega padding horizontal para evitar desbordamiento */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
@@ -419,11 +420,10 @@ html, body {
     height: 400px; /* Reduce la altura de las imágenes */
   }
 
-  .volver-inicio {
-    width: 30px; /* Reduce aún más el tamaño del botón */
-    height: 30px; /* Reduce aún más el tamaño del botón */
-    font-size: 8px; /* Reduce aún más el tamaño de la fuente */
-
+  .volver-inicio mat-icon {
+    font-size: 28px; /* Tamaño del ícono */
+    width: 30px; /* Ancho del ícono */
+    height: 30px; /* Alto del ícono */
   }
 
 }
