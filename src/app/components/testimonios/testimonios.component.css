@@ -48,10 +48,22 @@ form {
   -webkit-backdrop-filter: blur(15px); /* Para navegadores basados en WebKit (como Safari) */
 }
 
+.requerido {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.campo-invalido {
+  border-color: #f44336 !important;
+  animation: shake 0.5s;
+}
+
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
+  display: block;
+  color: #333;
 }
 
 input[type="text"],
@@ -84,6 +96,25 @@ button:hover {
   background-color: #EACB3C;
 }
 
+.boton-deshabilitado {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  background-color: #cccccc !important;
+}
+
+
+.error-message {
+  color: #f44336;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
 
 
 

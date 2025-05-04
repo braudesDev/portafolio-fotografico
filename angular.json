@@ -28,8 +28,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/assets/videos",
-                "output": "assets/videos"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [

@@ -318,14 +318,11 @@ svg-background svg {
     font-size: 1.5rem; /* Reducir aún más el tamaño del texto del indicador */
   }
 
-  .volver-inicio {
-    width: 30px; /* Reduce aún más el tamaño del botón */
-    height: 30px; /* Reduce aún más el tamaño del botón */
-  }
+
 
   .volver-inicio mat-icon {
-    font-size: 16px; /* Reduce el tamaño del ícono */
-    width: 16px;
-    height: 16px;
+    font-size: 28px; /* Tamaño del ícono */
+    width: 30px; /* Ancho del ícono */
+    height: 30px; /* Alto del ícono */
   }
 }

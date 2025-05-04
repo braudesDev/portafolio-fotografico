@@ -37,6 +37,8 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   mensaje = '';
   mostrarSelectorAvatares = false;
   cargando = false;
+  mostrarErrorNombre = false;
+  mostrarErrorComentario = false;
 
   // Avatares predefinidos
   avatares: string[] = [
@@ -58,7 +60,7 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   ];
 
   instruccionesTooltip = `
-    1. Sube tu foto a un servicio como Imgur o Postimages.
+    1. Sube tu foto a un servicio como Postimages.
     2. Copia la URL de la imagen (debe terminar en .jpg, .png, etc.).
     3. Pega la URL en el campo "Foto (URL opcional)".
   `;
@@ -77,16 +79,23 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   }
 
   async enviarTestimonio(): Promise<void> {
+    // Validar antes de enviar
+    this.mostrarErrorNombre = this.nuevoTestimonio.nombre.trim() === '';
+    this.mostrarErrorComentario = this.nuevoTestimonio.comentario.trim() === '';
+
+    if (!this.formularioValido) return;
+
     this.cargando = true;
     try {
       const testimonioConFecha = {
         ...this.nuevoTestimonio,
         fecha: new Date()
       };
+
       await addDoc(collection(this.db, 'testimonios'), testimonioConFecha);
-      this.mensaje = 'Testimonio enviado correctamente.';
+      this.mensaje = '¡Testimonio enviado con éxito!';
       await this.loadTestimonios();
-      this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
+      this.resetFormulario();
     } catch (err: unknown) {
       this.mensaje = err instanceof Error ?
         `Error al enviar el testimonio: ${err.message}` :
@@ -99,6 +108,29 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   seleccionarAvatar(avatar: string): void {
     this.nuevoTestimonio.imagen_url = avatar;
     this.mostrarSelectorAvatares = false;
+  }
+
+  resetFormulario(): void {
+    this.nuevoTestimonio = { nombre: '', comentario: '', imagen_url: '' };
+    this.mostrarErrorNombre = false;
+    this.mostrarErrorComentario = false;
+  }
+
+  get formularioValido(): boolean {
+    return this.nuevoTestimonio.nombre.trim() !== '' &&
+           this.nuevoTestimonio.comentario.trim() !== '';
+  }
+
+  camposCambiados(): void {
+    if (!this.mostrarErrorNombre && !this.mostrarErrorComentario) return;
+
+    // Solo actualiza los errores si ya estaban mostrándose
+    if (this.mostrarErrorNombre) {
+      this.mostrarErrorNombre = this.nuevoTestimonio.nombre.trim() === '';
+    }
+    if (this.mostrarErrorComentario) {
+      this.mostrarErrorComentario = this.nuevoTestimonio.comentario.trim() === '';
+    }
   }
 
   ngAfterViewInit(): void {
@@ -153,46 +185,33 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   private animarCarruselConJS(): void {
     const carrusel = this.carruselElement.nativeElement;
     const container = carrusel.parentElement;
-    const velocidad = 0.8; // Velocidad un poco más rápida
+    const velocidad = 0.8;
     let posicion = 0;
     let animacionId: number;
 
-    // Esperamos un ciclo de renderizado para asegurar que los elementos estén cargados
     setTimeout(() => {
-      // Obtenemos todos los elementos testimonio
       const testimonios = Array.from(carrusel.querySelectorAll('.testimonio')) as HTMLElement[];
-
-      // Calculamos el ancho total exacto
       let totalWidth = testimonios.reduce((sum, testimonio) => {
         const style = window.getComputedStyle(testimonio);
         const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
         return sum + testimonio.offsetWidth + margin;
       }, 0);
 
-      // Duplicamos el contenido para el efecto infinito
       carrusel.innerHTML = '';
       testimonios.forEach(t => carrusel.appendChild(t.cloneNode(true)));
       testimonios.forEach(t => carrusel.appendChild(t.cloneNode(true)));
-
-      // Ajustamos el ancho del carrusel
       carrusel.style.width = `${totalWidth * 2}px`;
 
       const animar = () => {
         posicion -= velocidad;
-
-        // Reiniciamos cuando llegamos al final del primer conjunto
         if (posicion <= -totalWidth) {
           posicion = 0;
         }
-
         carrusel.style.transform = `translateX(${posicion}px)`;
         animacionId = requestAnimationFrame(animar);
       };
 
-      // Iniciamos la animación
       animacionId = requestAnimationFrame(animar);
-
-      // Control táctil
       container?.addEventListener('touchstart', () => cancelAnimationFrame(animacionId));
       container?.addEventListener('touchend', () => animacionId = requestAnimationFrame(animar));
     }, 100);
