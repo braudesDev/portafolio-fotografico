@@ -80,7 +80,7 @@ Ejemplo:
 ```
 Luego puedes importarlo directamente en otros componentes standalone o en rutas.
 
-🏗️ Compilación para Producción
+## 🏗️ Compilación para Producción
 Para generar una versión optimizada del proyecto:
 
 ```bash
