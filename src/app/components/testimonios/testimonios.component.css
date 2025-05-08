@@ -177,12 +177,21 @@ button:hover {
 .testimonio-nombre {
   font-size: 1.5rem;
   margin: 10px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* Compatibilidad más moderna */
+  white-space: normal; /* Asegura que haya saltos de línea */
+  max-width: 100%; /* Evita que se salga del contenedor */
 }
 
 /* Comentario del testimonio */
 .testimonio-comentario {
   font-size: 1.1rem;
   color: #020202dc;
+  word-wrap: break-word;        /* Permite saltos en palabras largas */
+  overflow-wrap: break-word;    /* Compatibilidad más moderna */
+  white-space: normal;          /* Asegura que haya saltos de línea */
+  max-width: 100%;              /* Evita que se salga del contenedor */
+  line-height: 1.4;
 }
 
 /* Animación del carrusel */
@@ -314,11 +323,19 @@ button:hover {
   }
 
   .testimonio-nombre {
-    font-size: 1.3rem; /* Reducir el tamaño del nombre */
+    font-size: 1.3rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
 
   .testimonio-comentario {
-    font-size: 1rem; /* Reducir el tamaño del comentario */
+    font-size: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
 
   .carrusel {
@@ -389,11 +406,19 @@ button:hover {
   }
 
   .testimonio-nombre {
-    font-size: 1.2rem; /* Reducir el tamaño del nombre */
+    font-size: 1.2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
 
   .testimonio-comentario {
-    font-size: 1rem; /* Reducir el tamaño del comentario */
+    font-size: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
 
   .testimonios-container {
@@ -477,7 +502,12 @@ button:hover {
   }
 
   .testimonio-comentario {
-    font-size: 0.9rem; /* Reducir aún más el tamaño del comentario */
+  font-size: 0.9rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.3;
   }
 
     /* Ocultar barra de scroll */
