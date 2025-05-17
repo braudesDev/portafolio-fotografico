@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Testimonio } from '../../interfaces/testimonio.interface';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-import { environment } from './../../../enviroments/enviroment';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-testimonios',

@@ -1,6 +1,5 @@
 export const environment = {
   firebaseConfig: {
-    apiKey: "REDACTED",
     authDomain: "portafolio-fotografico-15a5b.firebaseapp.com",
     projectId: "portafolio-fotografico-15a5b",
     storageBucket: "portafolio-fotografico-15a5b.firebasestorage.app",

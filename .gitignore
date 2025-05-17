@@ -45,7 +45,5 @@ Thumbs.db
 # Archivos ignorados por Git
 .env
 /src/environments/environment.ts
-/src/environments/environment.prod.ts
-
 
 .firebase/

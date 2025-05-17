@@ -1,7 +1,7 @@
 // src/app/services/seo.service.ts
 import { Injectable } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-// import { environment } from '../../enviroments/enviroment';
+// import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
