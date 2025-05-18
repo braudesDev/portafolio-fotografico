@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Home (Prioridad máxima) -->
+  <url>
+    <loc>https://onoffshot.com/</loc>
+    <lastmod>2025-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://onoffshot.com/assets/images/home-og.jpg</image:loc>
+      <image:title>Fotógrafo profesional en Irapuato - On Off Shot</image:title>
+    </image:image>
+  </url>
+
+  <!-- Páginas principales -->
+  <url>
+    <loc>https://onoffshot.com/servicios</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://onoffshot.com/assets/images/servicios-og.jpg</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://onoffshot.com/portafolio</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Galerías (Prioridad alta) -->
+  <url>
+    <loc>https://onoffshot.com/bodas</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://onoffshot.com/assets/gallery/boda-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://onoffshot.com/assets/gallery/boda-2.jpg</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://onoffshot.com/quinceaneras</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Páginas secundarias -->
+  <url>
+    <loc>https://onoffshot.com/contacto</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://onoffshot.com/acerca-de</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog (si aplica) -->
+  <url>
+    <loc>https://onoffshot.com/blog/mejores-lugares-fotos-irapuato</loc>
+    <lastmod>2025-05-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>

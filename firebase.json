@@ -6,11 +6,33 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|png|webp|gif)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000,public"
+          }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
 }

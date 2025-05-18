@@ -3,6 +3,7 @@ import { Router } from '@angular/router'; // Importa Router
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
     selector: 'app-gallery',
@@ -114,7 +115,17 @@ export class GalleryComponent {
   // Propiedad para controlar la visibilidad del indicador de scroll
   showScrollIndicator = true;
 
-  constructor(private router: Router) {} // Inyecta el Router
+  constructor(private router: Router, private seoService: SeoService) {} // Inyecta el Router
+
+// Ejemplo en galeria.component.ts
+ngOnInit(): void {
+  this.seoService.setSeoData({
+    pageTitle: 'Galería de Trabajos Recientes',
+    description: 'Portafolio de nuestras mejores sesiones en Irapuato. Bodas, retratos y más.',
+    image: 'assets/images/gallery-og.jpg',
+    urlPath: 'gallery' // Generará: https://onoffshot.com/galeria
+  });
+}
 
   // Escucha el evento de scroll para mostrar u ocultar el indicador
   @HostListener('window:scroll', [])

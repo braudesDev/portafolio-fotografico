@@ -1,5 +1,5 @@
 
-import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import Typewriter from 'typewriter-effect/dist/core';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,8 @@ import Typewriter from 'typewriter-effect/dist/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
+
   navHidden = false;
   isMenuOpen = false;
   showScrollIndicator = true;
@@ -76,7 +78,18 @@ export class HomeComponent implements AfterViewInit {
 
   @ViewChild('parallaxHeroImage', { static: false }) parallaxHeroImage!: ElementRef<HTMLImageElement>;
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(private cdRef: ChangeDetectorRef, private seoService: SeoService) {}
+
+// Ejemplo en home.component.ts
+ngOnInit(): void {
+  this.seoService.setSeoData({
+    pageTitle: 'Fotografía Profesional en Irapuato',
+    description: 'Especialistas en bodas, quinceañeras y sesiones creativas. ¡15 años de experiencia!',
+    keywords: 'fotógrafo Irapuato, sesiones de bodas, álbumes digitales',
+    image: 'assets/images/home-og.jpg', // Ruta relativa
+    urlPath: '' // Para la home no necesita path
+  });
+}
 
   ngAfterViewInit(): void {
     this.initializeTypewriter();

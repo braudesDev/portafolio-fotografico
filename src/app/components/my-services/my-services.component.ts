@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -10,6 +10,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { jsPDF } from 'jspdf';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-my-services',
@@ -30,7 +31,20 @@ import { jsPDF } from 'jspdf';
   templateUrl: './my-services.component.html',
   styleUrls: ['./my-services.component.css']
 })
-export class MyServicesComponent {
+export class MyServicesComponent implements OnInit {
+
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+  this.seoService.setSeoData({
+    pageTitle: 'Servicios Fotográficos Profesionales',
+    description: 'Paquetes para bodas, sesiones de embarazo, fotografía infantil y más. Consulta nuestros precios.',
+    keywords: 'precios fotografía, sesión de bodas, fotografía infantil Irapuato',
+    // image: 'assets/images/services-og.jpg'
+  });
+}
+
+
   // Paquetes de servicios
   paquetes = [
     {

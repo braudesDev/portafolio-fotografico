@@ -27,8 +27,13 @@
                 "output": "assets/images"
               },
               {
-                "glob": "**/*",
-                "input": "public",
+                "glob": "robots.txt",
+                "input": "src/seo",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src/seo",
                 "output": "/"
               }
             ],
@@ -57,8 +62,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "15kb"
                 }
               ],
               "outputHashing": "all",

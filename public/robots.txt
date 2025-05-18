@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://portafolio-fotografico-15a5b.web.app/sitemap.xml

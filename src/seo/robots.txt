@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://onoffshot.com/sitemap.xml
+Sitemap: https://onoffshot.com/image-sitemap.xml

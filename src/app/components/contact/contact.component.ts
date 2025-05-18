@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { SeoService } from '../../services/seo.service';
 
 interface RedSocial {
   nombre: string;
@@ -19,7 +20,19 @@ interface RedSocial {
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactoComponent {
+export class ContactoComponent implements OnInit {
+
+  constructor(private seoService: SeoService) {}
+
+ngOnInit(): void {
+  this.seoService.setSeoData({
+    pageTitle: 'Contacto - Fotógrafo en Irapuato',
+    description: '¡Agenda tu sesión! WhatsApp: 4621304745. Servicio en todo Irapuato y alrededores.',
+    keywords: 'contactar fotógrafo, WhatsApp fotógrafo, presupuesto sesión fotográfica',
+    // image: 'assets/images/contact-og.jpg'
+  });
+}
+
   emailContacto = 'onoffshotph@gmail.com';
   mensajeEnviado = false;
   errorEnvio = false;
