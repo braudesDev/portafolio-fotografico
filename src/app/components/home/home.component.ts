@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import Typewriter from 'typewriter-effect/dist/core';
 import { SeoService } from '../../services/seo.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-home',
@@ -78,15 +79,22 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   @ViewChild('parallaxHeroImage', { static: false }) parallaxHeroImage!: ElementRef<HTMLImageElement>;
 
-  constructor(private cdRef: ChangeDetectorRef, private seoService: SeoService) {}
+  constructor(private cdRef: ChangeDetectorRef, private seoService: SeoService, private analytics: AnalyticsService) {}
+
+  onContactClick() {
+    this.analytics.trackEvent('click_contacto', {
+      buton_id: 'contacto_home',
+      page_title: 'Home'
+    })
+  }
 
 // Ejemplo en home.component.ts
 ngOnInit(): void {
   this.seoService.setSeoData({
     pageTitle: 'Fotografía Profesional en Irapuato',
-    description: 'Especialistas en bodas, quinceañeras y sesiones creativas. ¡15 años de experiencia!',
+    description: 'Especialistas en bodas, quinceañeras y sesiones creativas. ¡6 años de experiencia!',
     keywords: 'fotógrafo Irapuato, sesiones de bodas, álbumes digitales',
-    image: 'assets/images/home-og.jpg', // Ruta relativa
+    image: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png', // Ruta relativa
     urlPath: '' // Para la home no necesita path
   });
 }
@@ -103,19 +111,17 @@ ngOnInit(): void {
         'ON OFF SHOT',
         'Fotografía',
         'Profesional',
+        'Irapuato',
+        'Bajio',
         'Creativa',
         'Auténtica',
-        'Minimal',
-        'Estilo',
         'Momentos',
         'Emoción',
         'Luz',
         'Sombra',
         'Tu esencia',
         'En foco',
-        'Captura',
         'Retrato',
-        'Arte visual'
       ],
       autoStart: true,
       loop: true,

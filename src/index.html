@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es"> <!-- Cambiar a "es" si el contenido es en español -->
+
 <head>
   <!-- Metadatos básicos -->
   <meta charset="utf-8">
@@ -25,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385673/logotiposPortafolioFotografico/favicons/apple-touch-icon.png">
 
 <!-- PWA -->
-<link rel="manifest" href="https://res.cloudinary.com/drsyb53ae/raw/upload/v1746385777/logotiposPortafolioFotografico/favicons/site.webmanifest">
+<link rel="manifest" href="https://res.cloudinary.com/drsyb53ae/raw/upload/v1747606426/logotiposPortafolioFotografico/favicons/kkgkzqa2dnlmzzllsliy.webmanifest">
 
   <!-- Título -->
   <title>On Off Shot Fotografia</title>
@@ -52,11 +53,33 @@
 <!-- Fallback para navegadores/sistemas que no soportan OpenGraph -->
 <meta name="description" content="Fotógrafo profesional en Irapuato especializado en eventos, retratos y fotografía de productos. Capturamos tus momentos más importantes con calidad y creatividad.">
 
+
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
+
+<!-- Google Tag Manager (GTM) + GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRXVKF507R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Configuración estándar
+    gtag('config', 'G-3SEDBH37SR', {
+      'page_title': document.title,
+      'page_path': window.location.pathname,
+      'debug_mode': true // Solo para desarrollo (quitar en producción)
+    });
+
+    // Eventos personalizados (ejemplo)
+    gtag('event', 'page_view', {
+      'page_location': window.location.href,
+      'page_title': document.title
+    });
+  </script>
 
 <body class="mat-typography">
   <app-root></app-root>

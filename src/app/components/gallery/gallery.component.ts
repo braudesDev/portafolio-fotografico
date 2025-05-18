@@ -122,7 +122,7 @@ ngOnInit(): void {
   this.seoService.setSeoData({
     pageTitle: 'Galería de Trabajos Recientes',
     description: 'Portafolio de nuestras mejores sesiones en Irapuato. Bodas, retratos y más.',
-    image: 'assets/images/gallery-og.jpg',
+    image: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/qfxfxsdkntweoryf7mrl',
     urlPath: 'gallery' // Generará: https://onoffshot.com/galeria
   });
 }

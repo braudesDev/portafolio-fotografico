@@ -1,8 +1,33 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAnalytics, getAnalytics } from '@angular/fire/analytics';
+import { environment } from '../environments/environment';
 
+// Tus servicios personalizados
+import { AnalyticsService } from './services/analytics.service';
+import { SeoService } from './services/seo.service';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    // Configuración del core de Angular
+    provideZoneChangeDetection({
+      eventCoalescing: true,
+      runCoalescing: true // Mejor rendimiento para eventos frecuentes
+    }),
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideHttpClient(),
+
+    // Firebase
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAnalytics(() => getAnalytics()),
+
+    // Tus servicios personalizados (¡sin necesidad de providedIn!)
+    AnalyticsService,
+    SeoService
+  ]
 };
