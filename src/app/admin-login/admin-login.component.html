@@ -1,0 +1,22 @@
+<h2>Login Admin</h2>
+<form (submit)="login()">
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Usuario</mat-label>
+    <input matInput [(ngModel)]="username" name="username" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      [(ngModel)]="password"
+      name="password"
+      type="password"
+      required
+    />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" style="width: 100%">
+    Entrar
+  </button>
+</form>

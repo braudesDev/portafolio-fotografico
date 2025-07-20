@@ -1,4 +1,3 @@
-<!-- my-services.component.html -->
 <section class="packages">
   <h2>Paquetes para Bodas y XV Años</h2>
 
@@ -7,151 +6,209 @@
     <mat-card class="package-card">
       <div class="package-image">
         <img
-          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe"
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/rhokwm4uiqbes7zm9dml"
           alt="Ejemplo de cobertura básica"
           loading="lazy"
-        >
+        />
         <div class="image-overlay">
           <h3>Básico</h3>
-          <p>{{formatPrice(paquetes[0].price)}}</p>
+          <p *ngIf="paquetes[0]?.price !== undefined">
+            {{ formatPrice(paquetes[0].price) }}
+          </p>
         </div>
       </div>
 
       <mat-card-content>
-        <h3>Servicios: </h3>
+        <h3>Servicios:</h3>
         <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[0].features">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4>🎥 Video </h4>
+        <h4>🎥 Video</h4>
         <ul>
           <li *ngFor="let feature of paquetes[0].videoFeatures">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4> Entrega </h4>
+        <h4>Entrega</h4>
         <ul>
           <li *ngFor="let feature of paquetes[0].entrega">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4> Extras </h4>
+        <h4>Extras</h4>
         <ul>
           <li *ngFor="let feature of paquetes[0].extras">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
 
-  <!-- En cada botón de paquete -->
-    <button mat-flat-button
-            color="primary"
-            class="full-width-btn"
-            (click)="selectPackage(0)"> <!-- Cambia el índice según el paquete -->
-      <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
-    </button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width-btn"
+          (click)="selectPackage(0)"
+        >
+          <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+        </button>
       </mat-card-content>
     </mat-card>
 
-    <!-- Paquete Premium -->
+    <!-- Paquete Estándar -->
     <mat-card class="package-card highlighted">
       <div class="package-image">
         <img
           src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/gczawnuavntxnuycsfsd"
-          alt="Ejemplo de cobertura premium"
+          alt="Ejemplo de cobertura estándar"
           loading="lazy"
-        >
+        />
         <div class="image-overlay">
-          <h3>Premium</h3>
-          <p>{{formatPrice(paquetes[1].price)}}</p>
+          <h3>Estándar</h3>
+          <p *ngIf="paquetes[1]?.price !== undefined">{{ formatPrice(paquetes[1].price) }}</p>
         </div>
         <div class="ribbon" *ngIf="paquetes[1].popular">¡Más vendido!</div>
       </div>
 
       <mat-card-content>
-        <h3>Servicios: </h3>
+        <h3>Servicios:</h3>
         <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[1].features">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4>🎥 Video </h4>
+        <h4>🎥 Video</h4>
         <ul>
           <li *ngFor="let feature of paquetes[1].videoFeatures">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4> Entrega </h4>
+        <h4>Entrega</h4>
         <ul>
           <li *ngFor="let feature of paquetes[1].entrega">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4> Extras </h4>
+        <h4>Extras</h4>
         <ul>
           <li *ngFor="let feature of paquetes[1].extras">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
 
-        <button mat-flat-button
-        color="primary"
-        class="full-width-btn"
-        (click)="selectPackage(1)"> <!-- Cambia el índice según el paquete -->
-  <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
-</button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width-btn"
+          (click)="selectPackage(1)"
+        >
+          <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+        </button>
       </mat-card-content>
     </mat-card>
 
-    <!-- Paquete Deluxe -->
+    <!-- Paquete Premium -->
     <mat-card class="package-card">
       <div class="package-image">
         <img
-          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/rhokwm4uiqbes7zm9dml"
-          alt="Ejemplo de cobertura deluxe"
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe"
+          alt="Ejemplo de cobertura premium"
           loading="lazy"
-        >
+        />
         <div class="image-overlay">
-          <h3>Deluxe</h3>
-          <p>{{formatPrice(paquetes[2].price)}}</p>
+          <h3>Premium</h3>
+          <p *ngIf="paquetes[2]?.price">{{ formatPrice(paquetes[2].price) }}</p>
         </div>
       </div>
 
       <mat-card-content>
-        <h3>Servicios: </h3>
+        <h3>Servicios:</h3>
         <h4>📸 Fotografía</h4>
         <ul>
           <li *ngFor="let feature of paquetes[2].features">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4>🎥 Video </h4>
+        <h4>🎥 Video</h4>
         <ul>
           <li *ngFor="let feature of paquetes[2].videoFeatures">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4> Entrega </h4>
+        <h4>Entrega</h4>
         <ul>
           <li *ngFor="let feature of paquetes[2].entrega">
-            <mat-icon>check</mat-icon> {{feature}}
+            <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
 
-        <button mat-flat-button
-        color="primary"
-        class="full-width-btn"
-        (click)="selectPackage(2)"> <!-- Cambia el índice según el paquete -->
-  <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
-</button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width-btn"
+          (click)="selectPackage(2)"
+        >
+          <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+        </button>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Paquete Deluxe -->
+    <mat-card class="package-card highlighted">
+      <div class="package-image">
+        <img
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/v1752948295/1752948144036_oia3p3.webp"
+          alt="Ejemplo de cobertura deluxe"
+          loading="lazy"
+        />
+        <div class="image-overlay">
+          <h3>Deluxe</h3>
+          <p *ngIf="paquetes[3]?.price !== undefined">{{ formatPrice(paquetes[3].price) }}</p>
+        </div>
+        <div class="ribbon" *ngIf="paquetes[3].popular">¡Más vendido!</div>
+      </div>
+
+      <mat-card-content>
+        <h3>Servicios:</h3>
+        <h4>📸 Fotografía</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[3].features">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+        <h4>🎥 Video</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[3].videoFeatures">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+        <h4>Entrega</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[3].entrega">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+        <h4>Extras</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[3].extras">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width-btn"
+          (click)="selectPackage(3)"
+        >
+          <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+        </button>
       </mat-card-content>
     </mat-card>
   </div>
 </section>
-
-
 
 
 <!-- Calculadora de Presupuesto -->
@@ -163,54 +220,108 @@
     <div class="options-section">
       <mat-form-field>
         <mat-label>Fecha del Evento</mat-label>
-        <input matInput [matDatepicker]="picker" [formControl]="selectedDate">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [formControl]="selectedDate"
+          [matDatepickerFilter]="myDateFilter"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-checkbox [checked]="includeDrone()" (change)="updateDrone($event)" class="extra-option">
+      <mat-checkbox
+        [checked]="includeDrone()"
+        (change)="updateDrone($event)"
+        class="extra-option"
+      >
         <mat-icon>videocam</mat-icon> Incluir cobertura con dron (+$1,500)
       </mat-checkbox>
 
-      <mat-checkbox [checked]="includeAlbum()" (change)="updateAlbum($event)" class="extra-option">
-        <mat-icon>photo_album</mat-icon> Álbum físico premium (+$1,000)
+      <mat-checkbox
+        [checked]="includeAlbum()"
+        (change)="updateAlbum($event)"
+        class="extra-option"
+      >
+        <mat-icon>photo_album</mat-icon> Álbum físico (+$1,600)
       </mat-checkbox>
 
       <div *ngIf="isHighSeason" class="season-alert">
         <mat-icon>warning</mat-icon> Temporada alta (Diciembre aplica recargo)
+      </div>
+
+      <div class="slider-item">
+        <label>
+          Horas de cobertura de video:
+          {{ videoHours() === 0 ? "Ninguna" : videoHours() + "h" }}
+        </label>
+
+        <mat-slider
+          min="0"
+          max="12"
+          step="1"
+          [disabled]="false"
+          (input)="updateVideoHours($event)"
+        >
+          <input
+            matSliderThumb
+            [ngModel]="videoHours()"
+            (ngModelChange)="videoHours.set($event)"
+          />
+        </mat-slider>
+
+        <div *ngIf="videoHours() > 0" class="video-price">
+          Costo de video:
+          {{ formatPrice(videoHours() * videoPricePerHour) }}
+        </div>
       </div>
     </div>
 
     <!-- Columna Derecha: Sliders -->
     <div class="sliders-section">
       <div class="slider-item">
-        <label>Horas de cobertura: {{duration()}}h</label>
+        <label>Horas de cobertura: {{ duration() }}h</label>
         <mat-slider
           min="1"
           max="12"
           step="1"
           [disabled]="false"
-          (input)="updateDuration($event)">
-          <input matSliderThumb [ngModel]="duration()" (ngModelChange)="duration.set($event)">
+          (input)="updateDuration($event)"
+        >
+          <input
+            matSliderThumb
+            [ngModel]="duration()"
+            (ngModelChange)="duration.set($event)"
+          />
         </mat-slider>
       </div>
 
       <div class="slider-item">
-        <label>Fotos digitales: {{formatPhotos(photos())}}</label>
+        <label>Fotos digitales: {{ formatPhotos(photos()) }}</label>
         <mat-slider
           min="1"
           max="500"
           step="1"
           [disabled]="false"
-          (input)="updatePhotos($event)">
-          <input matSliderThumb [ngModel]="photos()" (ngModelChange)="photos.set($event)">
+          (input)="updatePhotos($event)"
+        >
+          <input
+            matSliderThumb
+            [ngModel]="photos()"
+            (ngModelChange)="photos.set($event)"
+          />
         </mat-slider>
       </div>
 
       <div class="total-section">
         <h3>Total estimado:</h3>
-        <div class="price">{{formatPrice(calculatePrice())}}</div>
-        <button mat-raised-button color="primary" class="action-button" (click)="generateCustomServicePDF()">
+        <div class="price">{{ formatPrice(calculatePrice()) }}</div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="action-button"
+          (click)="generateCustomServicePDF()"
+        >
           <mat-icon>picture_as_pdf</mat-icon> Descargar Presupuesto
         </button>
       </div>

@@ -1,0 +1,33 @@
+<h2>Dashboard de Reservas</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Paquete</th>
+      <th>Anticipo</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reserva of reservas">
+      <td data-label="Cliente">{{ reserva.clienteNombre }}</td>
+      <td data-label="Fecha">
+        {{ reserva.fechaEvento.toDate() | date : "mediumDate" }}
+      </td>
+      <td data-label="Estado">{{ reserva.estado }}</td>
+      <td data-label="Paquete">{{ reserva.paquete }}</td>
+      <td data-label="Anticipo">{{ reserva.anticipo | currency : "MXN" }}</td>
+      <td data-label="Total">{{ reserva.total | currency : "MXN" }}</td>
+      <td data-label="Acciones">
+        <a [routerLink]="['/editar-reserva', reserva.id]">
+          <button>Editar</button>
+        </a>
+        <button (click)="eliminarReserva(reserva.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+.admin-login-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.1;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.admin-login-btn:hover,
+.admin-login-btn:focus {
+  opacity: 0.7;
+}
+
+/* Mostrar solo en pantallas pequeñas */
+@media (min-width: 769px) {
+  .admin-login-btn {
+    display: none;
+  }
+}
+
+@media (min-width: 480px) {
+  .admin-login-btn {
+    display: none;
+  }
+}

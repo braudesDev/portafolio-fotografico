@@ -1,0 +1,98 @@
+/* General */
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reserva-form {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background: #ffffffcc;
+  box-shadow: 0 8px 25px rgba(44, 62, 80, 0.12);
+  border-radius: 12px;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Cada fila del formulario */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+/* Inputs y select */
+.form-row input,
+.form-row select,
+.form-row textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1.8px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  outline-offset: 2px;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 6px #2980b9aa;
+}
+
+/* Textarea */
+.form-row textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+/* Botón */
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0;
+  background: #2980b9;
+  color: white;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 5px 15px #2980b9aa;
+  margin-top: 1rem;
+}
+
+.btn-submit:disabled {
+  background: #7f8c8d;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-submit:not(:disabled):hover {
+  background: #1c5980;
+  box-shadow: 0 6px 18px #1c5980cc;
+}
+
+/* Responsive */
+@media (max-width: 540px) {
+  .reserva-form {
+    padding: 1rem 1.2rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}

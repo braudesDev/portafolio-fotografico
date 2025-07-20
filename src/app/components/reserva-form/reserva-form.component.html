@@ -1,0 +1,60 @@
+<h2 class="title">Agregar Reserva</h2>
+
+<form
+  [formGroup]="reservaForm"
+  (ngSubmit)="agregarReserva()"
+  class="reserva-form"
+>
+  <div class="form-row">
+    <label for="clienteNombre">Nombre Cliente:</label>
+    <input
+      id="clienteNombre"
+      type="text"
+      formControlName="clienteNombre"
+      required
+    />
+  </div>
+
+  <div class="form-row">
+    <label for="fechaEvento">Fecha Evento:</label>
+    <input
+      id="fechaEvento"
+      type="date"
+      formControlName="fechaEvento"
+      required
+    />
+  </div>
+
+  <div class="form-row">
+    <label for="estado">Estado:</label>
+    <select id="estado" formControlName="estado">
+      <option value="apartado">Apartado</option>
+      <option value="liquidado">Liquidado</option>
+      <option value="pendiente">Pendiente</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="anticipo">Anticipo:</label>
+    <input id="anticipo" type="number" formControlName="anticipo" />
+  </div>
+
+  <div class="form-row">
+    <label for="total">Total:</label>
+    <input id="total" type="number" formControlName="total" />
+  </div>
+
+  <div class="form-row">
+    <label for="paquete">Paquete:</label>
+    <input id="paquete" type="text" formControlName="paquete" />
+  </div>
+
+  <div class="form-row">
+    <label for="notas">Notas:</label>
+    <textarea id="notas" formControlName="notas" rows="3"></textarea>
+  </div>
+
+  <button type="submit" [disabled]="reservaForm.invalid" class="btn-submit">
+    Agregar Reserva
+  </button>
+</form>

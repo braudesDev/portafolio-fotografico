@@ -1,87 +1,153 @@
-<!doctype html>
-<html lang="es"> <!-- Cambiar a "es" si el contenido es en español -->
+<!DOCTYPE html>
+<html lang="es">
+  <!-- Cambiar a "es" si el contenido es en español -->
 
-<head>
-  <!-- Metadatos básicos -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Permissions-Policy" content="compute-pressure=(), interest-cohort=()">
+  <head>
+    <!-- Metadatos básicos -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="compute-pressure=(), interest-cohort=()"
+    />
 
+    <!-- Preconexiones y preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      as="style"
+    />
 
-  <!-- Preconexiones y preloads -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" as="style">
+    <!-- Favicon tradicional (.ico) -->
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385658/logotiposPortafolioFotografico/favicons/favicon.ico.ico"
+      type="image/x-icon"
+    />
 
+    <!-- Versiones PNG -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385614/logotiposPortafolioFotografico/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385639/logotiposPortafolioFotografico/favicons/favicon-16x16.png"
+    />
 
-<!-- Favicon tradicional (.ico) -->
-<link rel="icon" href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385658/logotiposPortafolioFotografico/favicons/favicon.ico.ico" type="image/x-icon">
+    <!-- iOS -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385673/logotiposPortafolioFotografico/favicons/apple-touch-icon.png"
+    />
 
-<!-- Versiones PNG -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385614/logotiposPortafolioFotografico/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385639/logotiposPortafolioFotografico/favicons/favicon-16x16.png">
+    <!-- PWA -->
+    <link
+      rel="manifest"
+      href="https://res.cloudinary.com/drsyb53ae/raw/upload/v1747606426/logotiposPortafolioFotografico/favicons/kkgkzqa2dnlmzzllsliy.webmanifest"
+    />
 
-<!-- iOS -->
-<link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385673/logotiposPortafolioFotografico/favicons/apple-touch-icon.png">
+    <!-- Título -->
+    <title>On Off Shot Fotografia</title>
+    <base href="/" />
 
-<!-- PWA -->
-<link rel="manifest" href="https://res.cloudinary.com/drsyb53ae/raw/upload/v1747606426/logotiposPortafolioFotografico/favicons/kkgkzqa2dnlmzzllsliy.webmanifest">
+    <!-- Primary Meta Tags -->
+    <meta property="og:title" content="On Off Shot Fotografía" />
+    <meta
+      property="og:description"
+      content="Fotografía de eventos, retratos y productos. Capturamos momentos únicos con un toque profesional."
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png"
+    />
+    <meta
+      property="og:url"
+      content="https://portafolio-fotografico-15a5b.web.app/"
+    />
+    <meta property="og:type" content="website" />
 
-  <!-- Título -->
-  <title>On Off Shot Fotografia</title>
-  <base href="/">
+    <!-- WhatsApp/Social Media Optimization -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de On Off Shot Fotografía" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-<!-- Primary Meta Tags -->
-<meta property="og:title" content="On Off Shot Fotografía">
-<meta property="og:description" content="Fotografía de eventos, retratos y productos. Capturamos momentos únicos con un toque profesional.">
-<meta property="og:image" content="https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png">
-<meta property="og:url" content="https://portafolio-fotografico-15a5b.web.app/">
-<meta property="og:type" content="website">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:title" content="On Off Shot Fotografía" />
+    <meta
+      name="twitter:description"
+      content="Fotografía de eventos, retratos y productos. Capturamos momentos únicos con un toque profesional."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png"
+    />
 
-<!-- WhatsApp/Social Media Optimization -->
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Logo de On Off Shot Fotografía">
-<meta name="twitter:card" content="summary_large_image">
+    <!-- Fallback para navegadores/sistemas que no soportan OpenGraph -->
+    <meta
+      name="description"
+      content="Fotógrafo profesional en Irapuato especializado en eventos, retratos y fotografía de productos. Capturamos tus momentos más importantes con calidad y creatividad."
+    />
 
-<!-- Twitter Meta Tags -->
-<meta name="twitter:title" content="On Off Shot Fotografía">
-<meta name="twitter:description" content="Fotografía de eventos, retratos y productos. Capturamos momentos únicos con un toque profesional.">
-<meta name="twitter:image" content="https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png">
+    <!-- Fuentes -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<!-- Fallback para navegadores/sistemas que no soportan OpenGraph -->
-<meta name="description" content="Fotógrafo profesional en Irapuato especializado en eventos, retratos y fotografía de productos. Capturamos tus momentos más importantes con calidad y creatividad.">
-
-
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-</head>
-
-<!-- Google Tag Manager (GTM) + GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRXVKF507R"></script>
+  <!-- Google Tag Manager (GTM) + GA4 -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-ZRXVKF507R"
+  ></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
     // Configuración estándar
-    gtag('config', 'G-3SEDBH37SR', {
-      'page_title': document.title,
-      'page_path': window.location.pathname,
-      'debug_mode': true // Solo para desarrollo (quitar en producción)
+    gtag("config", "G-3SEDBH37SR", {
+      page_title: document.title,
+      page_path: window.location.pathname,
+      debug_mode: true, // Solo para desarrollo (quitar en producción)
     });
 
     // Eventos personalizados (ejemplo)
-    gtag('event', 'page_view', {
-      'page_location': window.location.href,
-      'page_title': document.title
+    gtag("event", "page_view", {
+      page_location: window.location.href,
+      page_title: document.title,
     });
   </script>
 
-<body class="mat-typography">
-  <app-root></app-root>
-</body>
+  <body class="mat-typography">
+    <app-root></app-root>
+  </body>
 </html>

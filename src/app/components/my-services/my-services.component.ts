@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { jsPDF } from 'jspdf';
 import { SeoService } from '../../services/seo.service';
+import { ReservasService } from '../../services/reservas.service';
 
 @Component({
   selector: 'app-my-services',
@@ -26,30 +27,48 @@ import { SeoService } from '../../services/seo.service';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   templateUrl: './my-services.component.html',
-  styleUrls: ['./my-services.component.css']
+  styleUrls: ['./my-services.component.css'],
 })
 export class MyServicesComponent implements OnInit {
+  disableDates: Date[] = [];
 
-  constructor(private seoService: SeoService) {}
+  constructor(
+    private seoService: SeoService,
+    private reservasService: ReservasService
+  ) {}
 
   ngOnInit(): void {
-  this.seoService.setSeoData({
-    pageTitle: 'Servicios Fotográficos Profesionales',
-    description: 'Paquetes para bodas, sesiones de embarazo, fotografía infantil y más. Consulta nuestros precios.',
-    keywords: 'precios fotografía, sesión de bodas, fotografía infantil Irapuato',
-    // image: 'assets/images/services-og.jpg'
-  });
-}
+    this.seoService.setSeoData({
+      pageTitle: 'Servicios Fotográficos Profesionales',
+      description:
+        'Paquetes para bodas, sesiones de embarazo, fotografía infantil y más. Consulta nuestros precios.',
+      keywords:
+        'precios fotografía, sesión de bodas, fotografía infantil Irapuato',
+      // image: 'assets/images/services-og.jpg'
+    });
+    this.reservasService.getReservas().subscribe((reservas) => {
+      this.disableDates = reservas.map((r) => r.fechaEvento.toDate());
+    });
+  }
 
+  myDateFilter = (d: Date | null): boolean => {
+    if (!d) return true;
+    const time = d?.setHours(0, 0, 0, 0);
+    return !this.disableDates.some(
+      (date) => date.setHours(0, 0, 0, 0) === time
+    );
+  };
+
+  readonly videoPricePerHour = 1500;
 
   // Paquetes de servicios
   paquetes = [
     {
       name: 'Basico',
-      price: 3500,
+      price: 4000,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -63,14 +82,12 @@ export class MyServicesComponent implements OnInit {
         '40 Fotografias digitales retocadas',
         '1 Memoria USB con pelicula de duracion de 20 a 30 minutos',
       ],
-      extras: [
-        '(Fotografias impresas tienen un costo adicional)'
-      ],
-      popular: false
+      extras: ['(Fotografias impresas tienen un costo adicional)'],
+      popular: false,
     },
     {
-      name: 'Premium',
-      price: 5000,
+      name: 'Estándar',
+      price: 5500,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -84,25 +101,23 @@ export class MyServicesComponent implements OnInit {
         '100 Fotografias digitales retocadas',
         '1 Memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
-      extras: [
-        '(Fotografias impresas tienen un costo adicional)'
-      ],
-      popular: true
+      extras: ['(Fotografias impresas tienen un costo adicional)'],
+      popular: true,
     },
     {
-      name: 'Deluxe',
-      price: 7000,
+      name: 'Premium',
+      price: 7500,
       features: [
         'Sesion previa al evento (casual o vestidos)',
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
         'Cobertura de 4 horas de evento',
-        'Tomas aereas con dron'
+        'Tomas aereas con dron',
       ],
       videoFeatures: [
         'Cobertura de ceremonia religiosa',
         'Cobertura de 4 horas de evento',
-        'Tomas aereas con dron'
+        'Tomas aereas con dron',
       ],
       entrega: [
         '50 Fotografias retocadas impresas',
@@ -110,26 +125,50 @@ export class MyServicesComponent implements OnInit {
         'Una ampliacion de 14x20"',
         'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
-      popular: false
-    }
+      popular: false,
+    },
+    {
+      name: 'Deluxe',
+      price: 9000,
+      features: [
+        'Sesion previa al evento (casual o vestidos)',
+        'Sesion durante el evento',
+        'Cobertura de Ceremonia Religiosa',
+        'Cobertura de 6 horas de evento',
+        'Tomas aereas con dron',
+      ],
+      videoFeatures: [
+        'Cobertura de ceremonia religiosa',
+        'Cobertura de 6 horas de evento',
+        'Tomas aereas con dron',
+      ],
+      entrega: [
+        '70 Fotografias retocadas impresas',
+        '140 Fotografias digitales retocadas',
+        'Una ampliacion de 14x20"',
+        'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
+      ],
+      popular: false,
+    },
   ];
 
   // Signals para estado reactivo
   duration = signal(1);
   photos = signal(10);
+  videoHours = signal(1); //1 = 1 hora contratada
   includeDrone = signal(false);
   includeAlbum = signal(false);
   selectedDate = new FormControl<Date | null>(null);
 
   // Propiedades para el PDF
-  whatsappNumber = '4621304745';
+  whatsappNumber = '4622439905';
   bankAccounts = [
     {
       banco: 'BBVA',
       cuenta: '4152 3144 1130 8664',
       clabe: '',
-      titular: 'Braulio Rodríguez'
-    }
+      titular: 'Braulio Rodríguez',
+    },
   ];
 
   // Métodos actualizados para respuesta en tiempo real
@@ -143,6 +182,12 @@ export class MyServicesComponent implements OnInit {
     const value = event?.target?.value ?? event?.value ?? event;
     const validatedValue = Math.min(500, Math.max(1, Number(value) || 1));
     this.photos.set(validatedValue);
+  }
+
+  updateVideoHours(event: any) {
+    const value = event?.target?.value ?? event?.value ?? event;
+    const validatedValue = Math.min(12, Math.max(0, Number(value) || 0));
+    this.videoHours.set(validatedValue);
   }
 
   updateDrone(event: any) {
@@ -163,12 +208,17 @@ export class MyServicesComponent implements OnInit {
     const isHighSeason = this.isHighSeason;
     const basePrice = this.duration() * (isHighSeason ? 700 : 300);
     const photosPrice = this.photos() * (isHighSeason ? 40 : 20);
-    const extras = (this.includeDrone() ? 1500 : 0) + (this.includeAlbum() ? 1000 : 0);
-    return basePrice + photosPrice + extras;
+    const videoPrice = this.videoHours() * this.videoPricePerHour;
+    const extras =
+      (this.includeDrone() ? 1500 : 0) + (this.includeAlbum() ? 1600 : 0);
+    return basePrice + photosPrice + extras + videoPrice;
   }
 
   // Formateador de precio
-  formatPrice(price: number): string {
+  formatPrice(price: number | undefined): string {
+    if (price === undefined) {
+      return 'Precio no disponible';
+    }
     return `$${price.toLocaleString('es-MX')} MXN`;
   }
 
@@ -184,12 +234,20 @@ export class MyServicesComponent implements OnInit {
 
     // Logo
     try {
-      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
+      const logoUrl =
+        'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
       const logoData = await this.getBase64Image(logoUrl);
       const logoWidth = 30;
       const logoHeight = 30;
       const pageWidth = doc.internal.pageSize.getWidth();
-      doc.addImage(logoData, 'PNG', pageWidth - logoWidth - 15, 15, logoWidth, logoHeight);
+      doc.addImage(
+        logoData,
+        'PNG',
+        pageWidth - logoWidth - 15,
+        15,
+        logoWidth,
+        logoHeight
+      );
     } catch (error) {
       console.warn('Error al cargar logo:', error);
     }
@@ -213,7 +271,7 @@ export class MyServicesComponent implements OnInit {
     doc.text('Fotografía:', 15, yPosition);
     doc.setFont('undefined', 'normal');
 
-    selectedPackage.features.forEach(feature => {
+    selectedPackage.features?.forEach((feature) => {
       yPosition += 7;
       doc.text(`• ${feature}`, 20, yPosition);
     });
@@ -226,7 +284,7 @@ export class MyServicesComponent implements OnInit {
       doc.text('Video:', 15, yPosition);
       doc.setFont('undefined', 'normal');
 
-      selectedPackage.videoFeatures.forEach(feature => {
+      selectedPackage.videoFeatures.forEach((feature) => {
         yPosition += 7;
         doc.text(`• ${feature}`, 20, yPosition);
       });
@@ -240,7 +298,7 @@ export class MyServicesComponent implements OnInit {
       doc.text('Entrega:', 15, yPosition);
       doc.setFont('undefined', 'normal');
 
-      selectedPackage.entrega.forEach(feature => {
+      selectedPackage.entrega.forEach((feature) => {
         yPosition += 7;
         doc.text(`• ${feature}`, 20, yPosition);
       });
@@ -254,7 +312,7 @@ export class MyServicesComponent implements OnInit {
       doc.text('Extras:', 15, yPosition);
       doc.setFont('undefined', 'normal');
 
-      selectedPackage.extras.forEach(feature => {
+      selectedPackage.extras.forEach((feature) => {
         yPosition += 7;
         doc.text(`• ${feature}`, 20, yPosition);
       });
@@ -265,10 +323,15 @@ export class MyServicesComponent implements OnInit {
     doc.setFontSize(16);
     doc.text('Total:', 15, yPosition);
     doc.setFontSize(20);
-    doc.text(this.formatPrice(selectedPackage.price), 15, yPosition + 10);
+    const precio = selectedPackage.price ?? 0; // Si es undefined, usa 0
+    doc.text(this.formatPrice(precio), 15, yPosition + 10);
     doc.setFontSize(12);
     yPosition += 15;
-    doc.text('Nota: El precio puede variar dependiendo de la temporada.', 15, yPosition);
+    doc.text(
+      'Nota: El precio puede variar dependiendo de la temporada.',
+      15,
+      yPosition
+    );
     yPosition += 7;
 
     // Datos bancarios
@@ -276,7 +339,7 @@ export class MyServicesComponent implements OnInit {
     doc.setFontSize(14);
     doc.text('Datos para transferencia:', 15, yPosition);
 
-    this.bankAccounts.forEach(account => {
+    this.bankAccounts.forEach((account) => {
       doc.setFontSize(12);
       yPosition += 7;
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
@@ -297,7 +360,7 @@ export class MyServicesComponent implements OnInit {
     doc.setFontSize(12);
     yPosition += 7;
     doc.text(`WhatsApp: ${this.whatsappNumber}`, 20, yPosition, {
-      maxWidth: 170
+      maxWidth: 170,
     });
 
     doc.save(`contrato-${selectedPackage.name.toLowerCase()}.pdf`);
@@ -308,12 +371,20 @@ export class MyServicesComponent implements OnInit {
 
     // --- LOGO ---
     try {
-      const logoUrl = 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
+      const logoUrl =
+        'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/logotiposPortafolioFotografico/ae260gsv7klrwzv3skf5';
       const logoData = await this.getBase64Image(logoUrl);
       const logoWidth = 30;
       const logoHeight = 30;
       const pageWidth = doc.internal.pageSize.getWidth();
-      doc.addImage(logoData, 'PNG', pageWidth - logoWidth - 15, 15, logoWidth, logoHeight);
+      doc.addImage(
+        logoData,
+        'PNG',
+        pageWidth - logoWidth - 15,
+        15,
+        logoWidth,
+        logoHeight
+      );
     } catch (error) {
       console.warn('Error al cargar logo:', error);
     }
@@ -325,7 +396,13 @@ export class MyServicesComponent implements OnInit {
 
     doc.setFontSize(14);
     yPosition += 10;
-    doc.text(`Fecha: ${this.selectedDate.value?.toLocaleDateString() || 'Por definir'}`, 15, yPosition);
+    doc.text(
+      `Fecha: ${
+        this.selectedDate.value?.toLocaleDateString() || 'Por definir'
+      }`,
+      15,
+      yPosition
+    );
     yPosition += 15;
 
     // --- SECCIÓN FOTOGRAFÍA ---
@@ -336,10 +413,14 @@ export class MyServicesComponent implements OnInit {
     yPosition += 7;
     doc.text(`• ${this.duration()} horas de cobertura`, 20, yPosition);
     yPosition += 7;
-    doc.text(`• ${this.formatPhotos(this.photos())} fotos digitales`, 20, yPosition);
+    doc.text(
+      `• ${this.formatPhotos(this.photos())} fotos digitales`,
+      20,
+      yPosition
+    );
 
     // --- SECCIÓN EXTRAS ---
-    if (this.includeDrone() || this.includeAlbum()) {
+    if (this.includeDrone() || this.includeAlbum() || this.videoHours() > 0) {
       yPosition += 12;
       doc.setFont('normal', 'bold');
       doc.text('Servicios Adicionales:', 15, yPosition);
@@ -353,6 +434,16 @@ export class MyServicesComponent implements OnInit {
       if (this.includeAlbum()) {
         yPosition += 7;
         doc.text(`• Álbum físico premium (+$1,000)`, 20, yPosition);
+      }
+      if (this.videoHours() > 0) {
+        yPosition += 7;
+        doc.text(
+          `• ${this.videoHours()} hrs de cobertura de video (+${this.formatPrice(
+            this.videoHours() * this.videoPricePerHour
+          )})`,
+          20,
+          yPosition
+        );
       }
     }
 
@@ -380,7 +471,7 @@ export class MyServicesComponent implements OnInit {
     doc.setFontSize(14);
     doc.text('Datos para depósito:', 15, yPosition);
 
-    this.bankAccounts.forEach(account => {
+    this.bankAccounts.forEach((account) => {
       doc.setFontSize(12);
       yPosition += 7;
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
@@ -401,10 +492,12 @@ export class MyServicesComponent implements OnInit {
     doc.setFontSize(12);
     yPosition += 7;
     doc.text(`WhatsApp: ${this.whatsappNumber}`, 20, yPosition, {
-      maxWidth: 170
+      maxWidth: 170,
     });
 
-    doc.save(`presupuesto-personalizado-${new Date().toISOString().slice(0,10)}.pdf`);
+    doc.save(
+      `presupuesto-personalizado-${new Date().toISOString().slice(0, 10)}.pdf`
+    );
   }
 
   // Método auxiliar para imágenes
@@ -430,13 +523,16 @@ export class MyServicesComponent implements OnInit {
   }
 
   // Método auxiliar para dimensiones de imagen (opcional)
-  private async getImageDimensions(url: string): Promise<{width: number, height: number}> {
+  private async getImageDimensions(
+    url: string
+  ): Promise<{ width: number; height: number }> {
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = () => resolve({
-        width: img.naturalWidth,
-        height: img.naturalHeight
-      });
+      img.onload = () =>
+        resolve({
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+        });
       img.src = url;
     });
   }

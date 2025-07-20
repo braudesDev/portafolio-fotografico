@@ -6,7 +6,7 @@
 
 .packages h2 {
   text-align: center;
-  color: #2F4F4F;
+  color: #2f4f4f;
   font-size: 2.5rem;
   margin-top: 4rem;
   margin-bottom: 3rem;
@@ -17,10 +17,18 @@
 .packages-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1200px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;
   margin: 0 auto;
 }
+
+/* Móviles: 1 columna (un paquete por fila) */
+@media (max-width: 768px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* Tarjetas de paquetes */
 .package-card {
@@ -36,11 +44,11 @@
 
 .package-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .highlighted {
-  border: 2px solid #C6A769;
+  border: 2px solid #c6a769;
 }
 
 /* Imagen de paquete */
@@ -66,7 +74,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   padding: 1.5rem;
   color: white;
 }
@@ -75,7 +83,7 @@
   margin: 0;
   font-size: 2rem;
   font-weight: 500;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .image-overlay p {
@@ -89,13 +97,13 @@
   position: absolute;
   top: 15px;
   right: -30px;
-  background: #C6A769;
+  background: #c6a769;
   color: white;
   padding: 8px 30px;
   transform: rotate(45deg);
   font-weight: bold;
   font-size: 0.9rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Contenido de tarjetas */
@@ -107,7 +115,7 @@ mat-card-content {
 }
 
 mat-card-content h3 {
-  color: #2F4F4F;
+  color: #2f4f4f;
   margin: 1rem 0 0.5rem;
   font-size: 1.2rem;
 }
@@ -129,7 +137,7 @@ mat-card-content li mat-icon {
   font-size: 1rem;
   width: auto;
   height: auto;
-  color: #C6A769;
+  color: #c6a769;
 }
 
 /* Botones */
@@ -137,7 +145,7 @@ mat-card-content li mat-icon {
   width: 100%;
   margin-top: auto;
   padding: 12px !important;
-  background-color: #2F4F4F !important;
+  background-color: #2f4f4f !important;
   color: rgb(255, 255, 255) !important;
   font-size: 10px;
   border-radius: 8px !important;
@@ -145,14 +153,8 @@ mat-card-content li mat-icon {
 }
 
 .full-width-btn:hover {
-  background-color: #1E3E3E !important;
+  background-color: #1e3e3e !important;
 }
-
-
-
-
-
-
 
 /* Calculadora */
 .calculator {
@@ -163,7 +165,7 @@ mat-card-content li mat-icon {
 
 .calculator h2 {
   text-align: center;
-  color: #2F4F4F;
+  color: #2f4f4f;
   margin-bottom: 1rem;
 }
 
@@ -185,6 +187,26 @@ mat-card-content li mat-icon {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.options-section .slider-item {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.options-section .slider-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.options-section .video-price {
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 .extra-option {
@@ -212,7 +234,7 @@ mat-card-content li mat-icon {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .slider-item {
@@ -229,14 +251,14 @@ mat-card-content li mat-icon {
   text-align: center;
   margin-top: 2rem;
   padding: 2rem;
-  background: #2F4F4F;
+  background: #2f4f4f;
   border-radius: 10px;
   color: white;
 }
 
 .price {
   font-size: 2.5rem;
-  color: #C6A769;
+  color: #c6a769;
   margin: 1rem 0;
   font-weight: bold;
 }
@@ -248,7 +270,7 @@ mat-card-content li mat-icon {
 }
 
 .action-button:hover {
-  background-color: #1E3E3E !important;
+  background-color: #1e3e3e !important;
 }
 
 /* Responsive */
@@ -263,8 +285,17 @@ mat-card-content li mat-icon {
     padding-bottom: 2rem;
   }
 
-  .packages h2, .calculator h2 {
+  .packages h2,
+  .calculator h2 {
     font-size: 2rem;
+  }
+
+  .slider-item {
+    padding: 1rem;
+  }
+
+  .slider-item label {
+    font-size: 1rem;
   }
 }
 
@@ -279,5 +310,17 @@ mat-card-content li mat-icon {
 
   .image-overlay p {
     font-size: 1.2rem;
+  }
+
+  .slider-item {
+    padding: 1rem 0;
+  }
+
+  .slider-item label {
+    font-size: 0.9rem;
+  }
+
+  .video-price {
+    font-size: 0.95rem;
   }
 }

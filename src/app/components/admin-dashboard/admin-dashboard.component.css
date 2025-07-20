@@ -1,0 +1,130 @@
+/* Título centrado y estilizado */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 1px;
+  margin-top: 5rem;
+}
+
+/* Tabla estilo moderno con espacio entre filas */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Encabezados */
+thead th {
+  background-color: #4f46e5; /* Azul púrpura */
+  color: #fff;
+  padding: 14px 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Filas tipo tarjetas */
+tbody tr {
+  background-color: #f9fafb;
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.15);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+}
+
+/* Celdas */
+tbody td {
+  padding: 16px 20px;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #4b5563;
+  border: none;
+}
+
+/* Botones */
+button {
+  background: #4f46e5;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+button:hover {
+  background-color: #4338ca;
+  box-shadow: 0 4px 14px rgba(67, 56, 202, 0.6);
+}
+
+a button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Responsive: Apilar filas como tarjetas */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  thead tr {
+    display: none; /* Ocultar encabezado */
+  }
+
+  tbody tr {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  tbody td {
+    padding: 12px 0;
+    position: relative;
+    padding-left: 130px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    font-weight: 700;
+    color: #4f46e5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  tbody td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

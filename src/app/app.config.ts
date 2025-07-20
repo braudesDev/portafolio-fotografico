@@ -5,6 +5,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAnalytics, getAnalytics } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 // Tus servicios personalizados
 import { AnalyticsService } from './services/analytics.service';
@@ -16,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     // Configuración del core de Angular
     provideZoneChangeDetection({
       eventCoalescing: true,
-      runCoalescing: true // Mejor rendimiento para eventos frecuentes
+      runCoalescing: true, // Mejor rendimiento para eventos frecuentes
     }),
     provideRouter(routes),
     provideAnimationsAsync(),
@@ -25,9 +27,11 @@ export const appConfig: ApplicationConfig = {
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
 
     // Tus servicios personalizados (¡sin necesidad de providedIn!)
     AnalyticsService,
-    SeoService
-  ]
+    SeoService,
+  ],
 };
