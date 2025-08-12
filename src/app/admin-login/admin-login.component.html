@@ -1,22 +1,151 @@
-<h2>Login Admin</h2>
-<form (submit)="login()">
-  <mat-form-field appearance="fill" style="width: 100%">
-    <mat-label>Usuario</mat-label>
-    <input matInput [(ngModel)]="username" name="username" required />
-  </mat-form-field>
+<div class="flip-card" [class.flipped]="isFlipped">
+  <div class="flip-card-inner">
+    <!-- Login - Frente -->
+    <div class="flip-card-front">
+      <form (submit)="login()">
+        <mat-form-field appearance="fill" style="width: 80%">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            [(ngModel)]="email"
+            name="email"
+            required
+            type="email"
+          />
+        </mat-form-field>
 
-  <mat-form-field appearance="fill" style="width: 100%">
-    <mat-label>Contraseña</mat-label>
-    <input
-      matInput
-      [(ngModel)]="password"
-      name="password"
-      type="password"
-      required
-    />
-  </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 80%">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [(ngModel)]="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            name="password"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="togglePasswordVisibility()"
+            type="button"
+            tabindex="-1"
+            aria-label="Toggle password visibility"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" style="width: 100%">
-    Entrar
-  </button>
-</form>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          style="width: 80%"
+        >
+          Entrar
+        </button>
+      </form>
+
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="loginWithGoogle()"
+        style="width: 80%; margin-top: 16px"
+      >
+        Iniciar sesión con Google
+      </button>
+
+      <button
+        mat-button
+        color="accent"
+        (click)="toggleFlip()"
+        style="width: 80%; margin-top: 16px"
+      >
+        ¿No tienes cuenta? Regístrate
+      </button>
+    </div>
+
+    <!-- Registro - Reverso -->
+    <div class="flip-card-back">
+      <div class="back-content">
+        <form (submit)="register()">
+          <mat-form-field appearance="fill" style="width: 80%">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              [(ngModel)]="registerEmail"
+              name="registerEmail"
+              required
+              type="email"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              [(ngModel)]="registerPassword"
+              [type]="hideRegisterPassword ? 'password' : 'text'"
+              name="registerPassword"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="toggleRegisterPasswordVisibility()"
+              type="button"
+              tabindex="-1"
+              aria-label="Toggle password visibility"
+            >
+              <mat-icon>{{
+                hideRegisterPassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 80%">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input
+              matInput
+              [(ngModel)]="confirmPassword"
+              [type]="hideConfirmPassword ? 'password' : 'text'"
+              name="confirmPassword"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="toggleConfirmPasswordVisibility()"
+              type="button"
+              tabindex="-1"
+              aria-label="Toggle confirm password visibility"
+            >
+              <mat-icon>{{
+                hideConfirmPassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="width: 80%"
+          >
+            Registrarse
+          </button>
+        </form>
+
+        <button
+          mat-button
+          color="accent"
+          (click)="toggleFlip()"
+          style="width: 80%; margin-top: 16px"
+        >
+          ¿Ya tienes cuenta? Inicia sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

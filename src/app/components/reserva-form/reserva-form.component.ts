@@ -4,6 +4,8 @@ import { Timestamp } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,12 +15,17 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./reserva-form.component.css'],
 })
 export class ReservaFormComponent implements OnInit {
-  reservas: Reserva[] = [];
   reservaForm: FormGroup;
+  reservaIdToEdit: string | null = null;
+
+  // Array con los paquetes válidos
+  paquetes = ['Básico', 'Estándar', 'Premium', 'Deluxe', 'Personalizado'];
 
   constructor(
     private reservasService: ReservasService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.reservaForm = this.fb.group({
       clienteNombre: ['', Validators.required],
@@ -27,23 +34,60 @@ export class ReservaFormComponent implements OnInit {
       anticipo: [0, Validators.min(0)],
       total: [0, Validators.min(0)],
       restante: [0],
-      paquete: [''],
+      paquete: ['', Validators.required],
       notas: [''],
     });
   }
 
   ngOnInit(): void {
-    this.reservasService.getReservas().subscribe((data) => {
-      this.reservas = data;
-    });
+    this.reservaIdToEdit = this.route.snapshot.paramMap.get('id');
+
+    if (this.reservaIdToEdit) {
+      this.reservasService
+        .getReservaById(this.reservaIdToEdit)
+        .subscribe((reserva) => {
+          if (reserva) {
+            const fechaEventoDate = reserva.fechaEvento.toDate();
+
+            const paqueteValido = this.paquetes.includes(reserva.paquete)
+              ? reserva.paquete
+              : '';
+
+            this.reservaForm.patchValue({
+              clienteNombre: reserva.clienteNombre,
+              fechaEvento: fechaEventoDate.toISOString().substring(0, 10),
+              estado: reserva.estado,
+              anticipo: reserva.anticipo,
+              total: reserva.total,
+              restante: reserva.restante,
+              paquete: paqueteValido,
+              notas: reserva.notas,
+            });
+          }
+        });
+    }
+
+    this.reservaForm
+      .get('anticipo')
+      ?.valueChanges.subscribe(() => this.calcularRestante());
+    this.reservaForm
+      .get('total')
+      ?.valueChanges.subscribe(() => this.calcularRestante());
   }
 
-  agregarReserva() {
+  private calcularRestante() {
+    const anticipo = this.reservaForm.get('anticipo')?.value || 0;
+    const total = this.reservaForm.get('total')?.value || 0;
+    this.reservaForm.patchValue(
+      { restante: total - anticipo },
+      { emitEvent: false }
+    );
+  }
+
+  guardarReserva() {
     const formValue = this.reservaForm.value;
 
-    // Detectar si viene como string
     let fechaEventoDate: Date;
-
     if (typeof formValue.fechaEvento === 'string') {
       const [year, month, day] = formValue.fechaEvento.split('-').map(Number);
       fechaEventoDate = new Date(year, month - 1, day);
@@ -65,13 +109,57 @@ export class ReservaFormComponent implements OnInit {
       fechaCreacion: Timestamp.now(),
     };
 
-    this.reservasService
-      .addReserva(reserva)
-      .then(() => {
-        this.reservaForm.reset();
-      })
-      .catch((error) => {
-        console.error('Error agregando reserva:', error);
-      });
+    if (this.reservaIdToEdit) {
+      this.reservasService
+        .updateReserva(this.reservaIdToEdit, reserva)
+        .then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Reserva actualizada',
+            text: 'La reserva se ha actualizado correctamente.',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          this.router.navigate(['/admin-dashboard']);
+        })
+        .catch((error) => {
+          console.error('Error actualizando reserva:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo actualizar la reserva. Inténtalo de nuevo.',
+          });
+        });
+    } else {
+      this.reservasService
+        .addReserva(reserva)
+        .then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Reserva creada',
+            text: 'La reserva se ha registrado correctamente.',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          this.reservaForm.reset({
+            clienteNombre: '',
+            fechaEvento: new Date(),
+            estado: 'apartado',
+            anticipo: 0,
+            total: 0,
+            restante: 0,
+            paquete: '',
+            notas: '',
+          });
+        })
+        .catch((error) => {
+          console.error('Error agregando reserva:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo registrar la reserva. Inténtalo de nuevo.',
+          });
+        });
+    }
   }
 }

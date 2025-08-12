@@ -36,7 +36,10 @@
 
   <div class="form-row">
     <label for="paquete">Paquete:</label>
-    <input id="paquete" type="text" formControlName="paquete" />
+    <select id="paquete" formControlName="paquete" required>
+      <option value="">Seleccione un paquete</option>
+      <option *ngFor="let p of paquetes" [value]="p">{{ p }}</option>
+    </select>
   </div>
 
   <div class="form-row">

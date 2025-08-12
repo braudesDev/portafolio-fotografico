@@ -1,5 +1,11 @@
+body,
+html {
+  overflow-x: hidden;
+}
+
 /* Título centrado y estilizado */
 h2 {
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 30px;
   font-family: "Poppins", sans-serif;
@@ -126,5 +132,254 @@ a button {
   tbody td:last-child {
     border-bottom: none;
     padding-bottom: 0;
+  }
+}
+
+.tooltip-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10000;
+  text-decoration: none;
+}
+
+/* El botón redondo */
+.btn-redondo-fijo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #4f46e5;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+/* Eliminar cualquier borde, sombra o subrayado que pueda salir */
+.btn-redondo-fijo,
+.btn-redondo-fijo:focus,
+.btn-redondo-fijo:hover {
+  text-decoration: none !important;
+}
+
+/* Hover más oscuro */
+.btn-redondo-fijo:hover {
+  background-color: #3730a3; /* azul más oscuro */
+  box-shadow: 0 6px 12px rgba(55, 48, 163, 0.6); /* sombra más intensa al hover */
+}
+
+/* Tooltip: al lado izquierdo, oculto por defecto */
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background-color: black;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 50%;
+  right: 70px; /* espacio a la izquierda del botón */
+  transform: translateY(50%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  z-index: 10001;
+}
+
+/* Triángulo que apunta al botón, corregido para ser visible */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent; /* negro visible */
+}
+
+/* Mostrar tooltip al pasar mouse */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Quitar subrayado de enlaces dentro del contenedor */
+.tooltip-container a,
+.tooltip-container a:hover,
+.tooltip-container a:focus {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* Tu CSS base aquí (igual que lo tienes) */
+
+/* --- Media Query para Tablet --- */
+@media (min-width: 481px) and (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 20px;
+  }
+
+  table {
+    display: block; /* Para scroll horizontal */
+    overflow-x: auto;
+    white-space: nowrap;
+    border-spacing: 0 8px;
+  }
+
+  thead th {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  tbody td {
+    font-size: 13px;
+    padding: 12px 15px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .btn-redondo-fijo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .tooltip-text {
+    font-size: 0.85rem;
+    right: 60px;
+  }
+}
+/* --- Media Query para Móviles --- */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 4rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* Botón fijo con más estilo */
+  .tooltip-container {
+    position: fixed;
+    bottom: 60px;
+    right: 25px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Botón morado animado */
+  .btn-redondo-fijo {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #4f46e5, #6d5dfc);
+    color: white;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    animation: pulso-morado 1.8s infinite;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .btn-redondo-fijo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
+  }
+
+  @keyframes pulso-morado {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    }
+    50% {
+      transform: scale(1.08);
+      box-shadow: 0 6px 25px rgba(79, 70, 229, 0.6);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    }
+  }
+
+  /* Apilar tabla */
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tabla-contenedor {
+    position: relative;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px rgba(79, 70, 229, 0.1);
+    border-radius: 10px;
+    padding: 14px 16px;
+    background-color: #fff;
+  }
+
+  tbody td {
+    padding: 8px 0;
+    padding-left: 95px; /* menos espacio para data-label */
+    font-size: 13px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  tbody td::before {
+    left: 12px;
+    top: 10px;
+    font-size: 11px;
+  }
+
+  tbody td:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: none;
+    padding-top: 8px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px 10px;
+    flex: 1; /* para que ocupen el ancho posible */
+  }
+
+  .tooltip-text {
+    font-size: 0.85rem;
+    right: 55px;
   }
 }

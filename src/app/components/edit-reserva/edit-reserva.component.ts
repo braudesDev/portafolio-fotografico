@@ -21,6 +21,8 @@ export class EditReservaComponent implements OnInit {
   reservaForm!: FormGroup;
   reservaId!: string;
 
+  paquetes = ['Básico', 'Estándar', 'Premium', 'Deluxe', 'Personalizado'];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

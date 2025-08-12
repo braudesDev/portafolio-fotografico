@@ -8,8 +8,9 @@ import {
   updateDoc,
   deleteDoc,
   Timestamp,
+  docData,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 export interface Reserva {
   id?: string;
@@ -48,5 +49,9 @@ export class ReservasService {
   deleteReserva(id: string) {
     const reservaDoc = doc(this.firestore, `reservas/${id}`);
     return deleteDoc(reservaDoc);
+  }
+  getReservaById(id: string): Observable<Reserva> {
+    const reservaDoc = doc(this.firestore, `reservas/${id}`);
+    return docData(reservaDoc, { idField: 'id' }) as Observable<Reserva>;
   }
 }

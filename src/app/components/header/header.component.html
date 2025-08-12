@@ -4,26 +4,50 @@
 
   <!-- Lista de enlaces -->
   <ul class="nav-links" [class.active]="isMenuOpen">
-    <li><a routerLink="/" (click)="onNavClick()">
-      <mat-icon fontIcon="home"></mat-icon> Inicio
-    </a></li>
-    <li><a routerLink="/gallery" (click)="onNavClick()">
-      <mat-icon fontIcon="camera"></mat-icon> Fotografía
-    </a></li>
-    <li><a routerLink="/video" (click)="onNavClick()">
-      <mat-icon fontIcon="videocam"></mat-icon> Video
-    </a></li>
-    <li><a routerLink="/about-me" (click)="onNavClick()">
-      <mat-icon fontIcon="person"></mat-icon> Sobre nosotros
-    </a></li>
-    <li><a routerLink="/my-services" (click)="onNavClick()">
-      <mat-icon fontIcon="photo_camera"></mat-icon> Servicios
-    </a></li>
-    <li><a routerLink="/testimonios" (click)="onNavClick()">
-      <mat-icon fontIcon="rate_review"></mat-icon> Comentarios
-    </a></li>
-    <li><a routerLink="/contact" (click)="onNavClick()">
-      <mat-icon fontIcon="contact_mail"></mat-icon> Contacto
-    </a></li>
+    <li>
+      <a routerLink="/" (click)="onNavClick()">
+        <mat-icon fontIcon="home"></mat-icon> Inicio
+      </a>
+    </li>
+    <li>
+      <a routerLink="/gallery" (click)="onNavClick()">
+        <mat-icon fontIcon="camera"></mat-icon> Fotografía
+      </a>
+    </li>
+    <li>
+      <a routerLink="/video" (click)="onNavClick()">
+        <mat-icon fontIcon="videocam"></mat-icon> Video
+      </a>
+    </li>
+    <li>
+      <a routerLink="/about-me" (click)="onNavClick()">
+        <mat-icon fontIcon="person"></mat-icon> Sobre nosotros
+      </a>
+    </li>
+    <li>
+      <a routerLink="/my-services" (click)="onNavClick()">
+        <mat-icon fontIcon="photo_camera"></mat-icon> Servicios
+      </a>
+    </li>
+    <li>
+      <a routerLink="/testimonios" (click)="onNavClick()">
+        <mat-icon fontIcon="rate_review"></mat-icon> Comentarios
+      </a>
+    </li>
+    <li>
+      <a routerLink="/contact" (click)="onNavClick()">
+        <mat-icon fontIcon="contact_mail"></mat-icon> Contacto
+      </a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/admin-dashboard" (click)="onNavClick()">
+        <mat-icon fontIcon="dashboard"></mat-icon> Dashboard Reservas
+      </a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a (click)="logout()" style="cursor: pointer">
+        <mat-icon fontIcon="logout"></mat-icon> Cerrar sesión
+      </a>
+    </li>
   </ul>
 </nav>

@@ -9,7 +9,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): boolean {
     // lógica para verificar si está autenticado y es admin
-    const isAdmin = true; // reemplaza con tu lógica real
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     if (!isAdmin) {
       this.router.navigate(['/']); // o a donde quieras redirigir

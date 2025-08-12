@@ -1,0 +1,104 @@
+/* Contenedor general del formulario y botones */
+
+/* Evitar scroll horizontal */
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh; /* para centrar vertical */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajustar campos mat-form-field para que no se salgan */
+mat-form-field {
+  width: 100% !important;
+  max-width: 300px; /* ancho fijo para los campos */
+  box-sizing: border-box;
+}
+
+/* Botones con colores iOS */
+button[mat-raised-button][color="primary"] {
+  background-color: #007aff;
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+  transition: background-color 0.25s ease;
+  width: 300px; /* ancho fijo igual a inputs */
+  margin: 16px auto 0 auto; /* centrado horizontal y separación arriba */
+  display: block;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #005bb5;
+}
+
+button[mat-raised-button][color="warn"] {
+  background-color: #ff3b30;
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+  transition: background-color 0.25s ease;
+  width: 300px;
+  margin: 16px auto 0 auto;
+  display: block;
+}
+
+button[mat-raised-button][color="warn"]:hover {
+  background-color: #c62828;
+}
+
+.flip-card {
+  width: 360px;
+  height: 480px;
+  perspective: 1500px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centra horizontalmente */
+  box-sizing: border-box;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: white; /* corregido el typo de wite */
+  color: black;
+}
+
+.back-content {
+  flex: 1;
+}

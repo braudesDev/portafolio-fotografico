@@ -1,8 +1,10 @@
-<h2 class="title">Agregar Reserva</h2>
+<h2 class="title">
+  {{ reservaIdToEdit ? "Editar Reserva" : "Agregar Reserva" }}
+</h2>
 
 <form
   [formGroup]="reservaForm"
-  (ngSubmit)="agregarReserva()"
+  (ngSubmit)="guardarReserva()"
   class="reserva-form"
 >
   <div class="form-row">
@@ -46,7 +48,19 @@
 
   <div class="form-row">
     <label for="paquete">Paquete:</label>
-    <input id="paquete" type="text" formControlName="paquete" />
+    <select id="paquete" formControlName="paquete" required>
+      <option value="">Seleccione un paquete</option>
+      <option *ngFor="let p of paquetes" [value]="p">{{ p }}</option>
+    </select>
+    <div
+      *ngIf="
+        reservaForm.get('paquete')?.invalid &&
+        reservaForm.get('paquete')?.touched
+      "
+      class="error"
+    >
+      Por favor selecciona un paquete.
+    </div>
   </div>
 
   <div class="form-row">
@@ -55,6 +69,6 @@
   </div>
 
   <button type="submit" [disabled]="reservaForm.invalid" class="btn-submit">
-    Agregar Reserva
+    {{ reservaIdToEdit ? "Actualizar Reserva" : "Agregar Reserva" }}
   </button>
 </form>
