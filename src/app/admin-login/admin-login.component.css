@@ -1,104 +1,222 @@
-/* Contenedor general del formulario y botones */
+/* =========================================== */
+/* ESTILOS GENERALES */
+/* =========================================== */
 
-/* Evitar scroll horizontal */
+/* Reset básico para todos los elementos */
+* {
+  box-sizing: border-box; /* Modelo de caja más intuitivo */
+  max-width: 100%; /* Previene desbordamientos horizontales */
+}
+
+/* Estilos base para html y body */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Elimina scroll horizontal */
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh; /* para centrar vertical */
+  width: 100vw; /* 100% del ancho de la ventana */
+  height: 100vh; /* 100% del alto de la ventana */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  background: #e6f2ff; /* Fondo azul claro pastel */
 }
 
-/* Ajustar campos mat-form-field para que no se salgan */
-mat-form-field {
-  width: 100% !important;
-  max-width: 300px; /* ancho fijo para los campos */
-  box-sizing: border-box;
-}
-
-/* Botones con colores iOS */
-button[mat-raised-button][color="primary"] {
-  background-color: #007aff;
-  color: white;
-  font-weight: 600;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
-  transition: background-color 0.25s ease;
-  width: 300px; /* ancho fijo igual a inputs */
-  margin: 16px auto 0 auto; /* centrado horizontal y separación arriba */
-  display: block;
-}
-
-button[mat-raised-button][color="primary"]:hover {
-  background-color: #005bb5;
-}
-
-button[mat-raised-button][color="warn"] {
-  background-color: #ff3b30;
-  color: white;
-  font-weight: 600;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
-  transition: background-color 0.25s ease;
-  width: 300px;
-  margin: 16px auto 0 auto;
-  display: block;
-}
-
-button[mat-raised-button][color="warn"]:hover {
-  background-color: #c62828;
-}
+/* =========================================== */
+/* CONTENEDOR DE LA TARJETA FLIP */
+/* =========================================== */
 
 .flip-card {
-  width: 360px;
-  height: 480px;
-  perspective: 1500px;
-  margin: auto;
-  border-radius: 20px;
+  width: 360px; /* Ancho fijo */
+  height: 520px; /* Alto fijo */
+  perspective: 2000px; /* Profundidad 3D */
+  margin: 20px auto; /* Centrado con margen */
+  border-radius: 24px; /* Esquinas redondeadas */
+  overflow: hidden; /* Oculta contenido que sobresale */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15)); /* Sombra exterior */
 }
 
+/* Contenedor interno para el efecto flip */
 .flip-card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s ease;
-  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Animación suave */
+  transform-style: preserve-3d; /* Mantiene el contexto 3D */
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
+  border-radius: 24px;
 }
 
+/* Estado girado (para mostrar el reverso) */
 .flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); /* Gira 180 grados en eje Y */
 }
+
+/* =========================================== */
+/* CARAS DE LA TARJETA (FRENTE Y REVERSO) */
+/* =========================================== */
 
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  top: 0;
-  left: 0;
-  background: white;
-  padding: 40px 30px;
+  backface-visibility: hidden; /* Oculta el reverso cuando gira */
+  -webkit-backface-visibility: hidden; /* Compatibilidad Safari */
+  padding: 30px; /* Espaciado interno */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* centra horizontalmente */
+  align-items: center;
   box-sizing: border-box;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Efecto vidrio esmerilado (glassmorphism) */
+  background: rgba(255, 255, 255, 0.7); /* Blanco semitransparente */
+  backdrop-filter: blur(20px); /* Desenfoque del fondo */
+  -webkit-backdrop-filter: blur(20px); /* Compatibilidad Safari */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Borde sutil */
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
+/* Cara frontal específica */
+.flip-card-front {
+  z-index: 2; /* Asegura que esté sobre el reverso */
+  background: rgba(255, 255, 255, 0.75); /* Más opaco para mejor legibilidad */
+}
+
+/* Cara trasera específica */
 .flip-card-back {
-  transform: rotateY(180deg);
-  background: white; /* corregido el typo de wite */
-  color: black;
+  transform: rotateY(180deg); /* Inicialmente girada */
+  background: rgba(255, 255, 255, 0.7);
 }
 
-.back-content {
-  flex: 1;
+/* =========================================== */
+/* FORMULARIOS Y CAMPOS */
+/* =========================================== */
+
+mat-form-field {
+  width: 100% !important;
+  max-width: 280px; /* Ancho máximo para campos */
+  box-sizing: border-box;
+  margin-bottom: 16px; /* Espaciado entre campos */
+}
+
+/* Estructura interna de los campos */
+mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0; /* Elimina padding no deseado */
+}
+
+/* Fondo de los campos */
+mat-form-field .mat-form-field-outline {
+  background: rgba(255, 255, 255, 0.85); /* Fondo semitransparente */
+  border-radius: 12px; /* Esquinas redondeadas */
+}
+
+/* =========================================== */
+/* BOTONES */
+/* =========================================== */
+
+/* Botón primario (azul) */
+button[mat-raised-button][color="primary"] {
+  background-color: #007aff; /* Azul iOS */
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3); /* Sombra azul */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animación personalizada */
+  width: 100%;
+  max-width: 280px;
+  margin: 12px auto 0 auto;
+  display: block;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  padding: 0.7em 0;
+}
+
+/* Efectos hover para botón primario */
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #0062cc; /* Azul más oscuro */
+  box-shadow: 0 6px 25px rgba(0, 122, 255, 0.4);
+  transform: translateY(-1px); /* Efecto de levitación */
+}
+
+/* Botón de advertencia (rojo) */
+button[mat-raised-button][color="warn"] {
+  background-color: #ff3b30; /* Rojo iOS */
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 59, 48, 0.3); /* Sombra roja */
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+  margin: 12px auto 0 auto;
+  display: block;
+  border: none;
+  padding: 0.7em 0;
+}
+
+/* Efectos hover para botón de advertencia */
+button[mat-raised-button][color="warn"]:hover {
+  background-color: #e0352b; /* Rojo más oscuro */
+  box-shadow: 0 6px 25px rgba(255, 59, 48, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Botones de texto (links) */
+button[mat-button][color="accent"] {
+  color: #f3f3f3; /* Color de texto */
+  margin-top: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* =========================================== */
+/* MODO OSCURO (OPCIONAL) */
+/* =========================================== */
+
+@media (prefers-color-scheme: dark) {
+  .flip-card-front,
+  .flip-card-back {
+    background: rgba(30, 30, 30, 0.6); /* Fondo oscuro semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borde claro */
+  }
+
+  /* Campos en modo oscuro */
+  mat-form-field .mat-form-field-outline {
+    background: rgba(30, 30, 30, 0.8); /* Fondo más oscuro */
+  }
+}
+
+/* =========================================== */
+/* DISEÑO RESPONSIVE (MÓVILES) */
+/* =========================================== */
+
+@media (max-width: 480px) {
+  .flip-card {
+    width: 90vw; /* Ancho relativo a la pantalla */
+    height: auto; /* Alto automático */
+    min-height: 500px; /* Altura mínima */
+    margin: 10px auto;
+    border-radius: 20px; /* Bordes ligeramente menos redondeados */
+  }
+
+  /* Ajuste de padding en móviles */
+  .flip-card-front,
+  .flip-card-back {
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+
+  /* Campos a ancho completo en móviles */
+  mat-form-field {
+    max-width: 100%;
+  }
+
+  /* Botones a ancho completo en móviles */
+  button[mat-raised-button] {
+    max-width: 100%;
+  }
 }
