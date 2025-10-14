@@ -1,17 +1,57 @@
-import { Component, HostListener } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Router } from '@angular/router'; // Importa Router
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { SeoService } from '../../services/seo.service';
 
+import Typewriter from 'typewriter-effect/dist/core';
+
 @Component({
   selector: 'app-gallery',
+  standalone: true,
   imports: [RouterModule, CommonModule, MatIconModule],
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
 })
-export class GalleryComponent {
+export class GalleryComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    this.initializeTypewriter();
+  }
+
+  private initializeTypewriter(): void {
+    // Verificar si el elemento existe
+    const element = document.getElementById('typewriter-text');
+
+    if (!element) {
+      return;
+    }
+
+    new Typewriter('#typewriter-text', {
+      strings: [
+        'Bodas',
+        'Xv años',
+        'Sesiones',
+        'Retratos',
+        'Eventos',
+        'Familia',
+        'Parejas',
+        'Paisajes',
+        'Urbana',
+      ],
+      autoStart: true,
+      loop: true,
+      delay: 75,
+      deleteSpeed: 50,
+    });
+  }
+
   // Definimos la estructura de las imágenes
   images = [
     {

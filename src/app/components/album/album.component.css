@@ -1,4 +1,3 @@
-
 /* Estilos para el contenedor del álbum */
 .photo-grid {
   display: grid;
@@ -11,7 +10,7 @@ h2 {
   position: relative;
   color: rgb(0, 0, 0);
   font-size: 2.5rem;
-  font-family: 'QuickSand', sans-serif;
+  font-family: "QuickSand", sans-serif;
   font-weight: bold;
   text-align: center;
   margin-top: 6rem;
@@ -96,24 +95,32 @@ h2 {
   justify-content: space-between;
   top: 50%;
   transform: translateY(-50%);
-  padding: 0 20px;
+  padding: 0 50px;
+  pointer-events: none;
 }
 
 .modal-controls button {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 30px;
+  pointer-events: all;
+  background: none; /* sin fondo */
+  border: none; /* sin borde */
+  color: #fff;
+  font-size: 50px; /* un poco más grande para destacar */
   cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
+  padding: 10px; /* espacio para clic cómodo */
+  transition: all 0.3s ease;
+  margin: 0 30px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* agrega profundidad sin caja */
 }
 
 .modal-controls button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  color: #ddd; /* cambia ligeramente el color al pasar el mouse */
+  transform: scale(1.2);
 }
 
+.modal-controls button:active {
+  transform: scale(1);
+  opacity: 0.8;
+}
 
 /* Tablet: 600px en adelante */
 @media (min-width: 600px) {
@@ -125,6 +132,15 @@ h2 {
 
   h2 {
     font-size: 3rem;
+  }
+
+  .modal-controls {
+    padding: 0 60px;
+  }
+
+  .modal-controls button {
+    font-size: 40px;
+    margin: 0 25px;
   }
 }
 
@@ -138,6 +154,15 @@ h2 {
 
   h2 {
     font-size: 3.5rem;
+  }
+
+  .modal-controls {
+    padding: 0 70px;
+  }
+
+  .modal-controls button {
+    font-size: 45px;
+    margin: 0 35px;
   }
 }
 
@@ -153,6 +178,15 @@ h2 {
     font-size: 4rem;
     margin-top: 6rem;
   }
+
+  .modal-controls {
+    padding: 0 80px;
+  }
+
+  .modal-controls button {
+    font-size: 55px;
+    margin: 0 40px;
+  }
 }
 
 /* Pantallas muy grandes: 1600px en adelante */
@@ -162,6 +196,15 @@ h2 {
     max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .modal-controls {
+    padding: 0 100px;
+  }
+
+  .modal-controls button {
+    font-size: 60px;
+    margin: 0 50px;
   }
 }
 
@@ -182,9 +225,14 @@ h2 {
     font-size: 30px;
   }
 
+  .modal-controls {
+    padding: 0 30px;
+  }
+
   .modal-controls button {
-    font-size: 20px;
-    padding: 8px;
+    font-size: 22px;
+    padding: 6px;
+    margin: 0 20px;
   }
 }
 
@@ -196,5 +244,13 @@ h2 {
 
   .modal-content.horizontal {
     width: 80%;
+  }
+
+  .modal-controls {
+    padding: 0 40px;
+  }
+
+  .modal-controls button {
+    font-size: 20px;
   }
 }

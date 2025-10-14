@@ -1,4 +1,11 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { SafeUrlPipe } from '../../safe-url.pipe';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,15 +26,22 @@ interface Video {
 @Component({
   selector: 'app-video',
   standalone: true,
-  imports: [SafeUrlPipe, CommonModule, MatIconModule, MatButtonModule, RouterModule],
+  imports: [
+    SafeUrlPipe,
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterModule,
+  ],
   templateUrl: './video.component.html',
-  styleUrls: ['./video.component.css']
+  styleUrls: ['./video.component.css'],
 })
 export class VideoComponent implements OnInit, AfterViewInit {
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
   // Propiedades de video
-  videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4";
+  videoSource =
+    'https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4';
   showPlayButton = false;
   showScrollIndicator = true;
   selectedVideo: Video | null = null;
@@ -36,26 +50,26 @@ export class VideoComponent implements OnInit, AfterViewInit {
   readonly bodasVideos: Video[] = [
     {
       title: 'Boda de Paulina y Christian',
-      url: 'https://www.youtube.com/embed/FXW01_U1jSA'
+      url: 'https://www.youtube.com/embed/FXW01_U1jSA',
     },
     {
       title: 'Boda de Mirna y Luis',
-      url: 'https://www.youtube.com/embed/v0p3TTt_qsQ'
+      url: 'https://www.youtube.com/embed/v0p3TTt_qsQ',
     },
-    // {
-    //   title: 'Boda de ejemplo 3',
-    //   url: 'https://www.youtube.com/embed/zzzzzz'
-    // }
+    {
+      title: 'Boda de Citlali y Donovan',
+      url: 'https://www.youtube.com/embed/f9JvSFkBk1M',
+    },
   ];
 
   readonly xvaniosVideos: Video[] = [
     {
       title: 'XV Años de Flor Nathalia',
-      url: 'https://www.youtube.com/embed/eTeUraUAH2I'
+      url: 'https://www.youtube.com/embed/eTeUraUAH2I',
     },
     // {
     //   title: 'XV Años de ejemplo 2',
-    //   url: 'https://www.youtube.com/embed/bbbbbb'
+    //   url: ''
     // }
   ];
 
@@ -95,9 +109,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
       const video = this.videoPlayer.nativeElement;
 
       if (this.isiPad()) {
-        this.videoSource = "https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4";
+        this.videoSource =
+          'https://res.cloudinary.com/drsyb53ae/video/upload/v1746390160/fotos-comprimidas/videos-codecs/oq5zziei4vgxewjwzju2.mp4';
         this.changeDetector.detectChanges();
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
 
       video.muted = true;
@@ -130,9 +145,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
   }
 
   playVideo(): void {
-    this.videoPlayer.nativeElement.play()
-      .then(() => this.showPlayButton = false)
-      .catch(err => console.error('Error al reproducir manualmente:', err));
+    this.videoPlayer.nativeElement
+      .play()
+      .then(() => (this.showPlayButton = false))
+      .catch((err) => console.error('Error al reproducir manualmente:', err));
   }
 
   loadVideo(video: Video): void {
@@ -142,14 +158,15 @@ export class VideoComponent implements OnInit, AfterViewInit {
   scrollToContent(): void {
     document.getElementById('bodas-section')?.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     });
   }
 
   getVideoId(url: string): string {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp =
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : '';
+    return match && match[2].length === 11 ? match[2] : '';
   }
 
   trackById(index: number, video: Video): string {
@@ -161,7 +178,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
       strings: [
         'Videos que emocionan ',
         'Edición creativa ',
-        'Cada detalle cuenta'
+        'Cada detalle cuenta',
       ],
       autoStart: true,
       loop: true,
@@ -172,7 +189,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   scrollToTop(): void {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 }

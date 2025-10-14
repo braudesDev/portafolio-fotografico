@@ -10,7 +10,7 @@ import {
   Timestamp,
   docData,
 } from '@angular/fire/firestore';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export interface Reserva {
   id?: string;

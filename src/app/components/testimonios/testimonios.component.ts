@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
@@ -11,17 +17,13 @@ import { environment } from './../../../environments/environment';
 @Component({
   selector: 'app-testimonios',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatIcon,
-    MatTooltipModule,
-  ],
+  imports: [CommonModule, FormsModule, MatIcon, MatTooltipModule],
   templateUrl: './testimonios.component.html',
-  styleUrls: ['./testimonios.component.css']
+  styleUrls: ['./testimonios.component.css'],
 })
 export class TestimoniosComponent implements OnInit, AfterViewInit {
-  @ViewChild('carrusel', { static: false }) carruselElement!: ElementRef<HTMLDivElement>;
+  @ViewChild('carrusel', { static: false })
+  carruselElement!: ElementRef<HTMLDivElement>;
 
   // Firebase
   private FirebaseApp = initializeApp(environment.firebaseConfig);
@@ -32,7 +34,7 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   nuevoTestimonio: Omit<Testimonio, 'id' | 'fecha'> = {
     nombre: '',
     comentario: '',
-    imagen_url: ''
+    imagen_url: '',
   };
   mensaje = '';
   mostrarSelectorAvatares = false;
@@ -56,7 +58,7 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/ktvrnqpd0qmehh9oassj',
     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/osz4gdaijlnjfqgcwvqb',
     'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/bpsim4nqrocckm0umdpd',
-    'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/su8j3bv4cfvm062i1gcy'
+    'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/sgv/su8j3bv4cfvm062i1gcy',
   ];
 
   instruccionesTooltip = `
@@ -72,9 +74,11 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   async loadTestimonios(): Promise<void> {
     try {
       const querySnapshot = await getDocs(collection(this.db, 'testimonios'));
-      this.testimonios = querySnapshot.docs.map(doc => doc.data() as Testimonio);
+      this.testimonios = querySnapshot.docs.map(
+        (doc) => doc.data() as Testimonio
+      );
     } catch (err) {
-      console.error("Error al cargar los testimonios: ", err);
+      console.error('Error al cargar los testimonios: ', err);
     }
   }
 
@@ -89,7 +93,7 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
     try {
       const testimonioConFecha = {
         ...this.nuevoTestimonio,
-        fecha: new Date()
+        fecha: new Date(),
       };
 
       await addDoc(collection(this.db, 'testimonios'), testimonioConFecha);
@@ -97,9 +101,10 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
       await this.loadTestimonios();
       this.resetFormulario();
     } catch (err: unknown) {
-      this.mensaje = err instanceof Error ?
-        `Error al enviar el testimonio: ${err.message}` :
-        'Error desconocido al enviar el testimonio.';
+      this.mensaje =
+        err instanceof Error
+          ? `Error al enviar el testimonio: ${err.message}`
+          : 'Error desconocido al enviar el testimonio.';
     } finally {
       this.cargando = false;
     }
@@ -117,8 +122,10 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
   }
 
   get formularioValido(): boolean {
-    return this.nuevoTestimonio.nombre.trim() !== '' &&
-           this.nuevoTestimonio.comentario.trim() !== '';
+    return (
+      this.nuevoTestimonio.nombre.trim() !== '' &&
+      this.nuevoTestimonio.comentario.trim() !== ''
+    );
   }
 
   camposCambiados(): void {
@@ -129,7 +136,8 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
       this.mostrarErrorNombre = this.nuevoTestimonio.nombre.trim() === '';
     }
     if (this.mostrarErrorComentario) {
-      this.mostrarErrorComentario = this.nuevoTestimonio.comentario.trim() === '';
+      this.mostrarErrorComentario =
+        this.nuevoTestimonio.comentario.trim() === '';
     }
   }
 
@@ -190,16 +198,18 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
     let animacionId: number;
 
     setTimeout(() => {
-      const testimonios = Array.from(carrusel.querySelectorAll('.testimonio')) as HTMLElement[];
+      const testimonios = Array.from(
+        carrusel.querySelectorAll('.testimonio')
+      ) as HTMLElement[];
       let totalWidth = testimonios.reduce((sum, testimonio) => {
         const style = window.getComputedStyle(testimonio);
-        const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const margin =
+          parseFloat(style.marginLeft) + parseFloat(style.marginRight);
         return sum + testimonio.offsetWidth + margin;
       }, 0);
 
       carrusel.innerHTML = '';
-      testimonios.forEach(t => carrusel.appendChild(t.cloneNode(true)));
-      testimonios.forEach(t => carrusel.appendChild(t.cloneNode(true)));
+      testimonios.forEach((t) => carrusel.appendChild(t.cloneNode(true)));
       carrusel.style.width = `${totalWidth * 2}px`;
 
       const animar = () => {
@@ -212,8 +222,13 @@ export class TestimoniosComponent implements OnInit, AfterViewInit {
       };
 
       animacionId = requestAnimationFrame(animar);
-      container?.addEventListener('touchstart', () => cancelAnimationFrame(animacionId));
-      container?.addEventListener('touchend', () => animacionId = requestAnimationFrame(animar));
+      container?.addEventListener('touchstart', () =>
+        cancelAnimationFrame(animacionId)
+      );
+      container?.addEventListener(
+        'touchend',
+        () => (animacionId = requestAnimationFrame(animar))
+      );
     }, 100);
   }
 }

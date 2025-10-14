@@ -2,66 +2,71 @@
   outline: 1px solid red;
 } */
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
 }
 
 .hero-image {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh; /* Ocupa casi toda la pantalla */
+  height: 100vh; /* Siempre toda la altura de la ventana */
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  z-index: -1; /* Lo coloca detrás del contenido */
-
+  z-index: -1;
 }
 
+.hero-image picture,
 .hero-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Hace que la imagen se vea bien sin deformarse */
 }
 
+.hero-image img {
+  object-fit: cover; /* Asegura que cubra todo sin deformarse */
+  object-position: center; /* Centra la parte visible de la imagen */
+  display: block;
+}
 
-/*Efecto mecanografia en texto*/
+/* Contenedor del texto con efecto mecanografía */
 .typewriter-container {
   position: absolute;
-  top: 20%; /* Usa porcentajes en lugar de valores fijos */
+  top: 25%; /* Un poco más abajo mejora la composición visual */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   color: white;
-  font-size: 5vw; /* Tamaño de fuente responsivo */
-  min-height: 10rem;
+  font-size: clamp(1.5rem, 5vw, 3rem); /* Escala fluida del texto base */
   z-index: 10;
   box-sizing: border-box;
   padding: 1rem;
+  width: 100%;
+  max-width: 90%;
 }
 
+/* Texto mecanografiado */
 #typewriter-text {
   display: inline-block;
-  border-right: 0.15em solid orange;
+  border-right: 0.15em solid rgb(0, 255, 191);
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 0.15em;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
-  font-size: 8vw; /* Tamaño de fuente responsivo */
+  font-size: clamp(2rem, 8vw, 6rem); /* Escala fluida entre móvil y desktop */
   line-height: 1.2;
 }
-
 
 /* Espacio para que el contenido no se sobreponga al header */
 .content {
   margin-top: 100vh; /* Lo coloca debajo del hero-image */
   padding: 20px;
 }
-
 
 .scroll-indicator {
   position: absolute;
@@ -82,10 +87,9 @@ html, body {
 .scroll-indicator span {
   display: block;
   margin-bottom: 10px;
-  font-family: 'Quicksand', sans-serif !important;
+  font-family: "Quicksand", sans-serif !important;
   font-weight: bold;
   font-size: 2.5rem;
-
 }
 
 .arrow {
@@ -98,7 +102,8 @@ html, body {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(-45deg);
   }
   50% {
@@ -107,10 +112,14 @@ html, body {
 }
 
 @keyframes fadeIn {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
-
 
 /* Estilo para la fotografía */
 .photography {
@@ -119,7 +128,7 @@ html, body {
 
 .titulo-fotografia {
   color: aliceblue;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 600;
   text-align: center;
   font-size: 3rem;
@@ -128,7 +137,7 @@ html, body {
 
 .titulo-video {
   color: aliceblue;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 600;
   text-align: center;
   font-size: 3rem;
@@ -137,12 +146,14 @@ html, body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hace que las columnas sean responsivas */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Hace que las columnas sean responsivas */
   gap: 20px; /* Espacio entre elementos */
   padding: 0 20px; /* Agrega un padding para evitar que el contenido toque los bordes */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
-
 
 /* Contenedor de cada imagen */
 .image-item {
@@ -201,7 +212,6 @@ html, body {
   opacity: 1;
 }
 
-
 /* Estilos para la sección de videos */
 .video {
   margin-top: 40px; /* Espacio entre la sección de fotografías y videos */
@@ -211,7 +221,7 @@ html, body {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #ffffff;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   text-align: center;
 }
 
@@ -248,10 +258,9 @@ html, body {
   font-weight: 600;
   margin: 10px 0;
   color: #ffffff;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   text-align: center;
 }
-
 
 .mute-btn {
   background: rgba(0, 0, 0, 0.5);
@@ -277,9 +286,6 @@ html, body {
   height: 100%;
   color: white;
 }
-
-
-
 
 /*Estilo para la flecha de volver a la pagina de inicio*/
 /* Estilos para el ícono dentro del botón */
@@ -313,7 +319,6 @@ html, body {
   background-color: rgb(247, 187, 234);
 }
 
-
 /* Media Queries para hacer el diseño responsive */
 
 /* Pantallas pequeñas (móviles) */
@@ -342,7 +347,10 @@ html, body {
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduce el ancho mínimo de las columnas */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(250px, 1fr)
+    ); /* Reduce el ancho mínimo de las columnas */
   }
 
   .image-item {
@@ -366,7 +374,7 @@ html, body {
     background: rgba(0, 0, 0, 0.5);
     border: none;
     color: white;
-    font-size:25px;
+    font-size: 25px;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -374,59 +382,57 @@ html, body {
 
   .mute-btn:hover {
     background: rgba(0, 0, 0, 0.8);
-    transform: scale(1.10);
+    transform: scale(1.1);
+  }
 
+  /* Pantallas muy pequeñas (móviles pequeños) */
+  @media (max-width: 480px) {
+    .typewriter-container {
+      top: 20%; /* Ajusta la posición vertical */
+      font-size: 7vw; /* Aumenta el tamaño de la fuente */
+      padding: 0 10px; /* Agrega padding horizontal para evitar desbordamiento */
+      box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+      text-align: center; /* Centra el texto */
+      width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    }
+
+    #typewriter-text {
+      font-size: 12vw; /* Aumenta el tamaño de la fuente */
+      letter-spacing: 0.1em; /* Reduce el espaciado entre letras */
+      word-wrap: break-word; /* Permite que el texto se divida en varias líneas si es necesario */
+      white-space: normal; /* Permite que el texto se ajuste en varias líneas */
+      line-height: 1.2; /* Ajusta el interlineado para mejor legibilidad */
+    }
+
+    .scroll-indicator {
+      font-size: 18px; /* Reduce el tamaño de la fuente */
+    }
+
+    .scroll-indicator span {
+      font-size: 1.8rem; /* Reduce el tamaño de la fuente */
+    }
+
+    .titulo-fotografia,
+    .titulo-video {
+      font-size: 1.5rem; /* Reduce el tamaño de la fuente */
+    }
+
+    .grid {
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+      ); /* Reduce el ancho mínimo de las columnas */
+    }
+
+    .main-image,
+    .hover-image {
+      height: 400px; /* Reduce la altura de las imágenes */
+    }
+
+    .volver-inicio mat-icon {
+      font-size: 28px; /* Tamaño del ícono */
+      width: 30px; /* Ancho del ícono */
+      height: 30px; /* Alto del ícono */
+    }
+  }
 }
-
-/* Pantallas muy pequeñas (móviles pequeños) */
-@media (max-width: 480px) {
-  .typewriter-container {
-    top: 20%; /* Ajusta la posición vertical */
-    font-size: 7vw; /* Aumenta el tamaño de la fuente */
-    padding: 0 10px; /* Agrega padding horizontal para evitar desbordamiento */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    text-align: center; /* Centra el texto */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
-  }
-
-  #typewriter-text {
-    font-size: 12vw; /* Aumenta el tamaño de la fuente */
-    letter-spacing: 0.1em; /* Reduce el espaciado entre letras */
-    word-wrap: break-word; /* Permite que el texto se divida en varias líneas si es necesario */
-    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
-    line-height: 1.2; /* Ajusta el interlineado para mejor legibilidad */
-  }
-
-
-  .scroll-indicator {
-    font-size: 18px; /* Reduce el tamaño de la fuente */
-  }
-
-  .scroll-indicator span {
-    font-size: 1.8rem; /* Reduce el tamaño de la fuente */
-  }
-
-  .titulo-fotografia,
-  .titulo-video {
-    font-size: 1.5rem; /* Reduce el tamaño de la fuente */
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduce el ancho mínimo de las columnas */
-  }
-
-  .main-image,
-  .hover-image {
-    height: 400px; /* Reduce la altura de las imágenes */
-  }
-
-  .volver-inicio mat-icon {
-    font-size: 28px; /* Tamaño del ícono */
-    width: 30px; /* Ancho del ícono */
-    height: 30px; /* Alto del ícono */
-  }
-
-}
-
-}
-

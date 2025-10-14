@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
   color: #fff; /* Texto blanco */
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Evita el desplazamiento horizontal */
@@ -26,7 +26,6 @@ body {
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   z-index: -1; /* Coloca el SVG detrás del contenido */
-
 }
 
 /* Estilos para el SVG */
@@ -45,7 +44,9 @@ form {
   backdrop-filter: blur(15px); /* Desenfoque más fuerte */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(15px); /* Para navegadores basados en WebKit (como Safari) */
+  -webkit-backdrop-filter: blur(
+    15px
+  ); /* Para navegadores basados en WebKit (como Safari) */
 }
 
 .requerido {
@@ -79,7 +80,7 @@ textarea {
 }
 
 button {
-  background-color: #C0EB2F;
+  background-color: #c0eb2f;
   color: rgb(0, 0, 0);
   padding: 10px 15px;
   border: none;
@@ -91,9 +92,8 @@ button {
   gap: 7px; /* Espacio entre el texto y el ícono */
 }
 
-
 button:hover {
-  background-color: #EACB3C;
+  background-color: #eacb3c;
 }
 
 .boton-deshabilitado {
@@ -101,7 +101,6 @@ button:hover {
   cursor: not-allowed !important;
   background-color: #cccccc !important;
 }
-
 
 .error-message {
   color: #f44336;
@@ -111,24 +110,29 @@ button:hover {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-5px); }
-  40%, 80% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
 }
-
-
 
 /* Mensajes de éxito o error */
 .mensaje {
   margin-top: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 1rem;
   color: rgb(0, 0, 0);
   font-weight: bold;
   text-align: center;
-
 }
-
 
 /* Contenedor del carrusel */
 .testimonios-container {
@@ -138,7 +142,6 @@ button:hover {
   -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave en dispositivos táctiles */
   scroll-snap-type: x mandatory; /* Habilita el desplazamiento suave */
   white-space: nowrap; /* Evita el salto de línea */
-
 }
 
 /* Carrusel */
@@ -148,7 +151,6 @@ button:hover {
   will-change: transform; /* Mejora el rendimiento de la animación */
   animation: desplazar 70s linear infinite; /* Animación del carrusel */
   animation-play-state: running; /* Inicia la animación */
-
 }
 
 /* Estilos para cada testimonio */
@@ -187,10 +189,10 @@ button:hover {
 .testimonio-comentario {
   font-size: 1.1rem;
   color: #020202dc;
-  word-wrap: break-word;        /* Permite saltos en palabras largas */
-  overflow-wrap: break-word;    /* Compatibilidad más moderna */
-  white-space: normal;          /* Asegura que haya saltos de línea */
-  max-width: 100%;              /* Evita que se salga del contenedor */
+  word-wrap: break-word; /* Permite saltos en palabras largas */
+  overflow-wrap: break-word; /* Compatibilidad más moderna */
+  white-space: normal; /* Asegura que haya saltos de línea */
+  max-width: 100%; /* Evita que se salga del contenedor */
   line-height: 1.4;
 }
 
@@ -209,36 +211,23 @@ button:hover {
   transition: transform 0.5s ease;
 }
 
-
-
-/* Estilos para el campo de URL con ícono de ayuda */
-.input-con-ayuda {
+/* Avatar seleccionado */
+.avatar-seleccionado {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre el input y el ícono */
+  gap: 10px;
   margin-bottom: 10px;
 }
 
-.icono-ayuda {
-  color: #007bff; /* Color azul */
-  cursor: pointer;
-  font-size: 20px; /* Tamaño del ícono */
-}
-
-.icono-ayuda:hover {
-  color: #0056b3; /* Color azul más oscuro al hacer hover */
-}
-
-
-/* Estilos para el selector de avatares */
-.selector-avatar {
-  position: relative;
-  margin-bottom: 10px;
-  text-align: left;
+.avatar-seleccionado img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #c0eb2f;
 }
 
 .boton-avatar {
-  background-color: #C0EB2F;
+  background-color: #c0eb2f;
   color: rgb(0, 0, 0);
   padding: 7px 10px;
   border: none;
@@ -250,35 +239,34 @@ button:hover {
 }
 
 .boton-avatar:hover {
-  background-color: #EACB3C;
+  background-color: #eacb3c;
 }
 
-/* Estilos para el menú de avatares */
+/* Menú de avatares */
 .menu-avatares {
-  position: absolute;
-  top: -90px; /* Despliega el menú hacia abajo */
-  right: 100%;
-  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 400px;
+  max-height: 250px;
+  overflow: auto;
+  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
+  position: relative;
   z-index: 1000;
-  display: grid; /* Usamos CSS Grid para crear la cuadrícula */
-  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
-  grid-template-rows: repeat(3, 1fr); /* 3 filas */
-  gap: 10px; /* Espacio entre los avatares */
-  max-width: 400px; /* Ancho máximo del menú (ajusta según tus necesidades) */
-  max-height: 250px; /* Altura máxima del menú (ajusta según tus necesidades) */
-  overflow: auto; /* Permite desplazamiento si hay muchos avatares */
 }
 
-/* Estilos para cada opción de avatar */
+/* Cada avatar del menú */
 .avatar-opcion {
-  cursor: pointer;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  width: 50px; /* Tamaño del avatar */
-  height: 50px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -292,10 +280,12 @@ button:hover {
   object-fit: cover;
 }
 
+.boton-enviar {
+  margin-top: 15px;
+}
 
 /* Ajustes para tablets (modo retrato y apaisado) */
 @media (max-width: 1024px) {
-
   form {
     width: 90%; /* Reducir el ancho del formulario en dispositivos pequeños */
     padding: 15px;
@@ -307,15 +297,17 @@ button:hover {
     padding: 18px;
   }
 
-    .menu-avatares {
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas en dispositivos pequeños */
+  .menu-avatares {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 columnas en dispositivos pequeños */
     max-width: 250px; /* Reducir el ancho máximo */
     max-height: 150px; /* Reducir la altura máxima */
     top: -60px;
     right: 90%;
     overflow: auto; /* Permite desplazamiento si hay muchos avatares */
   }
-
 
   .testimonio-imagen {
     width: 90px; /* Reducir el tamaño de la imagen */
@@ -357,20 +349,21 @@ button:hover {
   }
 
   @keyframes desplazar {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 100px)); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 100px));
+    }
   }
 }
 
 /* Ajustes para dispositivos pequeños (móviles) */
 @media (max-width: 768px) {
-
-
   form {
     width: 90%; /* Reducir el ancho del formulario en dispositivos pequeños */
     padding: 15px;
   }
-
 
   .titulo {
     font-size: 35px;
@@ -381,7 +374,10 @@ button:hover {
   }
 
   .menu-avatares {
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas en dispositivos pequeños */
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 columnas en dispositivos pequeños */
     max-width: 250px; /* Reducir el ancho máximo */
     max-height: 150px; /* Reducir la altura máxima */
     top: -50px;
@@ -423,7 +419,6 @@ button:hover {
 
   .testimonios-container {
     overflow-x: hidden !important; /* Fuerza el scroll */
-
   }
 
   .carrusel {
@@ -441,19 +436,15 @@ button:hover {
       transform: translateX(calc(-50% - 100px)); /* Ajuste preciso para iPad */
     }
   }
-
 }
-
 
 /* Ajustes para dispositivos muy pequeños (ej. smartphones pequeños) */
 @media (max-width: 480px) {
-
   .testimonios-container {
     overflow-x: auto; /* Cambiado de hidden a auto */
     width: 100%;
     -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
   }
-
 
   .titulo {
     font-size: 25px;
@@ -471,7 +462,10 @@ button:hover {
   }
 
   .menu-avatares {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en dispositivos muy pequeños */
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 columnas en dispositivos muy pequeños */
     top: -50px;
     right: 10%;
     max-width: 200px; /* Reducir aún más el ancho máximo */
@@ -502,18 +496,18 @@ button:hover {
   }
 
   .testimonio-comentario {
-  font-size: 0.9rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  max-width: 100%;
-  line-height: 1.3;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    line-height: 1.3;
   }
 
-    /* Ocultar barra de scroll */
-    .testimonios-container::-webkit-scrollbar {
-      display: none;
-    }
+  /* Ocultar barra de scroll */
+  .testimonios-container::-webkit-scrollbar {
+    display: none;
+  }
 
   .carrusel {
     display: flex;
