@@ -25,6 +25,12 @@ export class InvitacionesService {
       slug: 'xv-anos-jareli',
       photos: ['foto1.jpg', 'foto2.jpg'],
     },
+    {
+      id: '3',
+      name: 'XV Años de Nathalia',
+      slug: 'xv-nathalia', // 👈 este es el que estás usando
+      photos: ['foto1.jpg', 'foto2.jpg'],
+    },
   ];
 
   constructor() {}

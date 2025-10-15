@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guards';
+import { InvitacionesComponent } from './components/invitaciones/invitaciones.component';
 
 export const routes: Routes = [
   {
@@ -86,5 +87,14 @@ export const routes: Routes = [
         (m) => m.EditReservaComponent
       ),
     canActivate: [AdminGuard],
+  },
+
+  // app.routes.ts
+  {
+    path: 'invitacion/:slug',
+    loadComponent: () =>
+      import('./components/invitaciones/invitaciones.component').then(
+        (m) => m.InvitacionesComponent
+      ),
   },
 ];

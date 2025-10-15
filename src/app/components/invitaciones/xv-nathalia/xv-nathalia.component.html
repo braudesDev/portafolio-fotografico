@@ -1,0 +1,252 @@
+<!-- Sección imagen principal -->
+<section class="imagen-principal">
+  <div class="carrusel">
+    <picture>
+      <source
+        srcset="
+          https://res.cloudinary.com/drsyb53ae/image/upload/v1738138633/fotos%20invitacion%20paulina/horizontal-portada/gjdbugphvswtm0yam5ts.jpg
+        "
+        media="(min-width: 1024px)"
+      />
+      <img
+        src="https://res.cloudinary.com/drsyb53ae/image/upload/v1742255254/fotos-comprimidas/imagesHomeComprimidas/w8ehkueph7tupfrebgqh.webp"
+        alt="Imagen de los novios"
+        class="activa"
+      />
+    </picture>
+  </div>
+
+  <div class="texto-sobre-imagen">
+    <h1>XV AÑOS</h1>
+    <p>Fulanita</p>
+  </div>
+
+  <div class="scroll-down-container">
+    <div class="icon-arrow-down"></div>
+    <span class="scroll-text">Click para deslizar</span>
+  </div>
+</section>
+
+<!-- Sección texto de padres y padrinos -->
+<section class="imagen-texto-padrinos">
+  <div data-aos="fade-up-right" class="imagen-adornada-contenedor">
+    <img
+      src="https://res.cloudinary.com/drsyb53ae/image/upload/v1758065304/Documento_A4_Hoja_de_Papel_con_Flores_Delicado_Rosado_n39g8z.webp"
+      alt="Imagen de adornos"
+      class="imagen-adornada"
+    />
+    <div class="texto-centro">
+      <p data-aos="fade-up-left" data-aos-delay="600">
+        Con la bendición de Dios y el amor que mi familia me han dado me siento
+        feliz de llegar a este momento de mi vida, el día que dejaré atrás mi
+        infancia y comenzaré un nuevo viaje, porque son parte de mi vida porque
+        simplemente los quiero, es mi deseo que compartan conmigo la alegría de:
+      </p>
+
+      <h2 data-aos="zoom-in" data-aos-delay="600" class="padres-name">
+        Mis/Nuestros Padres
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="800">Nombre de los padres</p>
+
+      <h2 data-aos="zoom-in" data-aos-delay="1000" class="hermanos-name">
+        Mis/Nuestros Padrinos
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="1200">Nombre de los padrinos</p>
+    </div>
+  </div>
+</section>
+
+<!-- Secciones full-screen de imágenes -->
+<section class="imagen-fullscreen">
+  <picture>
+    <source
+      [srcset]="imagenesFullScreen[1].horizontal"
+      media="(min-width: 1024px)"
+    />
+    <img
+      [src]="imagenesFullScreen[1].vertical"
+      [alt]="imagenesFullScreen[1].alt"
+      class="fullscreen-img"
+    />
+  </picture>
+</section>
+
+<!-- Sección fecha y contador -->
+<section class="imagen-fecha">
+  <div data-aos="fade-up" class="imagen-adornada-contenedor">
+    <img
+      src="https://res.cloudinary.com/drsyb53ae/image/upload/v1758065304/Documento_A4_Hoja_de_Papel_con_Flores_Delicado_Rosado_n39g8z.webp"
+      alt="Imagen de adornos"
+      class="imagen-adornada"
+    />
+    <div class="texto-centro">
+      <div class="fecha-evento">
+        <div class="dia-semana" data-aos="fade-right" data-aos-delay="500">
+          Sábado
+        </div>
+        <div class="dia-numero" data-aos="fade-left" data-aos-delay="500">
+          29
+        </div>
+        <div class="mes" data-aos="fade-right" data-aos-delay="500">
+          Noviembre
+        </div>
+        <div class="anio" data-aos="fade-left" data-aos-delay="500">2025</div>
+      </div>
+
+      <div class="contador">
+        <div class="tiempo" data-aos="zoom-in" data-aos-delay="200">
+          <span id="dias" [ngClass]="{ animar: animarDias }">{{ dias }}</span>
+          <p>Días</p>
+        </div>
+        <div class="tiempo" data-aos="zoom-in" data-aos-delay="400">
+          <span id="horas" [ngClass]="{ animar: animarHoras }">{{
+            horas
+          }}</span>
+          <p>Horas</p>
+        </div>
+        <div class="tiempo" data-aos="zoom-in" data-aos-delay="600">
+          <span id="minutos" [ngClass]="{ animar: animarMinutos }">{{
+            minutos
+          }}</span>
+          <p>Minutos</p>
+        </div>
+        <div class="tiempo" data-aos="zoom-in" data-aos-delay="800">
+          <span id="segundos" [ngClass]="{ animar: animarSegundos }">{{
+            segundos
+          }}</span>
+          <p>Segundos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ceremonia y recepción -->
+<section class="ceremonia-recepcion">
+  <h2 class="titulo-seccion">Ceremonia & Recepción</h2>
+  <div class="contenedor-ceremonia">
+    <div class="bloque" data-aos="fade-right">
+      <img
+        src="https://res.cloudinary.com/drsyb53ae/image/upload/v1738168277/fotos%20invitacion%20paulina/vertical-galeria/clermdbdjeemzhvhnubs.jpg"
+        alt="Iglesia"
+        class="img-lugar"
+      />
+      <h3>Ceremonia</h3>
+      <p class="lugar">Rectoría del Señor de la Misericordia, Las Plazas</p>
+      <p class="hora">6:00 PM</p>
+      <a
+        href="https://www.google.com/maps/place/Rector%C3%ADa+del+Se%C3%B1or+de+la+Misericordia/"
+        target="_blank"
+        class="btn-mapa"
+        >Ver mapa</a
+      >
+    </div>
+    <div class="bloque" data-aos="fade-left">
+      <img
+        src="https://res.cloudinary.com/drsyb53ae/image/upload/v1738168853/fotos%20invitacion%20paulina/vertical-galeria/ytyxsurb4spvnk1yxlrg.jpg"
+        alt="Salón de eventos"
+        class="img-lugar"
+      />
+      <h3>Recepción</h3>
+      <p class="lugar">Jardín Alvori - Salón de Eventos (Principal)</p>
+      <p class="hora">8:00 PM</p>
+      <a
+        href="https://www.google.com/maps/place/Jard%C3%ADn+Alvori/"
+        target="_blank"
+        class="btn-mapa"
+        >Ver mapa</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- Itinerario -->
+<section class="itinerario">
+  <h2>Itinerario</h2>
+  <div class="timeline">
+    <div class="timeline-item" *ngFor="let item of itinerario">
+      <div class="icon"><i class="{{ item.icon }}"></i></div>
+      <div class="content">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.time }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Invitación extra: vestimenta y regalo -->
+<section class="invitacion-extra">
+  <div class="cards-container">
+    <!-- Vestimenta -->
+    <div class="card vestimenta" data-aos="fade-up" data-aos-delay="200">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">
+            <img src="assets/iconos/traje.png" alt="Código de vestimenta" />
+            <img src="assets/iconos/vestido.png" alt="Código de vestimenta" />
+          </div>
+          <h3>Código de Vestimenta</h3>
+          <p>Formal elegante / Cóctel</p>
+          <small>Pulsera, colores neutros y zapatos cómodos</small>
+        </div>
+        <div class="card-back">
+          <h3>Especificaciones</h3>
+          <p>
+            <strong>Hombres:</strong> Traje de vestir color azul, camisa blanca,
+            corbata opcional.
+          </p>
+          <p>
+            <strong>Mujeres:</strong> Vestido de cóctel o elegante, colores
+            neutros o pasteles, accesorios delicados.
+          </p>
+          <small
+            >¡Recuerda estar cómodo y elegante para disfrutar al máximo!</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Regalo -->
+    <div class="card regalo" data-aos="fade-up" data-aos-delay="400">
+      <div class="icon">
+        <img src="assets/iconos/regalo.png" alt="Sugerencia de regalo" />
+      </div>
+      <h3>Sugerencia de Regalo</h3>
+      <p>Mi mejor regalo será compartir este gran día contigo ❤️</p>
+      <small>Si deseas obsequiar algo, puedes optar por.</small>
+    </div>
+  </div>
+</section>
+
+<!-- Galería de fotos -->
+<section class="galeria-fotos">
+  <div class="galeria">
+    <div class="foto grande" *ngFor="let foto of fotos; let i = index">
+      <img [src]="foto" [alt]="'Foto ' + (i + 1)" (click)="abrirModal(foto)" />
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" [class.show]="modalActivo">
+    <span class="cerrar" (click)="cerrarModal()">&times;</span>
+    <img class="modal-contenido" [src]="fotoModal" />
+  </div>
+</section>
+
+<!-- Confirmación de asistencia -->
+<section class="confirmacion-asistencia-section">
+  <h2>Confirma tu asistencia</h2>
+  <p>¡Nos encantaría contar contigo en este gran día! 💖</p>
+
+  <div class="confirmacion-asistencia">
+    <input
+      type="text"
+      [(ngModel)]="nombreConfirmacion"
+      placeholder="Tu nombre"
+    />
+    <div class="botones">
+      <button (click)="confirmarAsistencia(true)">Asistiré</button>
+      <button (click)="confirmarAsistencia(false)">No asistiré</button>
+    </div>
+  </div>
+</section>
