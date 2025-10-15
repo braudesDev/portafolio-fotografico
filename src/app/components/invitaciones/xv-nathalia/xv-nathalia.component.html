@@ -21,14 +21,14 @@
     <p>Fulanita</p>
   </div>
 
-  <div class="scroll-down-container">
+  <div #scrollContainer class="scroll-down-container">
     <div class="icon-arrow-down"></div>
     <span class="scroll-text">Click para deslizar</span>
   </div>
 </section>
 
 <!-- Sección texto de padres y padrinos -->
-<section class="imagen-texto-padrinos">
+<section #destinoScroll class="imagen-texto-padrinos">
   <div data-aos="fade-up-right" class="imagen-adornada-contenedor">
     <img
       src="https://res.cloudinary.com/drsyb53ae/image/upload/v1758065304/Documento_A4_Hoja_de_Papel_con_Flores_Delicado_Rosado_n39g8z.webp"
@@ -121,6 +121,22 @@
   </div>
 </section>
 
+<!--Imagen full screen-->
+
+<section class="imagen-fullscreen">
+  <picture>
+    <source
+      [srcset]="imagenesFullScreen[2].horizontal"
+      media="(min-width: 1024px)"
+    />
+    <img
+      [src]="imagenesFullScreen[2].vertical"
+      [alt]="imagenesFullScreen[2].alt"
+      class="fullscreen-img"
+    />
+  </picture>
+</section>
+
 <!-- Ceremonia y recepción -->
 <section class="ceremonia-recepcion">
   <h2 class="titulo-seccion">Ceremonia & Recepción</h2>
@@ -174,6 +190,21 @@
   </div>
 </section>
 
+<!-- Secciones full-screen de imágenes -->
+<section class="imagen-fullscreen">
+  <picture>
+    <source
+      [srcset]="imagenesFullScreen[3].horizontal"
+      media="(min-width: 1024px)"
+    />
+    <img
+      [src]="imagenesFullScreen[3].vertical"
+      [alt]="imagenesFullScreen[3].alt"
+      class="fullscreen-img"
+    />
+  </picture>
+</section>
+
 <!-- Invitación extra: vestimenta y regalo -->
 <section class="invitacion-extra">
   <div class="cards-container">
@@ -182,13 +213,20 @@
       <div class="card-inner">
         <div class="card-front">
           <div class="icon">
-            <img src="assets/iconos/traje.png" alt="Código de vestimenta" />
-            <img src="assets/iconos/vestido.png" alt="Código de vestimenta" />
+            <img
+              src="../../../../assets/traje.png"
+              alt="Código de vestimenta"
+            />
+            <img
+              src="../../../../assets/vestido.png"
+              alt="Código de vestimenta"
+            />
           </div>
           <h3>Código de Vestimenta</h3>
           <p>Formal elegante / Cóctel</p>
           <small>Pulsera, colores neutros y zapatos cómodos</small>
         </div>
+
         <div class="card-back">
           <h3>Especificaciones</h3>
           <p>
@@ -209,7 +247,7 @@
     <!-- Regalo -->
     <div class="card regalo" data-aos="fade-up" data-aos-delay="400">
       <div class="icon">
-        <img src="assets/iconos/regalo.png" alt="Sugerencia de regalo" />
+        <img src="../../../../assets/regalo.png" alt="Sugerencia de regalo" />
       </div>
       <h3>Sugerencia de Regalo</h3>
       <p>Mi mejor regalo será compartir este gran día contigo ❤️</p>
@@ -221,7 +259,13 @@
 <!-- Galería de fotos -->
 <section class="galeria-fotos">
   <div class="galeria">
-    <div class="foto grande" *ngFor="let foto of fotos; let i = index">
+    <div
+      class="foto"
+      *ngFor="let foto of fotos; let i = index"
+      [ngClass]="{
+        grande: i === 0 || i === 3 || i === 6
+      }"
+    >
       <img [src]="foto" [alt]="'Foto ' + (i + 1)" (click)="abrirModal(foto)" />
     </div>
   </div>
@@ -234,7 +278,7 @@
 </section>
 
 <!-- Confirmación de asistencia -->
-<section class="confirmacion-asistencia-section">
+<section id="confirmacion-asistencia" class="confirmacion-asistencia-section">
   <h2>Confirma tu asistencia</h2>
   <p>¡Nos encantaría contar contigo en este gran día! 💖</p>
 
@@ -249,4 +293,19 @@
       <button (click)="confirmarAsistencia(false)">No asistiré</button>
     </div>
   </div>
+</section>
+
+<!-- Secciones full-screen de imágenes -->
+<section class="imagen-fullscreen">
+  <picture>
+    <source
+      [srcset]="imagenesFullScreen[4].horizontal"
+      media="(min-width: 1024px)"
+    />
+    <img
+      [src]="imagenesFullScreen[4].vertical"
+      [alt]="imagenesFullScreen[4].alt"
+      class="fullscreen-img"
+    />
+  </picture>
 </section>

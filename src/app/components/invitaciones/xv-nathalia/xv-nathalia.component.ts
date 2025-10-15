@@ -1,4 +1,11 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ElementRef,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import AOS from 'aos';
@@ -12,6 +19,14 @@ import { gsap } from 'gsap';
   styleUrls: ['./xv-nathalia.component.css'],
 })
 export class XvNathaliaComponent implements OnInit, AfterViewInit {
+  // ====================
+  // ViewChild para scroll
+  // ====================
+  @ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef;
+  @ViewChild('destinoScroll', { static: true }) destinoScroll!: ElementRef;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
+
   // ====================
   // Variables contador regresivo
   // ====================
@@ -29,8 +44,13 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
   // Galería de fotos
   // ====================
   fotos: string[] = [
-    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738168853/fotos%20invitacion%20paulina/vertical-galeria/ytyxsurb4spvnk1yxlrg.jpg',
-    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738168277/fotos%20invitacion%20paulina/vertical-galeria/clermdbdjeemzhvhnubs.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138679/fotos%20invitacion%20paulina/vertical-galeria/tfj62mmop2bzeyipxskd.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138678/fotos%20invitacion%20paulina/vertical-galeria/fez4ede73xnsyksurxa1.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138675/fotos%20invitacion%20paulina/vertical-galeria/gazw17vucyh4e3akce5x.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138671/fotos%20invitacion%20paulina/vertical-galeria/k9vlfb77gpaf0utgh8yp.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138573/fotos%20invitacion%20paulina/vertical-galeria/dyv20jg1g7avzk9awcuc.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138568/fotos%20invitacion%20paulina/vertical-galeria/fwgpuwchtwugsi6jcna2.jpg',
+    'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138567/fotos%20invitacion%20paulina/vertical-galeria/r2kz56d1qvb2kib8nvw7.jpg',
   ];
   modalActivo = false;
   fotoModal: string = '';
@@ -65,12 +85,28 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
         'https://res.cloudinary.com/drsyb53ae/image/upload/v1742239501/fotos-comprimidas/gczawnuavntxnuycsfsd.webp',
       alt: 'Foto vertical boda y horizontal Quinceañera',
     },
+    {
+      vertical:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1744341362/fotos-comprimidas/comprimidasPaulinaYChristian/vl0ycflhzir8hm9qtmci.webp',
+      horizontal:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1744404807/fotos-comprimidas/comprimidasPaulinaYChristian/qfxfxsdkntweoryf7mrl.webp',
+      alt: 'Foto vertical boda y horizontal Quinceañera',
+    },
+    {
+      vertical:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1754589811/29062025-DSC_4081_neczgc.webp',
+      horizontal:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1754589811/19072025-DSC_0077_rjclhc.webp',
+      alt: 'Foto vertical boda y horizontal Quinceañera',
+    },
+    {
+      vertical:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138544/fotos%20invitacion%20paulina/vertical-galeria/aztqksa1ldaxtosxeobj.jpg',
+      horizontal:
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1738196496/fotos%20invitacion%20paulina/horizontal-portada/fea7geegb4z54k2vuwc1.jpg',
+      alt: 'Foto vertical boda y horizontal Quinceañera',
+    },
   ];
-
-  // ====================
-  // Confirmación de asistencia
-  // ====================
-  nombreConfirmacion: string = '';
 
   // ====================
   // Lifecycle hooks
@@ -93,33 +129,52 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Animar íconos del timeline al hacer scroll
-    const timelineItems = document.querySelectorAll('.timeline-item');
+    // ====================
+    // Scroll suave hacia sección padrinos
+    // ====================
+    if (this.scrollContainer && this.destinoScroll) {
+      this.renderer.listen(this.scrollContainer.nativeElement, 'click', () => {
+        this.destinoScroll.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
 
+    // ====================
+    // Flip de cards (vestimenta)
+    // ====================
+    const cards = this.el.nativeElement.querySelectorAll('.card.vestimenta');
+    cards.forEach((card: HTMLElement) => {
+      const inner = card.querySelector('.card-inner');
+      if (inner) {
+        this.renderer.listen(inner, 'click', () =>
+          inner.classList.toggle('is-flipped')
+        );
+      }
+    });
+
+    // ====================
+    // Animación timeline al hacer scroll
+    // ====================
+    const timelineItems =
+      this.el.nativeElement.querySelectorAll('.timeline-item');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       },
       { threshold: 0.3 }
     );
+    timelineItems.forEach((item: any) => observer.observe(item));
 
-    timelineItems.forEach((item) => observer.observe(item));
-
-    // Animación línea central del timeline
-    const timeline = document.querySelector('.timeline');
+    // Animación línea central timeline
+    const timeline = this.el.nativeElement.querySelector('.timeline');
     if (timeline) {
-      setTimeout(() => {
-        timeline.classList.add('loaded');
-      }, 100);
+      setTimeout(() => timeline.classList.add('loaded'), 100);
     }
   }
 
   // ====================
-  // Métodos
+  // Contador regresivo
   // ====================
   iniciarContador(): void {
     const fechaEvento = new Date('2025-11-29T18:00:00').getTime();
@@ -138,19 +193,16 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
         );
         const nuevaSegundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-        // Activar animación solo si cambia el valor
         if (this.dias !== nuevaDias) this.animarDias = true;
         if (this.horas !== nuevaHoras) this.animarHoras = true;
         if (this.minutos !== nuevaMinutos) this.animarMinutos = true;
         if (this.segundos !== nuevaSegundos) this.animarSegundos = true;
 
-        // Actualizar valores
         this.dias = nuevaDias;
         this.horas = nuevaHoras;
         this.minutos = nuevaMinutos;
         this.segundos = nuevaSegundos;
 
-        // Reset animaciones
         setTimeout(() => {
           this.animarDias = false;
           this.animarHoras = false;
@@ -172,19 +224,29 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
     this.modalActivo = false;
   }
 
-  confirmarAsistencia(asiste: boolean): void {
-    if (!this.nombreConfirmacion.trim()) {
-      alert('Por favor escribe tu nombre 💬');
+  // ====================
+  // Confirmación de asistencia
+  // ====================
+  nombreConfirmacion: string = '';
+  telefono: string = '524621304745';
+
+  confirmarAsistencia(asistira: boolean) {
+    const nombre = this.nombreConfirmacion.trim();
+
+    if (!nombre) {
+      alert('Por favor, escribe tu nombre');
       return;
     }
 
-    if (asiste) {
-      alert(
-        `🎉 ¡Gracias, ${this.nombreConfirmacion}! Nos encantará verte ahí 💖`
-      );
-    } else {
-      alert(`😢 Lamentamos que no puedas asistir, ${this.nombreConfirmacion}.`);
-    }
+    const nombreFormateado = `*${nombre}*`;
+    const mensaje = asistira
+      ? `Hola, soy ${nombreFormateado} y asistiré a tu evento, muchas gracias por la invitación!!! 🎉✨🥳`
+      : `Hola, soy ${nombreFormateado} y lamentablemente no podré asistir a tu evento. ¡Mis mejores deseos para este gran día!`;
+
+    const urlWhatsapp = `https://wa.me/${
+      this.telefono
+    }?text=${encodeURIComponent(mensaje)}`;
+    window.open(urlWhatsapp, '_blank');
 
     this.nombreConfirmacion = '';
   }

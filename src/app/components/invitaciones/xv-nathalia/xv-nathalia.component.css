@@ -969,3 +969,501 @@ Media Queries
     font-size: 0.85rem;
   }
 }
+
+/*----------------------
+Sección Código de Vestimenta y Regalo (adaptado para Angular)
+-------------------------*/
+
+.invitacion-extra {
+  width: 90%;
+  max-width: 1000px;
+  margin: 5rem auto;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 300px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* evita que el contenido se salga al girar */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card .icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem auto;
+}
+
+.card .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: #5a3e36;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.2rem;
+  color: #5a3e36;
+  margin-bottom: 0.5rem;
+}
+
+.card small {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  color: #8b6b5c;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Diferenciar colores de cada card */
+.card.vestimenta {
+  background: linear-gradient(145deg, #fdf6f0, #fcefe6);
+}
+
+.card.regalo {
+  background: linear-gradient(145deg, #fff5f7, #ffe8ec);
+}
+
+/* Vestimenta: iconos múltiples en una fila */
+.card.vestimenta .icon {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.card.vestimenta .icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/*=======================
+Card Flip
+========================*/
+.card-inner {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+  min-height: 250px;
+}
+
+/* Front & Back: uso absoluto para el flip */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Frente */
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reverso */
+.card-back {
+  background: linear-gradient(145deg, #fbe8d8, #fbd6c0);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Clase que se le añade al contenedor para voltear (JS/Angular) */
+.card.is-flipped {
+  transform: rotateY(180deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Si manejas el flip con la clase en card-inner */
+.card-inner.is-flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.card-inner.is-flipped .card-back {
+  transform: rotateY(0deg);
+}
+
+/* Sombra extra al girar */
+.card-inner.is-flipped {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/*=======================
+Media Queries
+========================*/
+
+/* Pantallas grandes (PC) */
+@media (min-width: 1024px) {
+  .cards-container {
+    flex-wrap: nowrap;
+  }
+  .card {
+    flex: 1 1 45%;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cards-container {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .card {
+    flex: 1 1 48%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 767px) {
+  .cards-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
+  .card .icon {
+    width: 60px;
+    height: 60px;
+  }
+  .card.vestimenta .icon img {
+    width: 40px;
+    height: 40px;
+  }
+  .card-back p {
+    font-size: 1rem;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.2rem;
+  }
+  .card h3 {
+    font-size: 1.4rem;
+  }
+  .card p {
+    font-size: 1rem;
+  }
+  .card .icon {
+    width: 50px;
+    height: 50px;
+  }
+  .card.vestimenta .icon img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/*=============================
+Sección Galería de Fotos
+=============================*/
+.galeria-fotos {
+  width: 90%;
+  max-width: 1000px;
+  margin: 5rem auto;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+/* Fotos grandes (ocupan todo el ancho) */
+.foto.grande {
+  grid-column: span 2;
+}
+
+/* Estilo general de las fotos */
+.foto img {
+  width: 100%;
+  height: auto;
+  border-radius: 25px;
+  display: block;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.foto img:hover {
+  transform: scale(1.05);
+}
+
+/*=============================
+Modal
+=============================*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-contenido {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  margin: auto;
+  display: block;
+}
+
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cerrar:hover {
+  color: #f2f2f2;
+}
+
+/*=============================
+Media Queries
+=============================*/
+
+/* PC */
+@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+/* Móviles tipo Pinterest */
+@media (max-width: 767px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.8rem;
+  }
+
+  .foto.grande {
+    grid-column: span 2;
+  }
+
+  .modal-contenido {
+    max-width: 95%;
+    max-height: 80%;
+  }
+
+  .cerrar {
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .galeria {
+    grid-gap: 0.6rem;
+  }
+}
+
+/*==============================
+ Sección Confirmación de Asistencia
+==============================*/
+#confirmacion-asistencia {
+  width: 90%;
+  max-width: 800px;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(145deg, #fff5f0, #ffe8dc);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+#confirmacion-asistencia h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.3rem;
+  color: #5a3e36;
+  margin-bottom: 1rem;
+}
+
+#confirmacion-asistencia p {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.6rem;
+  color: #5a3e36;
+  margin-bottom: 2rem;
+}
+
+.confirmacion-asistencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.confirmacion-asistencia input[type="text"] {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d8bba1;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.confirmacion-asistencia input[type="text"]:focus {
+  box-shadow: 0 0 10px rgba(160, 120, 80, 0.4);
+  border-color: #a06754;
+}
+
+.confirmacion-asistencia .botones {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.confirmacion-asistencia .botones button {
+  background: linear-gradient(135deg, #f7b08d, #f45e6f);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.confirmacion-asistencia .botones button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*==============================
+ Media Queries
+==============================*/
+
+/* PC grandes */
+@media (min-width: 1024px) {
+  .confirmacion-asistencia input[type="text"] {
+    width: 50%;
+  }
+  .confirmacion-asistencia .botones button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #confirmacion-asistencia {
+    padding: 1.5rem 1rem;
+  }
+  .confirmacion-asistencia input[type="text"] {
+    width: 70%;
+  }
+  .confirmacion-asistencia .botones {
+    gap: 0.8rem;
+  }
+  .confirmacion-asistencia .botones button {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Móviles (<768px) */
+@media (max-width: 767px) {
+  #confirmacion-asistencia {
+    padding: 1rem 0.5rem;
+  }
+  .confirmacion-asistencia input[type="text"] {
+    width: 90%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+  .confirmacion-asistencia .botones {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .confirmacion-asistencia .botones button {
+    width: 80%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+/*==============================
+ Animación
+==============================*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
