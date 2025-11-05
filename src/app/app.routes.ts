@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guards';
-import { InvitacionesComponent } from './components/invitaciones/invitaciones.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +50,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'invitaciones-digitales',
+    loadComponent: () =>
+      import(
+        './components/invitaciones-digitales/invitaciones-digitales.component'
+      ).then((m) => m.InvitacionesDigitalesComponent),
+  },
+  {
     path: 'album/:id',
     loadComponent: () =>
       import('./components/album/album.component').then(
@@ -65,11 +71,54 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'anfitrion-login',
+    loadComponent: () =>
+      import('./anfitrion-login/anfitrion-login.component').then(
+        (m) => m.AnfitrionLoginComponent
+      ),
+  },
+  {
+    path: 'boda',
+    loadComponent: () =>
+      import('./components/invitaciones-digitales/boda/boda.component').then(
+        (m) => m.BodaComponent
+      ),
+  },
+  {
+    path: 'catalogo-invitaciones-boda',
+    loadComponent: () =>
+      import(
+        './components/invitaciones-digitales/boda/catalogo-invitaciones-boda/catalogo-invitaciones-boda.component'
+      ).then((m) => m.CatalogoInvitacionesBodaComponent),
+  },
+  {
+    path: 'xv-anios',
+    loadComponent: () =>
+      import(
+        './components/invitaciones-digitales/xv-anios/xv-anios.component'
+      ).then((m) => m.XvAniosComponent),
+  },
+  {
+    path: 'catalogo-invitaciones-xv',
+    loadComponent: () =>
+      import(
+        './components/invitaciones-digitales/xv-anios/catalogo-invitaciones-xv-anios/catalogo-invitaciones-xv-anios.component'
+      ).then((m) => m.CatalogoInvitacionesXvAniosComponent),
+  },
+  {
     path: 'admin-dashboard',
     loadComponent: () =>
       import('./components/admin-dashboard/admin-dashboard.component').then(
         (m) => m.AdminDashboardComponent
       ),
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'anfitrion-dashboard',
+    loadComponent: () =>
+      import(
+        './components/anfitrion-dashboard/anfitrion-dashboard.component'
+      ).then((m) => m.AnfitrionDashboardComponent),
     canActivate: [AdminGuard],
   },
   {

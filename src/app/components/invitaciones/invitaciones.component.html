@@ -1,4 +1,16 @@
-<app-xv-nathalia *ngIf="invitacion?.slug === 'xv-nathalia'"></app-xv-nathalia>
+<ng-container *ngIf="invitacion; else notFound">
+  <!-- 💖 invitaciones Personalizadas -->
+
+  <!-- Muestra de inv XV Nathalia -->
+  <app-xv-nathalia *ngIf="invitacion?.slug === 'xv-nathalia'"></app-xv-nathalia>
+
+  <!-- 🎨 Plantilla genérica para las demás -->
+  <app-invitacion-generica
+    *ngIf="!invitacion?.componente"
+    [data]="invitacion"
+  ></app-invitacion-generica>
+</ng-container>
+
 <ng-template #notFound>
   <p>Invitación no encontrada 😢</p>
 </ng-template>

@@ -1,36 +1,102 @@
-<h2>Dashboard de Reservas</h2>
+<div class="dashboard-container">
+  <!-- 🔹 Tabs para cambiar de sección -->
+  <div class="tab-header">
+    <button
+      [class.active]="selectedSection === 'reservas'"
+      (click)="selectedSection = 'reservas'"
+    >
+      📸 Reservas
+    </button>
+    <button
+      [class.active]="selectedSection === 'invitaciones'"
+      (click)="selectedSection = 'invitaciones'"
+    >
+      💌 Invitaciones
+    </button>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Cliente</th>
-      <th>Fecha</th>
-      <th>Estado</th>
-      <th>Paquete</th>
-      <th>Anticipo</th>
-      <th>Total</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let reserva of reservas">
-      <td data-label="Cliente">{{ reserva.clienteNombre }}</td>
-      <td data-label="Fecha">
-        {{ reserva.fechaEvento.toDate() | date : "mediumDate" }}
-      </td>
-      <td data-label="Estado">{{ reserva.estado }}</td>
-      <td data-label="Paquete">{{ reserva.paquete }}</td>
-      <td data-label="Anticipo">{{ reserva.anticipo | currency : "MXN" }}</td>
-      <td data-label="Total">{{ reserva.total | currency : "MXN" }}</td>
-      <td data-label="Acciones">
-        <button (click)="editarReserva(reserva)">Editar</button>
-        <button (click)="eliminarReserva(reserva.id!)">Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <!-- 🔹 Contenido de la sección seleccionada -->
+  <div *ngIf="selectedSection === 'reservas'">
+    <h2>Dashboard de Reservas</h2>
 
-<a [routerLink]="['/reserva-form']" class="tooltip-container">
-  <button class="btn-redondo-fijo">+</button>
-  <span class="tooltip-text">Agregar nueva reserva</span>
-</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Paquete</th>
+          <th>Anticipo</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reserva of reservas">
+          <td data-label="Cliente">{{ reserva.clienteNombre }}</td>
+          <td data-label="Fecha">
+            {{ reserva.fechaEvento.toDate() | date : "mediumDate" }}
+          </td>
+          <td data-label="Estado">{{ reserva.estado }}</td>
+          <td data-label="Paquete">{{ reserva.paquete }}</td>
+          <td data-label="Anticipo">
+            {{ reserva.anticipo | currency : "MXN" }}
+          </td>
+          <td data-label="Total">{{ reserva.total | currency : "MXN" }}</td>
+          <td data-label="Acciones">
+            <button (click)="editarReserva(reserva)">Editar</button>
+            <button (click)="eliminarReserva(reserva.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a [routerLink]="['/reserva-form']" class="tooltip-container">
+      <button class="btn-redondo-fijo">+</button>
+      <span class="tooltip-text">Agregar nueva reserva</span>
+    </a>
+  </div>
+
+  <!-- 💌 Sección de Invitaciones -->
+  <div *ngIf="selectedSection === 'invitaciones'">
+    <h2>Dashboard de Invitaciones</h2>
+
+    <p style="text-align: center; font-size: 1.1rem; color: #4b5563">
+      Desde aquí podrás crear y gestionar tus invitaciones digitales
+      personalizadas.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>Anfitrión</th>
+          <th>Invitados</th>
+          <th>Fecha</th>
+          <th>Enviadas</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invitacion of invitaciones">
+          <td data-label="Evento">{{ invitacion.evento }}</td>
+          <td data-label="Anfitrión">{{ invitacion.anfitrion }}</td>
+          <td data-label="Invitados">{{ invitacion.totalInvitados }}</td>
+          <td data-label="Fecha">
+            {{ invitacion.fecha | date : "mediumDate" }}
+          </td>
+          <td data-label="Enviadas">{{ invitacion.enviadas }}</td>
+          <td data-label="Acciones">
+            <button>Ver</button>
+            <button>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a [routerLink]="['/crear-invitacion']" class="tooltip-container">
+      <button class="btn-redondo-fijo">+</button>
+      <span class="tooltip-text">Agregar nueva invitación</span>
+    </a>
+  </div>
+</div>

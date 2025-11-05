@@ -19,9 +19,6 @@ import { gsap } from 'gsap';
   styleUrls: ['./xv-nathalia.component.css'],
 })
 export class XvNathaliaComponent implements OnInit, AfterViewInit {
-  // ====================
-  // ViewChild para scroll
-  // ====================
   @ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef;
   @ViewChild('destinoScroll', { static: true }) destinoScroll!: ElementRef;
 
@@ -30,10 +27,10 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
   // ====================
   // Variables contador regresivo
   // ====================
-  dias: number = 0;
-  horas: number = 0;
-  minutos: number = 0;
-  segundos: number = 0;
+  dias = 0;
+  horas = 0;
+  minutos = 0;
+  segundos = 0;
 
   animarDias = false;
   animarHoras = false;
@@ -52,11 +49,12 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
     'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138568/fotos%20invitacion%20paulina/vertical-galeria/fwgpuwchtwugsi6jcna2.jpg',
     'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138567/fotos%20invitacion%20paulina/vertical-galeria/r2kz56d1qvb2kib8nvw7.jpg',
   ];
+
   modalActivo = false;
-  fotoModal: string = '';
+  fotoModal = '';
 
   // ====================
-  // Itinerario / Timeline
+  // Itinerario
   // ====================
   itinerario = [
     { icon: 'fas fa-church', title: 'Ceremonia', time: '6:00 PM' },
@@ -68,7 +66,7 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
   ];
 
   // ====================
-  // Imágenes fullscreen dinámicas
+  // Imágenes fullscreen
   // ====================
   imagenesFullScreen = [
     {
@@ -85,37 +83,17 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
         'https://res.cloudinary.com/drsyb53ae/image/upload/v1742239501/fotos-comprimidas/gczawnuavntxnuycsfsd.webp',
       alt: 'Foto vertical boda y horizontal Quinceañera',
     },
-    {
-      vertical:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1744341362/fotos-comprimidas/comprimidasPaulinaYChristian/vl0ycflhzir8hm9qtmci.webp',
-      horizontal:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1744404807/fotos-comprimidas/comprimidasPaulinaYChristian/qfxfxsdkntweoryf7mrl.webp',
-      alt: 'Foto vertical boda y horizontal Quinceañera',
-    },
-    {
-      vertical:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1754589811/29062025-DSC_4081_neczgc.webp',
-      horizontal:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1754589811/19072025-DSC_0077_rjclhc.webp',
-      alt: 'Foto vertical boda y horizontal Quinceañera',
-    },
-    {
-      vertical:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1738138544/fotos%20invitacion%20paulina/vertical-galeria/aztqksa1ldaxtosxeobj.jpg',
-      horizontal:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1738196496/fotos%20invitacion%20paulina/horizontal-portada/fea7geegb4z54k2vuwc1.jpg',
-      alt: 'Foto vertical boda y horizontal Quinceañera',
-    },
   ];
 
   // ====================
   // Lifecycle hooks
   // ====================
   ngOnInit(): void {
-    // Inicializar AOS
+    // Asegurar que solo se ejecute si el componente está montado (previene conflictos en el portafolio)
+    if (!this.el.nativeElement.isConnected) return;
+
     AOS.init({ duration: 1000, once: true });
 
-    // Animación de entrada con GSAP
     gsap.from('.texto-sobre-imagen', {
       opacity: 0,
       y: -50,
@@ -124,23 +102,20 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
       ease: 'power2.out',
     });
 
-    // Iniciar contador regresivo
     this.iniciarContador();
   }
 
   ngAfterViewInit(): void {
-    // ====================
-    // Scroll suave hacia sección padrinos
-    // ====================
+    if (!this.el.nativeElement.isConnected) return;
+
+    // Scroll suave
     if (this.scrollContainer && this.destinoScroll) {
       this.renderer.listen(this.scrollContainer.nativeElement, 'click', () => {
         this.destinoScroll.nativeElement.scrollIntoView({ behavior: 'smooth' });
       });
     }
 
-    // ====================
-    // Flip de cards (vestimenta)
-    // ====================
+    // Flip vestimenta
     const cards = this.el.nativeElement.querySelectorAll('.card.vestimenta');
     cards.forEach((card: HTMLElement) => {
       const inner = card.querySelector('.card-inner');
@@ -151,9 +126,7 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // ====================
-    // Animación timeline al hacer scroll
-    // ====================
+    // Timeline
     const timelineItems =
       this.el.nativeElement.querySelectorAll('.timeline-item');
     const observer = new IntersectionObserver(
@@ -166,7 +139,7 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
     );
     timelineItems.forEach((item: any) => observer.observe(item));
 
-    // Animación línea central timeline
+    // Línea central
     const timeline = this.el.nativeElement.querySelector('.timeline');
     if (timeline) {
       setTimeout(() => timeline.classList.add('loaded'), 100);
@@ -227,10 +200,10 @@ export class XvNathaliaComponent implements OnInit, AfterViewInit {
   // ====================
   // Confirmación de asistencia
   // ====================
-  nombreConfirmacion: string = '';
-  telefono: string = '524621304745';
+  nombreConfirmacion = '';
+  telefono = '524621304745';
 
-  confirmarAsistencia(asistira: boolean) {
+  confirmarAsistencia(asistira: boolean): void {
     const nombre = this.nombreConfirmacion.trim();
 
     if (!nombre) {

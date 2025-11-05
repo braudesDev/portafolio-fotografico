@@ -1,0 +1,30 @@
+.invitacion-valida {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--primary-color, #fffaf8);
+  color: var(--secondary-color, #5a3e36);
+  font-family: var(--font-family, "Playfair Display", serif);
+}
+
+.invitacion-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.nombre {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.pases {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.mensaje {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+}

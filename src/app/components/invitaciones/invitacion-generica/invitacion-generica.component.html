@@ -1,0 +1,32 @@
+<div
+  class="invitacion-container"
+  [ngStyle]="{
+    '--primary-color': data.primaryColor,
+    '--secondary-color': data.secondaryColor,
+    'font-family': data.fontFamily
+  }"
+>
+  <!-- Seccion Hero -->
+  <app-hero-section
+    [nombres]="data.nombres || ''"
+    [fecha]="data.fecha || ''"
+    [lugar]="data.lugar || ''"
+    [heroImage]="data.heroImage || ''"
+  ></app-hero-section>
+
+  <!--Seccion nos casamos-->
+  <app-nos-casamos-section
+    [frase]="data.frasePrincipal || ''"
+    [mensaje]="data.mensajePrincipal || ''"
+  ></app-nos-casamos-section>
+
+  <!--Seccion invitacion valida-->
+  <app-invitacion-valida-section
+    [invitado]="data.invitado || ''"
+    [pases]="data.pases || 1"
+    [mensajePersonalizado]="data.fraseDeInvValida"
+  ></app-invitacion-valida-section>
+
+  <!-- Seccion ceremonia -->
+  <app-ceremonia-section> </app-ceremonia-section>
+</div>

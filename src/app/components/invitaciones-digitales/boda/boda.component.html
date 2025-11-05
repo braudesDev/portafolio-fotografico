@@ -1,0 +1,53 @@
+<div class="boda-container">
+  <section class="hero">
+    <img src="assets/img/hero-boda.jpg" alt="Boda" class="hero-img" />
+    <div class="hero-text">
+      <h1>Tu historia merece una invitación inolvidable</h1>
+      <p>Invitaciones digitales personalizadas, elegantes y llenas de amor.</p>
+    </div>
+  </section>
+
+  <section class="descripcion">
+    <h2>Queríamos invitaciones digitales personalizadas y con estilo</h2>
+    <p>
+      Para que cada detalle hable de ustedes. Crea, comparte y sorprende a tus
+      invitados con un diseño que refleje su historia.
+    </p>
+  </section>
+
+  <section class="ventajas">
+    <h3>Tu invitación lista y sin estrés</h3>
+    <div class="ventajas-grid">
+      <div class="ventaja">
+        <h4>✨ Diseño profesional</h4>
+        <p>Estilo y elegancia en cada detalle.</p>
+      </div>
+      <div class="ventaja">
+        <h4>⚡ Entrega rápida</h4>
+        <p>Invitaciones listas en poco tiempo.</p>
+      </div>
+      <div class="ventaja">
+        <h4>📱 Compatibles con todo</h4>
+        <p>Funciona en cualquier dispositivo o red social.</p>
+      </div>
+      <div class="ventaja">
+        <h4>💬 Atención cercana</h4>
+        <p>Te acompañamos paso a paso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="carrusel">
+    <h3>Conoce nuestro catálogo de invitaciones</h3>
+    <p>Cada diseño es único, elegante y adaptable a tu evento.</p>
+
+    <div class="carrusel-container" #carousel>
+      <div class="mockup" *ngFor="let invitacion of invitacionesDemo">
+        <img [src]="invitacion.imagen" [alt]="invitacion.titulo" />
+        <p>{{ invitacion.titulo }}</p>
+      </div>
+    </div>
+
+    <button class="ver-mas" (click)="verCatalogo()">Ver más estilos</button>
+  </section>
+</div>

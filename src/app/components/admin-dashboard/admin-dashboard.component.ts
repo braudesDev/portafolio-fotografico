@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservasService, Reserva } from '../../services/reservas.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+
+interface Invitacion {
+  evento: string;
+  anfitrion: string;
+  totalInvitados: number;
+  fecha: Date;
+  enviadas: number;
+}
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,6 +21,8 @@ import { Router } from '@angular/router';
 })
 export class AdminDashboardComponent implements OnInit {
   reservas: Reserva[] = [];
+  invitaciones: Invitacion[] = [];
+  selectedSection: 'reservas' | 'invitaciones' = 'reservas';
 
   constructor(
     private reservasService: ReservasService,
@@ -25,20 +33,36 @@ export class AdminDashboardComponent implements OnInit {
     this.reservasService.getReservas().subscribe((data) => {
       this.reservas = data;
     });
+
+    // Datos simulados por ahora
+    this.invitaciones = [
+      {
+        evento: 'Boda de Ana y Luis',
+        anfitrion: 'Ana Martínez',
+        totalInvitados: 120,
+        fecha: new Date('2025-11-15'),
+        enviadas: 80,
+      },
+      {
+        evento: 'XV Años de Sofía',
+        anfitrion: 'Sofía López',
+        totalInvitados: 100,
+        fecha: new Date('2025-12-02'),
+        enviadas: 45,
+      },
+    ];
   }
 
   editarReserva(reserva: Reserva) {
     Swal.fire({
-      title: '¿Estás seguro?',
-      text: `¿Quieres editar la reserva de ${reserva.clienteNombre}?`,
+      title: '¿Editar reserva?',
+      text: `¿Deseas editar la reserva de ${reserva.clienteNombre}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Sí, editar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Aquí va la lógica para redirigir o abrir el formulario de edición
-        console.log('Editar reserva confirmada:', reserva);
         this.router.navigate(['/editar-reserva', reserva.id]);
       }
     });
@@ -46,11 +70,11 @@ export class AdminDashboardComponent implements OnInit {
 
   eliminarReserva(id: string) {
     Swal.fire({
-      title: '¿Estás seguro que deseas eliminar esta informacion?',
-      text: '¡No podrás revertir esto!',
+      title: '¿Eliminar reserva?',
+      text: 'No podrás revertir esto.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#4f46e5', // color morado que usas
+      confirmButtonColor: '#4f46e5',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
@@ -59,16 +83,11 @@ export class AdminDashboardComponent implements OnInit {
         this.reservasService
           .deleteReserva(id)
           .then(() => {
-            Swal.fire('Eliminado', 'La reserva ha sido eliminada.', 'success');
-            // Actualizar lista local para reflejar cambio sin recargar
+            Swal.fire('Eliminada', 'La reserva ha sido eliminada.', 'success');
             this.reservas = this.reservas.filter((r) => r.id !== id);
           })
           .catch((err) => {
-            Swal.fire(
-              'Error',
-              'Ocurrió un error al eliminar la reserva.',
-              'error'
-            );
+            Swal.fire('Error', 'No se pudo eliminar la reserva.', 'error');
             console.error('Error eliminando reserva', err);
           });
       }

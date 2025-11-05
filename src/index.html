@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!-- Cambiar a "es" si el contenido es en español -->
-
   <head>
-    <!-- Metadatos básicos -->
+    <!-- ============ METADATOS BÁSICOS ============ -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       http-equiv="Permissions-Policy"
       content="compute-pressure=(), interest-cohort=()"
     />
+    <base href="/" />
 
-    <!-- Preconexiones y preloads -->
+    <!-- ============ FUENTES Y CONEXIONES ============ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap"
-      as="style"
+      rel="stylesheet"
     />
     <link
-      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      as="style"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
     />
 
-    <!-- Favicon tradicional (.ico) -->
+    <!-- ============ FAVICONS Y MANIFEST ============ -->
     <link
       rel="icon"
       href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385658/logotiposPortafolioFotografico/favicons/favicon.ico.ico"
       type="image/x-icon"
     />
-
-    <!-- Versiones PNG -->
     <link
       rel="icon"
       type="image/png"
@@ -45,25 +53,26 @@
       sizes="16x16"
       href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385639/logotiposPortafolioFotografico/favicons/favicon-16x16.png"
     />
-
-    <!-- iOS -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="https://res.cloudinary.com/drsyb53ae/image/upload/v1746385673/logotiposPortafolioFotografico/favicons/apple-touch-icon.png"
     />
-
-    <!-- PWA -->
     <link
       rel="manifest"
       href="https://res.cloudinary.com/drsyb53ae/raw/upload/v1747606426/logotiposPortafolioFotografico/favicons/kkgkzqa2dnlmzzllsliy.webmanifest"
     />
 
-    <!-- Título -->
-    <title>On Off Shot Fotografia</title>
-    <base href="/" />
+    <!-- ============ TÍTULO GENERAL DEL SITIO ============ -->
+    <title>On Off Shot Fotografía</title>
 
-    <!-- Primary Meta Tags -->
+    <!-- ============ METADATOS GENERALES DEL PORTAFOLIO ============ -->
+    <meta
+      name="description"
+      content="Fotógrafo profesional en Irapuato especializado en eventos, retratos y fotografía de productos. Capturamos tus momentos más importantes con calidad y creatividad."
+    />
+
+    <!-- ============ OPEN GRAPH (COMPARTIR) POR DEFECTO ============ -->
     <meta property="og:title" content="On Off Shot Fotografía" />
     <meta
       property="og:description"
@@ -78,14 +87,12 @@
       content="https://portafolio-fotografico-15a5b.web.app/"
     />
     <meta property="og:type" content="website" />
-
-    <!-- WhatsApp/Social Media Optimization -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Logo de On Off Shot Fotografía" />
-    <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Twitter Meta Tags -->
+    <!-- ============ TWITTER META ============ -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="On Off Shot Fotografía" />
     <meta
       name="twitter:description"
@@ -96,62 +103,35 @@
       content="https://res.cloudinary.com/drsyb53ae/image/upload/v1744682880/logotiposPortafolioFotografico/v7voslzcc1uz9f7tmpqg.png"
     />
 
-    <!-- Fallback para navegadores/sistemas que no soportan OpenGraph -->
-    <meta
-      name="description"
-      content="Fotógrafo profesional en Irapuato especializado en eventos, retratos y fotografía de productos. Capturamos tus momentos más importantes con calidad y creatividad."
-    />
+    <!-- ============ GOOGLE ANALYTICS / TAG MANAGER ============ -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZRXVKF507R"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    <!-- Fuentes -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
-      rel="stylesheet"
-    />
+      gtag("config", "G-3SEDBH37SR", {
+        page_title: document.title,
+        page_path: window.location.pathname,
+      });
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+      gtag("event", "page_view", {
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    </script>
+
+    <!-- ============ METADATOS DINÁMICOS (ANGULAR) ============ -->
+    <!-- Estos serán reemplazados dinámicamente en las invitaciones -->
+    <meta name="dynamic-og-title" content="" />
+    <meta name="dynamic-og-description" content="" />
+    <meta name="dynamic-og-image" content="" />
   </head>
-
-  <!-- Google Tag Manager (GTM) + GA4 -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-ZRXVKF507R"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    // Configuración estándar
-    gtag("config", "G-3SEDBH37SR", {
-      page_title: document.title,
-      page_path: window.location.pathname,
-      debug_mode: true, // Solo para desarrollo (quitar en producción)
-    });
-
-    // Eventos personalizados (ejemplo)
-    gtag("event", "page_view", {
-      page_location: window.location.href,
-      page_title: document.title,
-    });
-  </script>
 
   <body class="mat-typography">
     <app-root></app-root>
