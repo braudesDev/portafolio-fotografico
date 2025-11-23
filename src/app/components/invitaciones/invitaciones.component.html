@@ -1,16 +1,17 @@
-<ng-container *ngIf="invitacion; else notFound">
-  <!-- 💖 invitaciones Personalizadas -->
+<!-- Mostrar mientras carga -->
+<div *ngIf="cargando" class="cargando">Cargando invitación...</div>
 
-  <!-- Muestra de inv XV Nathalia -->
-  <app-xv-nathalia *ngIf="invitacion?.slug === 'xv-nathalia'"></app-xv-nathalia>
-
-  <!-- 🎨 Plantilla genérica para las demás -->
-  <app-invitacion-generica
-    *ngIf="!invitacion?.componente"
-    [data]="invitacion"
-  ></app-invitacion-generica>
-</ng-container>
-
-<ng-template #notFound>
+<!-- Si no se encontró -->
+<div *ngIf="!cargando && !invitacion" class="no-encontrada">
   <p>Invitación no encontrada 😢</p>
-</ng-template>
+</div>
+
+<!-- Si se encontró una invitación -->
+<ng-container *ngIf="!cargando && invitacion">
+  <!-- Invitación genérica desde Firestore -->
+  <app-invitacion-generica
+    *ngIf="invitacion && invitacion.slug !== 'xv-nathalia'"
+    [data]="invitacion"
+  >
+  </app-invitacion-generica>
+</ng-container>

@@ -1,0 +1,170 @@
+<div class="contenedor-formulario">
+  <h2 class="title">
+    {{ invitacionId ? "Editar invitación" : "Crear nueva invitación" }}
+  </h2>
+
+  <form (ngSubmit)="guardarInvitacion()" #formInvitacion="ngForm">
+    <!-- SECCIÓN PRINCIPALES -->
+    <div class="seccion">
+      <h3 class="seccion-title" (click)="toggleSeccion('principales')">
+        Datos principales
+        <span>{{ seccionesAbiertas.principales ? "▲" : "▼" }}</span>
+      </h3>
+      <div class="seccion-body" *ngIf="seccionesAbiertas.principales">
+        <label>Nombre del evento:</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.name"
+          name="name"
+          required
+        />
+
+        <label>Tipo de evento:</label>
+        <select [(ngModel)]="nuevaInvitacion.tipo" name="tipo" required>
+          <option value="boda">Boda</option>
+          <option value="xv">XV Años</option>
+          <option value="cumpleaños">Cumpleaños</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label>Nombres del festejado:</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.nombres"
+          name="nombres"
+          required
+        />
+
+        <label>Fecha del evento:</label>
+        <input
+          type="datetime-local"
+          [(ngModel)]="nuevaInvitacion.fecha"
+          name="fecha"
+          required
+        />
+
+        <label>Lugar:</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.lugar"
+          name="lugar"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- SECCIÓN HERO / DISEÑO -->
+    <div class="seccion">
+      <h3 class="seccion-title" (click)="toggleSeccion('hero')">
+        Hero / Diseño
+        <span>{{ seccionesAbiertas.hero ? "▲" : "▼" }}</span>
+      </h3>
+      <div class="seccion-body" *ngIf="seccionesAbiertas.hero">
+        <label>Imagen principal (URL):</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.heroImage"
+          name="heroImage"
+        />
+
+        <label>Imagen para compartir (URL):</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.shareImage"
+          name="shareImage"
+        />
+
+        <label>Color primario:</label>
+        <input
+          type="color"
+          [(ngModel)]="nuevaInvitacion.primaryColor"
+          name="primaryColor"
+        />
+
+        <label>Color secundario:</label>
+        <input
+          type="color"
+          [(ngModel)]="nuevaInvitacion.secondaryColor"
+          name="secondaryColor"
+        />
+
+        <label>Fuente del texto:</label>
+        <select [(ngModel)]="nuevaInvitacion.fontFamily" name="fontFamily">
+          <option value="'Great Vibes', cursive">
+            Great Vibes (romántica)
+          </option>
+          <option value="'Dancing Script', cursive">
+            Dancing Script (fluida)
+          </option>
+          <option value="'Parisienne', cursive">Parisienne (ligera)</option>
+          <option value="'Allura', cursive">Allura (elegante)</option>
+          <option value="'Playfair Display', serif">
+            Playfair Display (clásica)
+          </option>
+          <option value="'Cormorant Garamond', serif">
+            Cormorant Garamond (formal)
+          </option>
+          <option value="'Libre Baskerville', serif">
+            Libre Baskerville (tradicional)
+          </option>
+          <option value="'Poppins', sans-serif">Poppins (moderna)</option>
+          <option value="'Montserrat', sans-serif">
+            Montserrat (minimalista)
+          </option>
+          <option value="'Raleway', sans-serif">Raleway (estética)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECCIÓN MENSAJES -->
+    <div class="seccion">
+      <h3 class="seccion-title" (click)="toggleSeccion('mensajes')">
+        Mensajes
+        <span>{{ seccionesAbiertas.mensajes ? "▲" : "▼" }}</span>
+      </h3>
+      <div class="seccion-body" *ngIf="seccionesAbiertas.mensajes">
+        <label>Frase principal:</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.frasePrincipal"
+          name="frasePrincipal"
+        />
+
+        <label>Mensaje principal:</label>
+        <textarea
+          [(ngModel)]="nuevaInvitacion.mensajePrincipal"
+          name="mensajePrincipal"
+          rows="4"
+        ></textarea>
+
+        <label>Frase de invitación válida:</label>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInvitacion.fraseDeInvValida"
+          name="fraseDeInvValida"
+        />
+
+        <label>Historia:</label>
+        <textarea
+          [(ngModel)]="nuevaInvitacion.historia"
+          name="historia"
+          rows="4"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- SECCIÓN REVISIÓN -->
+    <div class="seccion">
+      <h3 class="seccion-title" (click)="toggleSeccion('revision')">
+        Revisión / Guardar
+        <span>{{ seccionesAbiertas.revision ? "▲" : "▼" }}</span>
+      </h3>
+      <div class="seccion-body" *ngIf="seccionesAbiertas.revision">
+        <pre>{{ nuevaInvitacion | json }}</pre>
+        <button type="submit" [disabled]="!formInvitacion.form.valid">
+          Guardar invitación
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

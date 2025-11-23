@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservasService, Reserva } from '../../services/reservas.service';
+import { Firestore, doc, deleteDoc } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-interface Invitacion {
-  evento: string;
-  anfitrion: string;
-  totalInvitados: number;
-  fecha: Date;
-  enviadas: number;
-}
+// Servicios
+import { ReservasService, Reserva } from '../../services/reservas.service';
+import {
+  InvitacionesService,
+  Invitacion,
+} from '../../services/invitaciones.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -26,33 +25,24 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor(
     private reservasService: ReservasService,
-    private router: Router
+    private invitacionesService: InvitacionesService, // ✅ Faltaba la coma anterior
+    private router: Router,
+    private firestore: Firestore
   ) {}
 
   ngOnInit() {
+    // Cargar reservas reales
     this.reservasService.getReservas().subscribe((data) => {
       this.reservas = data;
     });
 
-    // Datos simulados por ahora
-    this.invitaciones = [
-      {
-        evento: 'Boda de Ana y Luis',
-        anfitrion: 'Ana Martínez',
-        totalInvitados: 120,
-        fecha: new Date('2025-11-15'),
-        enviadas: 80,
-      },
-      {
-        evento: 'XV Años de Sofía',
-        anfitrion: 'Sofía López',
-        totalInvitados: 100,
-        fecha: new Date('2025-12-02'),
-        enviadas: 45,
-      },
-    ];
+    //Cargar invitaciones desde el servicio real
+    this.invitacionesService.getAll().subscribe((data) => {
+      this.invitaciones = data;
+    });
   }
 
+  // 🟣 --- RESERVAS ---
   editarReserva(reserva: Reserva) {
     Swal.fire({
       title: '¿Editar reserva?',
@@ -90,6 +80,68 @@ export class AdminDashboardComponent implements OnInit {
             Swal.fire('Error', 'No se pudo eliminar la reserva.', 'error');
             console.error('Error eliminando reserva', err);
           });
+      }
+    });
+  }
+
+  // 🟢 --- INVITACIONES ---
+  editarInvitacion(invitacion: Invitacion) {
+    Swal.fire({
+      title: '¿Editar invitación?',
+      text: `¿Deseas editar la invitación "${invitacion.name}"?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, editar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/editar-invitacion', invitacion.id]);
+      }
+    });
+  }
+
+  // 🔹 Genera la URL completa para una invitación
+  generarEnlace(invitacion: Invitacion): string {
+    const slug = invitacion.slug || invitacion.id;
+    return `${window.location.origin}/invitacion/${slug}`;
+  }
+
+  // 🔹 Copia la URL al portapapeles
+  copiarEnlace(invitacion: Invitacion) {
+    const enlace = this.generarEnlace(invitacion);
+    navigator.clipboard.writeText(enlace);
+    Swal.fire(
+      'Copiado',
+      'El enlace ha sido copiado al portapapeles',
+      'success'
+    );
+  }
+
+  eliminarInvitacion(id: string) {
+    Swal.fire({
+      title: '¿Eliminar invitación?',
+      text: 'No podrás revertir esto.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4f46e5',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          // 🔹 Usa el ID real para borrar
+          const ref = doc(this.firestore, `invitaciones/${id}`);
+          await deleteDoc(ref);
+
+          // 🔹 Actualiza la UI
+          this.invitaciones = this.invitaciones.filter((inv) => inv.id !== id);
+
+          Swal.fire('Eliminada', 'La invitación ha sido eliminada.', 'success');
+        } catch (error) {
+          console.error(error);
+          Swal.fire('Error', 'No se pudo eliminar la invitación', 'error');
+        }
       }
     });
   }

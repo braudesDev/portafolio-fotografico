@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PradrinosSectionComponent } from './pradrinos-section.component';
+import { PradrinosSectionComponent } from './padrinos-section.component';
 
 describe('PradrinosSectionComponent', () => {
   let component: PradrinosSectionComponent;
@@ -8,9 +8,8 @@ describe('PradrinosSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PradrinosSectionComponent]
-    })
-    .compileComponents();
+      imports: [PradrinosSectionComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PradrinosSectionComponent);
     component = fixture.componentInstance;

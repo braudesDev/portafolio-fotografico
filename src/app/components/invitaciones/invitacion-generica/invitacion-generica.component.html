@@ -1,4 +1,5 @@
 <div
+  *ngIf="data"
   class="invitacion-container"
   [ngStyle]="{
     '--primary-color': data.primaryColor,
@@ -6,27 +7,86 @@
     'font-family': data.fontFamily
   }"
 >
-  <!-- Seccion Hero -->
+  <!-- Sección Hero -->
   <app-hero-section
+    *ngIf="data.heroImage"
     [nombres]="data.nombres || ''"
-    [fecha]="data.fecha || ''"
+    [fecha]="fechaFormateada"
     [lugar]="data.lugar || ''"
-    [heroImage]="data.heroImage || ''"
+    [heroImage]="data.heroImage"
+    [fuente]="data.fuente ?? 'Playfair Display, serif'"
+    [colorTexto]="data.colorTexto ?? '#ffffff'"
   ></app-hero-section>
 
-  <!--Seccion nos casamos-->
+  <!-- Sección “Nos casamos” -->
   <app-nos-casamos-section
+    *ngIf="data.frasePrincipal || data.mensajePrincipal"
     [frase]="data.frasePrincipal || ''"
     [mensaje]="data.mensajePrincipal || ''"
   ></app-nos-casamos-section>
 
-  <!--Seccion invitacion valida-->
+  <!-- Sección “Invitación válida para” -->
   <app-invitacion-valida-section
+    *ngIf="data.fraseDeInvValida"
     [invitado]="data.invitado || ''"
     [pases]="data.pases || 1"
     [mensajePersonalizado]="data.fraseDeInvValida"
   ></app-invitacion-valida-section>
 
-  <!-- Seccion ceremonia -->
-  <app-ceremonia-section> </app-ceremonia-section>
+  <!-- <app-ceremonia-section *ngIf="data.ceremonia"></app-ceremonia-section>
+  <app-padres-section
+    *ngIf="data.padres"
+    [contenido]="data.padres"
+  ></app-padres-section>
+  <app-recepcion-section
+    *ngIf="data.recepcion"
+    [contenido]="data.recepcion"
+  ></app-recepcion-section>
+  <app-padrinos-section
+    *ngIf="data.padrinos"
+    [contenido]="data.padrinos"
+  ></app-padrinos-section>
+  <app-damas-section
+    *ngIf="data.damas"
+    [contenido]="data.damas"
+  ></app-damas-section>
+  <app-dresscode-section
+    *ngIf="data.dressCode"
+    [contenido]="data.dressCode"
+  ></app-dresscode-section>
+  <app-historia-section
+    *ngIf="data.historia"
+    [contenido]="data.historia"
+  ></app-historia-section>
+  <app-itinerario-section
+    *ngIf="data.itinerario"
+    [contenido]="data.itinerario"
+  ></app-itinerario-section>
+  <app-hospedaje-section
+    *ngIf="data.hospedaje"
+    [contenido]="data.hospedaje"
+  ></app-hospedaje-section>
+  <app-hashtag-section
+    *ngIf="data.hashtag"
+    [contenido]="data.hashtag"
+  ></app-hashtag-section>
+  <app-contador-section
+    *ngIf="data.contador"
+    [contenido]="data.contador"
+  ></app-contador-section>
+  <app-regalos-section
+    *ngIf="data.regalos"
+    [contenido]="data.regalos"
+  ></app-regalos-section>
+  <app-consideraciones-section
+    *ngIf="data.consideraciones"
+    [contenido]="data.consideraciones"
+  ></app-consideraciones-section>
+  <app-confirmacion-section
+    *ngIf="data.confirmacion"
+    [contenido]="data.confirmacion"
+  ></app-confirmacion-section> -->
+  <app-footer-section></app-footer-section>
 </div>
+
+<div *ngIf="!data">Cargando invitación...</div>

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guards';
+import { FormularioInvitacionComponent } from './components/invitaciones/formulario-invitacion/formulario-invitacion.component';
 
 export const routes: Routes = [
   {
@@ -135,6 +136,22 @@ export const routes: Routes = [
       import('./components/edit-reserva/edit-reserva.component').then(
         (m) => m.EditReservaComponent
       ),
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'formulario-invitacion',
+    loadComponent: () =>
+      import(
+        './components/invitaciones/formulario-invitacion/formulario-invitacion.component'
+      ).then((m) => m.FormularioInvitacionComponent),
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'editar-invitacion/:id',
+    loadComponent: () =>
+      import(
+        './components/invitaciones/formulario-invitacion/formulario-invitacion.component'
+      ).then((m) => m.FormularioInvitacionComponent),
     canActivate: [AdminGuard],
   },
 

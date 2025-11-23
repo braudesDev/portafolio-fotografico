@@ -1,37 +1,47 @@
 import { Injectable } from '@angular/core';
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 export interface Invitacion {
   id: string;
-  name: string; // nombre interno (por ti)
-  slug: string; // ruta amigable (ej. /invitacion/xv-nathalia)
-  tipo: 'boda' | 'xv'; // tipo de evento
+  name: string;
+  slug: string;
+  tipo: 'boda' | 'xv' | 'bautizo' | 'cumples';
   descripcion?: string;
-  componente?: string; // por ejemplo, 'XvNathaliaComponent' o 'BodaPilotoComponent'
-
-  // 💍 Datos específicos del evento
-  nombres?: string; // ej. “Ángeles & Braulio” o “Natalia”
-  fecha?: string;
+  componente?: string;
+  nombres?: string;
+  fecha: Date;
   lugar?: string;
-
-  // textis personalizados
-  frasePrincipal?: string; // Ej: "¡Nos casamos!"
-  mensajePrincipal?: string; // Ej: "Queremos compartir este momento tan especial contigo 💕"
-  fraseDeInvValida?: string; // Ej: "Tu invitación es válida"
-  historia?: string; // Ejemplo: “Después de grandes aventuras...”
-
-  // 🖼 Recursos gráficos
-  heroImage?: string; // imagen de portada
-  shareImage?: string; // imagen para compartir (Facebook/WhatsApp)
+  frasePrincipal?: string;
+  mensajePrincipal?: string;
+  fraseDeInvValida?: string;
+  historia?: string;
+  heroImage?: string;
+  shareImage?: string;
   photos?: string[];
-
-  // 🎨 Personalización visual
   primaryColor?: string;
   secondaryColor?: string;
   fontFamily?: string;
-
-  // 👥 Datos del invitado (opcionales)
   invitado?: string;
   pases?: number;
+  evento?: string;
+  anfitrion?: string;
+  totalInvitados?: number;
+  enviadas?: number;
+  fuente?: string;
+  colorTexto?: string;
 }
 
 @Injectable({
@@ -40,33 +50,12 @@ export interface Invitacion {
 export class InvitacionesService {
   private invitaciones: Invitacion[] = [
     {
-      id: '1',
-      name: 'Ejemplo Boda Invitación',
-      slug: 'ejemplo-boda-invitacion',
-      tipo: 'boda',
-      nombres: 'Ángeles & Braulio',
-      fecha: '12 de diciembre de 2025',
-      lugar: 'Hacienda San Miguel, Irapuato',
-      frasePrincipal: '¡Nos Casamos!',
-      mensajePrincipal:
-        'Estamos emocionados de compartir este momento especial con ustedes. ¡Acompáñennos en nuestra boda y celebremos juntos el amor!',
-      fraseDeInvValida: `Tu invitación es válida para el evento. ¡Esperamos verte allí! {{invitado}}`,
-      historia:
-        'Después de años de aventuras, risas y crecimiento juntos, hemos decidido dar el siguiente paso en nuestro viaje. Nos encantaría que fueran parte de este día tan especial para nosotros.',
-      heroImage:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/v1754589811/29062025-DSC_4071_dqkkd3.webp',
-      shareImage: 'assets/invitaciones/boda-piloto/share.jpg',
-      primaryColor: '#f7e9e8',
-      secondaryColor: '#5a3e36',
-      fontFamily: "'Playfair Display', serif",
-    },
-    {
       id: '2',
       name: 'XV de Nathalia',
       slug: 'xv-nathalia',
       tipo: 'xv',
       nombres: 'Nathalia',
-      fecha: '8 de marzo de 2026',
+      fecha: new Date('2024-11-10T19:00:00'),
       lugar: 'Salón Los Cedros, Salamanca',
       heroImage: 'assets/invitaciones/xv-nathalia/hero.jpg',
       shareImage: 'assets/invitaciones/xv-nathalia/share.jpg',
@@ -76,11 +65,82 @@ export class InvitacionesService {
     },
   ];
 
-  getAll() {
-    return this.invitaciones;
+  constructor(private firestore: Firestore) {}
+
+  // 🔹 NUEVO: obtener invitación por slug
+  getInvitacionBySlug(slug: string): Observable<Invitacion | undefined> {
+    const ref = collection(this.firestore, 'invitaciones');
+    const q = query(ref, where('slug', '==', slug));
+
+    return new Observable((observer) => {
+      getDocs(q)
+        .then((snapshot) => {
+          if (!snapshot.empty) {
+            const data = snapshot.docs[0].data() as Invitacion;
+            observer.next({ ...data, id: snapshot.docs[0].id });
+          } else {
+            observer.next(undefined);
+          }
+          observer.complete();
+        })
+        .catch((error) => observer.error(error));
+    });
   }
 
-  getBySlug(slug: string) {
-    return this.invitaciones.find((inv) => inv.slug === slug);
+  // ✅ getter para la colección (seguro y limpio)
+  private get coleccion() {
+    return collection(this.firestore, 'invitaciones');
+  }
+
+  async guardarInvitacion(invitacion: Invitacion) {
+    try {
+      const ref = collection(this.firestore, 'invitaciones');
+      const docRef = await addDoc(ref, invitacion);
+      console.log('Invitación guardada con ID:', docRef.id);
+      return docRef.id;
+    } catch (error) {
+      console.error('Error al guardar invitación:', error);
+      throw error;
+    }
+  }
+
+  // 🔹 Obtener todas la invitaciones
+  getAll(): Observable<Invitacion[]> {
+    return collectionData(this.coleccion, { idField: 'id' }) as Observable<
+      Invitacion[]
+    >;
+  }
+
+  // 🔹 Buscar por slug
+  async getBySlug(slug: string): Promise<Invitacion | undefined> {
+    const snapshot = await getDocs(collection(this.firestore, 'invitaciones'));
+    const invitaciones = snapshot.docs.map((doc) => doc.data() as Invitacion);
+    return invitaciones.find((inv) => inv.slug === slug);
+  }
+
+  // 🔹 Obtener una invitación por ID
+  getInvitacionById(id: string): Observable<Invitacion | undefined> {
+    const docRef = doc(this.firestore, `invitaciones/${id}`);
+    return docData(docRef, { idField: 'id' }) as Observable<
+      Invitacion | undefined
+    >;
+  }
+
+  // 🔹 Agregar nueva invitación
+  addInvitacion(invitacion: Invitacion): Promise<void> {
+    invitacion.slug = invitacion.name.toLowerCase().replace(/\s+/g, '-');
+    return addDoc(this.coleccion, invitacion).then(() => {});
+  }
+
+  // 🔹 Actualizar invitación existente
+  updateInvitacion(id: string, data: Partial<Invitacion>): Promise<void> {
+    const docRef = doc(this.firestore, `invitaciones/${id}`);
+    return updateDoc(docRef, { ...data });
+  }
+
+  // 🔹 Eliminar invitación
+  deleteInvitacion(id: string): Promise<void> {
+    const docRef = doc(this.firestore, `invitaciones/${id}`);
+    return deleteDoc(docRef);
   }
 }

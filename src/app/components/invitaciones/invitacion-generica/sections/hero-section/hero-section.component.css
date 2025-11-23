@@ -5,46 +5,51 @@
   background-position: center;
   display: flex;
   align-items: center;
+  color: aliceblue;
   justify-content: center;
-  color: white;
   text-align: center;
-  font-family: var(--font-family);
   overflow: hidden;
+}
 
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
-    z-index: 1;
+/* capa semitransparente */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+/* contenido centrado */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* título */
+.hero-title {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  /* ❌ elimina font-family fija, hereda del section */
+}
+
+/* fecha y lugar */
+.hero-date,
+.hero-location {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    animation: fadeInUp 1.5s ease forwards;
-  }
-
-  .hero-title {
-    font-size: 3rem;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  }
-
-  .hero-date,
-  .hero-location {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

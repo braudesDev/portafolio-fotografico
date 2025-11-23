@@ -207,7 +207,7 @@ export class MyServicesComponent implements OnInit {
   calculatePrice(): number {
     const isHighSeason = this.isHighSeason;
     const basePrice = this.duration() * (isHighSeason ? 700 : 300);
-    const photosPrice = this.photos() * (isHighSeason ? 40 : 20);
+    const photosPrice = this.photos() * (isHighSeason ? 50 : 30);
     const videoPrice = this.videoHours() * this.videoPricePerHour;
     const extras =
       (this.includeDrone() ? 1500 : 0) + (this.includeAlbum() ? 1600 : 0);

@@ -5,11 +5,13 @@ import {
   ElementRef,
   Renderer2,
   ViewChild,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import AOS from 'aos';
 import { gsap } from 'gsap';
+import { Invitacion } from '../../../services/invitaciones.service';
 
 @Component({
   selector: 'app-xv-nathalia',
@@ -21,6 +23,7 @@ import { gsap } from 'gsap';
 export class XvNathaliaComponent implements OnInit, AfterViewInit {
   @ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef;
   @ViewChild('destinoScroll', { static: true }) destinoScroll!: ElementRef;
+  @Input() invitacion!: Invitacion;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 

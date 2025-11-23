@@ -87,6 +87,36 @@
   box-shadow: 0 6px 18px #1c5980cc;
 }
 
+.contenedor-flex {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.reserva-form {
+  flex: 1;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vista-previa {
+  flex: 1;
+  background: #fafafa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.vista-previa h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 /* Responsive */
 @media (max-width: 540px) {
   .reserva-form {

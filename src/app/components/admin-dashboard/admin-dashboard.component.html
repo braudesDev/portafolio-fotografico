@@ -71,30 +71,41 @@
         <tr>
           <th>Evento</th>
           <th>Anfitrión</th>
-          <th>Invitados</th>
           <th>Fecha</th>
-          <th>Enviadas</th>
+          <th>Lugar</th>
+          <th>Tipo</th>
+          <th>Enlace</th>
           <th>Acciones</th>
         </tr>
       </thead>
+
       <tbody>
         <tr *ngFor="let invitacion of invitaciones">
-          <td data-label="Evento">{{ invitacion.evento }}</td>
-          <td data-label="Anfitrión">{{ invitacion.anfitrion }}</td>
-          <td data-label="Invitados">{{ invitacion.totalInvitados }}</td>
-          <td data-label="Fecha">
-            {{ invitacion.fecha | date : "mediumDate" }}
+          <td data-label="Evento">{{ invitacion.name }}</td>
+          <td data-label="Anfitrión">{{ invitacion.nombres }}</td>
+          <td data-label="Fecha">{{ invitacion.fecha }}</td>
+          <td data-label="Lugar">{{ invitacion.lugar }}</td>
+          <td data-label="Tipo">{{ invitacion.tipo }}</td>
+
+          <!-- 🔹 Nueva columna para el enlace -->
+          <td data-label="Enlace">
+            <a [href]="generarEnlace(invitacion)" target="_blank" class="link"
+              >Ver</a
+            >
+            <button (click)="copiarEnlace(invitacion)">Copiar</button>
           </td>
-          <td data-label="Enviadas">{{ invitacion.enviadas }}</td>
+
           <td data-label="Acciones">
-            <button>Ver</button>
-            <button>Eliminar</button>
+            <button (click)="editarInvitacion(invitacion)">Editar</button>
+            <button (click)="eliminarInvitacion(invitacion.id)">
+              Eliminar
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <a [routerLink]="['/crear-invitacion']" class="tooltip-container">
+    <a [routerLink]="['/formulario-invitacion']" class="tooltip-container">
       <button class="btn-redondo-fijo">+</button>
       <span class="tooltip-text">Agregar nueva invitación</span>
     </a>
