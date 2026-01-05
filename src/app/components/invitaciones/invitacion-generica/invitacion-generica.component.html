@@ -23,15 +23,18 @@
     *ngIf="data.frasePrincipal || data.mensajePrincipal"
     [frase]="data.frasePrincipal || ''"
     [mensaje]="data.mensajePrincipal || ''"
+    [fontFamily]="data.fontFamily ?? 'Playfair Display, serif'"
+    [colorTexto]="data.secondaryColor ?? '#333333'"
   ></app-nos-casamos-section>
 
   <!-- Sección “Invitación válida para” -->
   <app-invitacion-valida-section
-    *ngIf="data.fraseDeInvValida"
-    [invitado]="data.invitado || ''"
-    [pases]="data.pases || 1"
-    [mensajePersonalizado]="data.fraseDeInvValida"
-  ></app-invitacion-valida-section>
+    *ngIf="data"
+    [invitado]="data.invitado ?? 'Invitado especial'"
+    [pases]="data.pases ?? 1"
+    [mensajePersonalizado]="data.mensajePersonalizado"
+  >
+  </app-invitacion-valida-section>
 
   <!-- <app-ceremonia-section *ngIf="data.ceremonia"></app-ceremonia-section>
   <app-padres-section

@@ -19,29 +19,102 @@ export interface Invitacion {
   name: string;
   slug: string;
   tipo: 'boda' | 'xv' | 'bautizo' | 'cumples';
+
+  // PRINCIPALES
   descripcion?: string;
   componente?: string;
   nombres?: string;
   fecha: Date;
   lugar?: string;
+
+  // MENSAJES
   frasePrincipal?: string;
   mensajePrincipal?: string;
   fraseDeInvValida?: string;
+  mensajePersonalizado?: string;
   historia?: string;
+
+  // DISEÑO / HERO
   heroImage?: string;
   shareImage?: string;
   photos?: string[];
   primaryColor?: string;
   secondaryColor?: string;
   fontFamily?: string;
+  fuente?: string;
+  colorTexto?: string;
+
+  // DATOS DEL INVITADO
   invitado?: string;
   pases?: number;
+
+  // INFO ADICIONAL DEL EVENTO
   evento?: string;
   anfitrion?: string;
   totalInvitados?: number;
   enviadas?: number;
-  fuente?: string;
-  colorTexto?: string;
+
+  // 🔹 SECCIONES QUE TU TEMPLATE USA 🔹
+  padres?: {
+    padreNovia?: string;
+    madreNovia?: string;
+    padreNovio?: string;
+    madreNovio?: string;
+  };
+
+  ceremonia?: {
+    lugar?: string;
+    direccion?: string;
+    hora?: string;
+  };
+
+  recepcion?: {
+    lugar?: string;
+    direccion?: string;
+    hora?: string;
+  };
+
+  padrinos?: string[];
+  damas?: string[];
+
+  itinerario?: {
+    titulo?: string;
+    items?: { hora: string; actividad: string }[];
+  };
+
+  dressCode?: {
+    descripcion?: string;
+    sugerencia?: string;
+    imagen?: string;
+  };
+
+  hospedaje?: {
+    hoteles?: {
+      nombre: string;
+      direccion: string;
+      telefono?: string;
+      link?: string;
+    }[];
+  };
+
+  hashtag?: string;
+
+  contador?: {
+    fechaObjetivo: string; // ISO o timestamp
+  };
+
+  regalos?: {
+    texto?: string;
+    links?: { nombre: string; url: string }[];
+  };
+
+  consideraciones?: string;
+
+  confirmacion?: {
+    telefono?: string;
+    whatsapp?: string;
+    link?: string;
+  };
 }
 
 @Injectable({

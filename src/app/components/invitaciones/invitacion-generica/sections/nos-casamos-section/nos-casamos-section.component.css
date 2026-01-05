@@ -3,15 +3,20 @@
   padding: 3rem 1rem;
   background-color: var(--primary-color, #fff);
   color: var(--secondary-color, #333);
-  font-family: var(--font-family, "serif");
+  font-family: inherit;
+}
+
+.nos-casamos-section h2,
+.nos-casamos-section p {
+  font-family: inherit; /* asegura que hereden la del section */
 }
 
 .nos-casamos-section h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 .nos-casamos-section p {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   opacity: 0.9;
 }

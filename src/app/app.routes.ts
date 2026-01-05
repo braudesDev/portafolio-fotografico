@@ -120,7 +120,7 @@ export const routes: Routes = [
       import(
         './components/anfitrion-dashboard/anfitrion-dashboard.component'
       ).then((m) => m.AnfitrionDashboardComponent),
-    canActivate: [AdminGuard],
+    //canActivate: [AdminGuard],
   },
   {
     path: 'reserva-form',
@@ -157,7 +157,7 @@ export const routes: Routes = [
 
   // app.routes.ts
   {
-    path: 'invitacion/:slug',
+    path: 'invitaciones/:slug',
     loadComponent: () =>
       import('./components/invitaciones/invitaciones.component').then(
         (m) => m.InvitacionesComponent

@@ -5,8 +5,17 @@
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1 class="hero-title">{{ nombres }}</h1>
-    <p class="hero-date">{{ fecha }}</p>
-    <p class="hero-location">{{ lugar }}</p>
+    <h1
+      class="hero-title"
+      [ngStyle]="{
+        'font-family': fuente,
+        color: colorTexto
+      }"
+    >
+      {{ nombres }}
+    </h1>
+
+    <p class="hero-date" [style.color]="colorTexto">{{ fecha }}</p>
+    <p class="hero-location" [style.color]="colorTexto">{{ lugar }}</p>
   </div>
 </section>

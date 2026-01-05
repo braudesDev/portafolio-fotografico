@@ -1,15 +1,14 @@
 <section class="invitacion-valida">
   <div class="invitacion-content">
     <h2>🎟️ Invitación válida para:</h2>
-    <p class="nombre">{{ invitado || "Invitado especial" }}</p>
+    <p class="nombre">{{ invitado }}</p>
     <p class="pases">
-      {{ pases }} {{ pases === 1 ? "pase disponible" : "pases disponibles" }}
+      {{ pases }}
+      {{ pases === 1 ? "pase disponible" : "pases disponibles" }}
     </p>
-
     <ng-container *ngIf="mensajePersonalizado; else mensajeDefault">
       <p class="mensaje">{{ mensajePersonalizado }}</p>
     </ng-container>
-
     <ng-template #mensajeDefault>
       <p class="mensaje">
         Nos hará muy felices que nos acompañes en este día tan especial 💕

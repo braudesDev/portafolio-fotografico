@@ -5,10 +5,12 @@ import { Meta, Title } from '@angular/platform-browser';
 import {
   Firestore,
   collection,
-  getDocs,
   query,
   where,
+  collectionData,
 } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { Observable, from, of } from 'rxjs';
 import {
   InvitacionesService,
   Invitacion,
@@ -23,7 +25,7 @@ import { InvitacionGenericaComponent } from './invitacion-generica/invitacion-ge
   styleUrls: ['./invitaciones.component.css'],
 })
 export class InvitacionesComponent implements OnInit {
-  invitacion?: Invitacion;
+  invitacion$?: Observable<Invitacion | undefined>;
   cargando = true;
 
   constructor(
@@ -34,7 +36,7 @@ export class InvitacionesComponent implements OnInit {
     private firestore: Firestore
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     const invitado = this.route.snapshot.queryParamMap.get('invitado');
     const pases = this.route.snapshot.queryParamMap.get('pases');
@@ -44,36 +46,72 @@ export class InvitacionesComponent implements OnInit {
       return;
     }
 
-    try {
-      // 🔹 1. Intentar obtener desde el servicio local (si existe)
-      let posible = this.invitacionesService.getBySlug(slug);
-      this.invitacion = posible instanceof Promise ? await posible : posible;
+    // 🔹 Buscar invitación en Firestore
+    const colRef = collection(this.firestore, 'invitaciones');
+    const q = query(colRef, where('slug', '==', slug));
+    this.invitacion$ = collectionData<any>(q, { idField: 'id' }).pipe(
+      map((docs) => {
+        const doc = docs[0];
+        if (!doc) return undefined;
 
-      // 🔹 2. Si no existe localmente, buscar en Firestore por slug
-      if (!this.invitacion) {
-        const colRef = collection(this.firestore, 'invitaciones');
-        const q = query(colRef, where('slug', '==', slug));
-        const snap = await getDocs(q);
+        const inv: Invitacion = {
+          // CAMPOS BASE
+          id: doc.id ?? '',
+          name: doc.name ?? '',
+          slug: doc.slug ?? '',
+          tipo: doc.tipo ?? 'cumples',
+          fecha: doc.fecha ? new Date(doc.fecha) : new Date(),
 
-        if (!snap.empty) {
-          this.invitacion = snap.docs[0].data() as Invitacion;
-        } else {
-          console.warn(`No se encontró invitación con slug="${slug}"`);
-        }
-      }
+          // TEXTO E IMÁGENES
+          descripcion: doc.descripcion ?? '',
+          componente: doc.componente ?? '',
+          nombres: doc.nombres ?? '',
+          lugar: doc.lugar ?? '',
+          frasePrincipal: doc.frasePrincipal ?? '',
+          mensajePrincipal: doc.mensajePrincipal ?? '',
+          fraseDeInvValida: doc.fraseDeInvValida ?? '',
+          historia: doc.historia ?? '',
+          heroImage: doc.heroImage ?? '',
+          shareImage: doc.shareImage ?? '',
+          photos: doc.photos ?? [],
 
-      // 🔹 3. Si se encontró, asignar invitado/pases y meta-tags
-      if (this.invitacion) {
-        this.invitacion.invitado = invitado ?? 'Invitado especial';
-        this.invitacion.pases = pases ? +pases : 1;
-        console.log('Invitación cargada:', this.invitacion); // 🔹
-        this.setMetaTags(this.invitacion);
-      }
-    } catch (err) {
-      console.error('Error cargando invitación:', err);
-    } finally {
-      this.cargando = false;
-    }
+          // COLORES Y FUENTES
+          primaryColor: doc.primaryColor ?? '',
+          secondaryColor: doc.secondaryColor ?? '',
+          fontFamily: doc.fontFamily ?? '',
+          fuente: doc.fuente ?? '',
+          colorTexto: doc.colorTexto ?? '',
+
+          // INFO DEL INVITADO (desde query params o desde Firebase)
+          invitado: invitado ?? doc.invitado ?? 'Invitado especial',
+          pases: pases ? +pases : doc.pases ?? 1,
+          mensajePersonalizado: doc.mensajePersonalizado ?? '',
+
+          // DATOS DEL EVENTO
+          evento: doc.evento ?? '',
+          anfitrion: doc.anfitrion ?? '',
+          totalInvitados: doc.totalInvitados ?? 0,
+          enviadas: doc.enviadas ?? 0,
+        };
+
+        this.setMetaTags(inv);
+        return inv;
+      })
+    );
+
+    this.cargando = false;
+  }
+
+  private procesarInvitacion(
+    inv?: Invitacion,
+    invitado?: string | null,
+    pases?: string | null
+  ): Invitacion | undefined {
+    if (!inv) return undefined;
+    inv.invitado = invitado ?? 'Invitado especial';
+    inv.pases = pases ? +pases : 1;
+    this.setMetaTags(inv);
+    return inv;
   }
 
   private setMetaTags(inv: Invitacion) {
