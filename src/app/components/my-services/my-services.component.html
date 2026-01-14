@@ -1,5 +1,5 @@
 <section class="packages">
-  <h2>Paquetes para Bodas y XV Años</h2>
+  <h1>Nuestros Paquetes</h1>
 
   <div class="packages-grid">
     <!-- Paquete Básico -->
@@ -57,7 +57,7 @@
     </mat-card>
 
     <!-- Paquete Estándar -->
-    <mat-card class="package-card highlighted">
+    <mat-card class="package-card">
       <div class="package-image">
         <img
           src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/gczawnuavntxnuycsfsd"
@@ -68,7 +68,7 @@
           <h3>Estándar</h3>
           <p *ngIf="paquetes[1]?.price !== undefined">{{ formatPrice(paquetes[1].price) }}</p>
         </div>
-        <div class="ribbon" *ngIf="paquetes[1].popular">¡Más vendido!</div>
+
       </div>
 
       <mat-card-content>
@@ -110,7 +110,7 @@
     </mat-card>
 
     <!-- Paquete Premium -->
-    <mat-card class="package-card">
+    <mat-card class="package-card highlighted">
       <div class="package-image">
         <img
           src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/yo7pyujif0p0ibbbzybe"
@@ -120,6 +120,7 @@
         <div class="image-overlay">
           <h3>Premium</h3>
           <p *ngIf="paquetes[2]?.price">{{ formatPrice(paquetes[2].price) }}</p>
+                  <div class="ribbon" *ngIf="paquetes[2].popular">¡Más vendido!</div>
         </div>
       </div>
 
@@ -156,7 +157,7 @@
     </mat-card>
 
     <!-- Paquete Deluxe -->
-    <mat-card class="package-card highlighted">
+    <mat-card class="package-card">
       <div class="package-image">
         <img
           src="https://res.cloudinary.com/drsyb53ae/image/upload/v1752948295/1752948144036_oia3p3.webp"

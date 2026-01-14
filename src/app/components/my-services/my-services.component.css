@@ -1,131 +1,211 @@
-/* Estilos generales */
+/* =====================================================
+   SECCIÓN: PAQUETES
+   Contenedor principal de la sección
+===================================================== */
 .packages {
-  padding: 4rem 1rem;
-  background: #f8f9fa;
+  /* Espaciado interno general */
+  padding: 1.5rem 1rem;
+
+  /* Fondo marfil para sensación elegante/premium */
+  background: #FAF7F2;
 }
 
-.packages h2 {
+/* Título principal "Nuestros Paquetes" */
+.packages h1 {
+  /* Tipografía decorativa ideal para bodas y XV */
+  font-family: 'Great Vibes', cursive ;
+
+  /* Centrado del texto */
   text-align: center;
+
+  /* Verde oscuro elegante */
   color: #2f4f4f;
-  font-size: 2.5rem;
+
+  /* Tamaño grande para impacto visual */
+  font-size: 3rem;
+
+  /* Separación desde la parte superior */
   margin-top: 4rem;
-  margin-bottom: 3rem;
-  font-weight: 300;
+
+  /* Peso ligero para look manuscrito */
+  font-weight: 400;
 }
 
-/* Grid de paquetes */
+/* =====================================================
+   GRID DE PAQUETES
+   Distribución de tarjetas
+===================================================== */
 .packages-grid {
+  /* Sistema de layout en grid */
   display: grid;
+
+  /* Espacio entre tarjetas */
   gap: 2rem;
+
+  /* Dos columnas en desktop */
   grid-template-columns: repeat(2, 1fr);
+
+  /* Ancho máximo del contenido */
   max-width: 900px;
+
+  /* Centrado horizontal */
   margin: 0 auto;
 }
 
-/* Móviles: 1 columna (un paquete por fila) */
+/* Versión móvil: una tarjeta por fila */
 @media (max-width: 768px) {
   .packages-grid {
     grid-template-columns: 1fr;
   }
 }
 
-
-/* Tarjetas de paquetes */
+/* =====================================================
+   TARJETAS DE PAQUETES
+===================================================== */
 .package-card {
+  /* Necesario para ribbon y overlays */
   position: relative;
+
+  /* Bordes redondeados */
   border-radius: 15px !important;
+
+  /* Animaciones suaves */
   transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Oculta contenido desbordado */
   overflow: hidden;
+
+  /* Layout vertical */
   display: flex;
   flex-direction: column;
+
+  /* Ocupa toda la altura disponible */
   height: 100%;
+
+  /* Fondo blanco */
   background: white;
+
+  /* Color base del texto */
+  color: #2E2E2E;
 }
 
+/* Hover: elevación de la tarjeta */
 .package-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Paquete destacado */
 .highlighted {
   border: 2px solid #c6a769;
 }
 
-/* Imagen de paquete */
+/* =====================================================
+   IMAGEN DEL PAQUETE
+===================================================== */
 .package-image {
   position: relative;
   height: 250px;
   overflow: hidden;
 }
 
+/* Imagen ajustada sin deformarse */
 .package-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  /* Animación de zoom */
   transition: transform 0.5s ease;
 }
 
+/* Zoom al pasar el mouse */
 .package-card:hover .package-image img {
   transform: scale(1.1);
 }
 
+/* Overlay con nombre y precio */
 .image-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+
+  /* Gradiente para legibilidad */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+
   padding: 1.5rem;
   color: white;
 }
 
+/* Nombre del paquete */
 .image-overlay h3 {
   margin: 0;
   font-size: 2rem;
   font-weight: 500;
+
+  /* Sombra para resaltar texto */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Precio del paquete */
 .image-overlay p {
   margin: 0.5rem 0 0;
   font-size: 1.5rem;
   font-weight: 300;
 }
 
-/* Ribbon para paquete destacado */
+/* =====================================================
+   RIBBON (PAQUETE DESTACADO)
+===================================================== */
 .ribbon {
   position: absolute;
-  top: 15px;
-  right: -30px;
+  top: -105px;
+  right: -40px;
+
+  /* Color dorado */
   background: #c6a769;
   color: white;
+
+  /* Forma del ribbon */
   padding: 8px 30px;
   transform: rotate(45deg);
+
   font-weight: bold;
   font-size: 0.9rem;
+
+  /* Sombra ligera */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenido de tarjetas */
+/* =====================================================
+   CONTENIDO DE TARJETA
+===================================================== */
 mat-card-content {
   padding: 1.5rem;
+
+  /* Permite empujar el botón al fondo */
   flex-grow: 1;
+
   display: flex;
   flex-direction: column;
 }
 
+/* Subtítulos */
 mat-card-content h3 {
   color: #2f4f4f;
   margin: 1rem 0 0.5rem;
   font-size: 1.2rem;
 }
 
+/* Lista de características */
 mat-card-content ul {
   padding-left: 0;
   list-style: none;
   margin: 0.5rem 0;
 }
 
+/* Ítems */
 mat-card-content li {
   margin-bottom: 0.5rem;
   display: flex;
@@ -133,6 +213,7 @@ mat-card-content li {
   gap: 8px;
 }
 
+/* Íconos */
 mat-card-content li mat-icon {
   font-size: 1rem;
   width: auto;
@@ -140,41 +221,63 @@ mat-card-content li mat-icon {
   color: #c6a769;
 }
 
-/* Botones */
+/* =====================================================
+   BOTÓN PRINCIPAL
+===================================================== */
 .full-width-btn {
   width: 100%;
   margin-top: auto;
-  padding: 12px !important;
-  background-color: #2f4f4f !important;
-  color: rgb(255, 255, 255) !important;
-  font-size: 10px;
-  border-radius: 8px !important;
-  transition: background-color 0.3s;
+  padding: 14px !important;
+
+  background-color: #C9A24D !important;
+  color: #ffffff !important;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/* Hover del botón */
 .full-width-btn:hover {
-  background-color: #1e3e3e !important;
+  background-color: #B8913F !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-/* Calculadora */
+/* =====================================================
+   SECCIÓN CALCULADORA
+===================================================== */
 .calculator {
   padding: 4rem 1rem;
-  background: #ffffff;
+  background: #FAF7F2;
   border-top: 1px solid #eee;
 }
 
+/* Título de calculadora */
 .calculator h2 {
   text-align: center;
   color: #2f4f4f;
   margin-bottom: 1rem;
 }
 
+/* Subtítulo */
 .subtitle {
   text-align: center;
   color: #666;
   margin-bottom: 3rem;
 }
 
+/* Grid de calculadora */
 .calculator-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -183,12 +286,14 @@ mat-card-content li mat-icon {
   margin: 0 auto;
 }
 
+/* Opciones */
 .options-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Slider individual */
 .options-section .slider-item {
   display: block;
   margin-top: 1rem;
@@ -198,17 +303,20 @@ mat-card-content li mat-icon {
   background: #ffffff;
 }
 
+/* Label del slider */
 .options-section .slider-item label {
   display: block;
   margin-bottom: 0.5rem;
   color: #444;
 }
 
+/* Precio adicional */
 .options-section .video-price {
   margin-top: 0.5rem;
   font-weight: 500;
 }
 
+/* Opción extra */
 .extra-option {
   padding: 1rem;
   border-radius: 8px;
@@ -216,10 +324,12 @@ mat-card-content li mat-icon {
   transition: background-color 0.3s;
 }
 
+/* Hover opción extra */
 .extra-option:hover {
   background-color: #f5f5f5;
 }
 
+/* Alerta de temporada */
 .season-alert {
   padding: 1rem;
   background: #fff8e1;
@@ -230,6 +340,7 @@ mat-card-content li mat-icon {
   gap: 8px;
 }
 
+/* Sliders */
 .sliders-section {
   background: white;
   padding: 2rem;
@@ -237,16 +348,7 @@ mat-card-content li mat-icon {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.slider-item {
-  margin-bottom: 2rem;
-}
-
-.slider-item label {
-  display: block;
-  margin-bottom: 1rem;
-  color: #444;
-}
-
+/* Total */
 .total-section {
   text-align: center;
   margin-top: 2rem;
@@ -256,6 +358,7 @@ mat-card-content li mat-icon {
   color: white;
 }
 
+/* Precio total */
 .price {
   font-size: 2.5rem;
   color: #c6a769;
@@ -263,64 +366,17 @@ mat-card-content li mat-icon {
   font-weight: bold;
 }
 
-.action-button {
-  padding: 12px 24px !important;
-  font-size: 1.1rem !important;
-  transition: background-color 0.3s;
-}
-
-.action-button:hover {
-  background-color: #1e3e3e !important;
-}
-
-/* Responsive */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 @media (max-width: 768px) {
   .calculator-grid {
     grid-template-columns: 1fr;
-  }
-
-  .options-section {
-    border-right: none;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 2rem;
-  }
-
-  .packages h2,
-  .calculator h2 {
-    font-size: 2rem;
-  }
-
-  .slider-item {
-    padding: 1rem;
-  }
-
-  .slider-item label {
-    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .package-image {
     height: 200px;
-  }
-
-  .image-overlay h3 {
-    font-size: 1.5rem;
-  }
-
-  .image-overlay p {
-    font-size: 1.2rem;
-  }
-
-  .slider-item {
-    padding: 1rem 0;
-  }
-
-  .slider-item label {
-    font-size: 0.9rem;
-  }
-
-  .video-price {
-    font-size: 0.95rem;
   }
 }

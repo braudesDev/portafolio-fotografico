@@ -1,5 +1,5 @@
 import { Component, signal, OnInit } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -44,7 +44,7 @@ export class MyServicesComponent implements OnInit {
     this.seoService.setSeoData({
       pageTitle: 'Servicios Fotográficos Profesionales',
       description:
-        'Paquetes para bodas, sesiones de embarazo, fotografía infantil y más. Consulta nuestros precios.',
+        'Paquetes para bodas y Xv años, sesiones en pareja, fotografía infantil y más. Consulta nuestros precios.',
       keywords:
         'precios fotografía, sesión de bodas, fotografía infantil Irapuato',
       // image: 'assets/images/services-og.jpg'
@@ -68,7 +68,7 @@ export class MyServicesComponent implements OnInit {
   paquetes = [
     {
       name: 'Basico',
-      price: 4000,
+      price: 4300,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -87,7 +87,7 @@ export class MyServicesComponent implements OnInit {
     },
     {
       name: 'Estándar',
-      price: 5500,
+      price: 5800,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -102,11 +102,11 @@ export class MyServicesComponent implements OnInit {
         '1 Memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
       extras: ['(Fotografias impresas tienen un costo adicional)'],
-      popular: true,
+      popular: false,
     },
     {
       name: 'Premium',
-      price: 7500,
+      price: 7800,
       features: [
         'Sesion previa al evento (casual o vestidos)',
         'Sesion durante el evento',
@@ -125,11 +125,11 @@ export class MyServicesComponent implements OnInit {
         'Una ampliacion de 14x20"',
         'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
-      popular: false,
+      popular: true,
     },
     {
       name: 'Deluxe',
-      price: 9000,
+      price: 9300,
       features: [
         'Sesion previa al evento (casual o vestidos)',
         'Sesion durante el evento',
@@ -155,18 +155,17 @@ export class MyServicesComponent implements OnInit {
   // Signals para estado reactivo
   duration = signal(1);
   photos = signal(10);
-  videoHours = signal(1); //1 = 1 hora contratada
+  videoHours = signal(0); //1 = 1 hora contratada
   includeDrone = signal(false);
   includeAlbum = signal(false);
   selectedDate = new FormControl<Date | null>(null);
 
   // Propiedades para el PDF
-  whatsappNumber = '4622439905';
+  whatsappNumber = '4621304745';
   bankAccounts = [
     {
       banco: 'BBVA',
       cuenta: '4152 3144 1130 8664',
-      clabe: '',
       titular: 'Braulio Rodríguez',
     },
   ];
@@ -345,10 +344,6 @@ export class MyServicesComponent implements OnInit {
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
       yPosition += 7;
       doc.text(`Cuenta: ${account.cuenta}`, 20, yPosition);
-      if (account.clabe) {
-        yPosition += 7;
-        doc.text(`CLABE: ${account.clabe}`, 20, yPosition);
-      }
       yPosition += 7;
       doc.text(`Titular: ${account.titular}`, 20, yPosition);
     });
@@ -477,10 +472,6 @@ export class MyServicesComponent implements OnInit {
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
       yPosition += 7;
       doc.text(`Cuenta: ${account.cuenta}`, 20, yPosition);
-      if (account.clabe) {
-        yPosition += 7;
-        doc.text(`CLABE: ${account.clabe}`, 20, yPosition);
-      }
       yPosition += 7;
       doc.text(`Titular: ${account.titular}`, 20, yPosition);
     });
