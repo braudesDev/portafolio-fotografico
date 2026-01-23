@@ -1,19 +1,25 @@
+.album-page {
+background-color: #FAF7F2;
+  padding-top: 2rem;
+}
+
+
 /* Estilos para el contenedor del álbum */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
   padding: 10px;
+
 }
 
 h2 {
   position: relative;
-  color: rgb(0, 0, 0);
+  color: #2f4f4f;
   font-size: 2.5rem;
-  font-family: "QuickSand", sans-serif;
+  font-family: "Great Vibes", cursive;
   font-weight: bold;
   text-align: center;
-  margin-top: 6rem;
 }
 
 /* Estilos para cada imagen */

@@ -1,7 +1,9 @@
-<div *ngIf="album">
+<div class="album-page" *ngIf="album">
   <h2>{{ album.name }}</h2>
   <div class="photo-grid">
-    <div *ngFor="let photo of album.photos; let i = index" class="photo-item" (click)="openModal(i)">
+    <div *ngFor="let photo of album.photos; let i = index" 
+    class="photo-item" 
+    (click)="openModal(i)">
       <!-- Usar NgOptimizedImage para las imágenes de la galería -->
       <img
         [ngSrc]="photo.url"

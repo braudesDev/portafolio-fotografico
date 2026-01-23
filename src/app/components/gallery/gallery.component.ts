@@ -129,13 +129,31 @@ export class GalleryComponent implements AfterViewInit {
             },
           ],
         },
+                        {
+          id: '5', // Agrega un ID único para cada álbum
+          name: 'Boda de Lucero y Omar',
+          photos: [
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718926/luceroServices_hott6d.webp',
+              alt: 'Retrato de una quinceanera',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718918/paraAlbumGaleria2_fupqip.webp',
+              alt: 'Retrato de una quinceanera',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718914/paraAlbumGaleria7_xr45ta.webp',
+              alt: 'Retrato de una quinceanera',
+            },
+          ],
+        },
       ],
     },
     {
       title: 'Xv años',
       albums: [
         {
-          id: '5', // Agrega un ID único para cada álbum
+          id: '6', // Agrega un ID único para cada álbum
           name: 'Xvs de Jareli',
           photos: [
             {
@@ -153,7 +171,7 @@ export class GalleryComponent implements AfterViewInit {
           ],
         },
         {
-          id: '6', // Agrega un ID único para cada álbum
+          id: '7', // Agrega un ID único para cada álbum
           name: 'Xvs de Nathalia',
           photos: [
             {
@@ -170,13 +188,31 @@ export class GalleryComponent implements AfterViewInit {
             },
           ],
         },
+                {
+          id: '8',
+          name: 'Osvaldo',
+          photos: [
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787181/paraAlbumOsvaldo1_q6fsod.webp',
+              alt: 'Retrato de osvaldo con sus damas de honor'
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787181/paraAlbumOsvaldo4_jsm7uh.webp',
+              alt: 'Retrato de osvaldo con damas de honor'
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787191/paraAlbumOsvaldo6_tbrrse.webp',
+              alt: 'Retrato de osvaldo',
+            },
+          ]
+        }
       ],
     },
     {
       title: 'Sesiones',
       albums: [
         {
-          id: '7', // Agrega un ID único para cada álbum
+          id: '9', // Agrega un ID único para cada álbum
           name: 'Andrea',
           photos: [
             {
@@ -194,7 +230,7 @@ export class GalleryComponent implements AfterViewInit {
           ],
         },
         {
-          id: '8', // Agrega un ID único para cada álbum
+          id: '10',// Agrega un ID único para cada álbum
           name: 'Mariano',
           photos: [
             {
@@ -212,7 +248,7 @@ export class GalleryComponent implements AfterViewInit {
           ],
         },
         {
-          id: '9',
+          id: '11',
           name: 'Christian',
           photos: [
             {
@@ -230,7 +266,7 @@ export class GalleryComponent implements AfterViewInit {
           ],
         },
         {
-          id: '10',
+          id: '12',
           name: 'Gabriela',
           photos: [
             {

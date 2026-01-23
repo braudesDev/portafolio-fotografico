@@ -6,6 +6,7 @@ import {
   ElementRef,
   HostListener,
 } from '@angular/core';
+import { idToken } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -103,42 +104,6 @@ export class AlbumComponent implements OnInit {
               url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/lgqcxcfgqgognmdvjozw',
               alt: '15',
             },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/xsx0vokqotbvpddloupb',
-              alt: '16',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/ixwj5q4n5h9zsj9efvw8',
-              alt: '17',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/dxxvrsix3reizxmnjnqn',
-              alt: '18',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/jic4dm9thk68ojhshgr0',
-              alt: '19',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/clv5kow6amipbf8xranf',
-              alt: '20',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/ylghsdorhalsqe1t5zpt',
-              alt: '21',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/qwtgqp1f6d8ue1chhigs',
-              alt: '22',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/b5up48vsuexlpqhiaiew',
-              alt: '23',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/asajzosjaxtjwclfp9pj',
-              alt: '24',
-            },
           ],
         },
         {
@@ -203,42 +168,6 @@ export class AlbumComponent implements OnInit {
             },
             {
               url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/ofelkq8tv03miubgsysq',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/qewld4t2ztksjrcnflin',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/bpwa8ngsaced2kbz9job',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/auq4jcgyqo2g0lzcricc',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/kpxc7fvb2zpivsmvata8',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/q1fx8algtxrojoccl9tq',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/kwzl7rgqhyqvuf7meisy',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/xcnmxg9omqriemy3sa4s',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/qfxfxsdkntweoryf7mrl',
-              alt: 'Imagen de Boda',
-            },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasPaulinaYChristian/tiejrk5pwimq2btd3fuu',
               alt: 'Imagen de Boda',
             },
           ],
@@ -345,6 +274,60 @@ export class AlbumComponent implements OnInit {
         },
         {
           id: '5',
+          name: 'Lucero y Omar',
+          photos: [
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718926/luceroServices_hott6d.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718918/paraAlbumGaleria2_fupqip.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718914/paraAlbumGaleria7_xr45ta.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718930/lucero_ksmg05.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718907/paraAlbumGaleria3_jfn8j1.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718900/paraAlbumGaleria9_vfofug.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718892/paraAlbumGaleria15_qw464v.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718891/paraAlbumGaleria14_uomlax.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718868/paraAlbumGaleria13_kinntd.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718861/paraAlbumGaleria11_u4upbw.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718860/paraAlbumGaleria10_wzhuim.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768718860/paraAlbumGaleria_epihcf.webp',
+              alt: 'Foto de una pareja de novios',
+            },
+          ],
+        },
+        {
+          id: '6',
           name: 'Xvs de Jareli',
           photos: [
             {
@@ -446,7 +429,7 @@ export class AlbumComponent implements OnInit {
           ],
         },
         {
-          id: '6',
+          id: '7',
           name: 'Xvs de Flor Nathalia',
           photos: [
             {
@@ -580,7 +563,73 @@ export class AlbumComponent implements OnInit {
           ],
         },
         {
-          id: '7',
+          id: '8',
+          name: 'Osvaldo',
+          photos: [
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787181/paraAlbumOsvaldo1_q6fsod.webp',
+              alt: 'Retrato de osvaldo',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787181/paraAlbumOsvaldo4_jsm7uh.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787191/paraAlbumOsvaldo6_tbrrse.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787204/paraAlbumOsvaldo3_iwewug.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787205/paraAlbumOsvaldo2_hnvwpx.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787185/paraAlbumOsvaldo12_gnqhxc.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787183/paraAlbumOsvaldo11_rgatmb.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787189/paraAlbumOsvaldo7_muqvlw.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787192/paraAlbumOsvaldo8_drbl5k.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787195/paraAlbumOsvaldo13_k0d581.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787200/paraAlbumOsvaldo10_njsggt.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787208/paraAlbumOsvaldo9_eo3jy4.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787199/paraAlbumOsvaldo15_evtuhu.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787196/paraAlbumOsvaldo14_fopbt6.webp',
+              alt: 'Retrato de una persona',
+            },
+            {
+              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/v1768787187/paraAlbumOsvaldo5_an2pt1.webp',
+              alt: 'Retrato de una persona',
+            },
+          ],
+        },
+        {
+          id: '9',
           name: 'Andrea',
           photos: [
             {
@@ -643,14 +692,10 @@ export class AlbumComponent implements OnInit {
               url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/rhokwm4uiqbes7zm9dml',
               alt: 'Retrato de una persona 15',
             },
-            {
-              url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/ldshc7tumohrqtpcajlo',
-              alt: 'Retrato de una persona 16',
-            },
           ],
         },
         {
-          id: '8',
+          id: '10',
           name: 'Mariano',
           photos: [
             {
@@ -697,15 +742,10 @@ export class AlbumComponent implements OnInit {
               url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasMariano/tqk5qd7ed6plf5tv4so3',
               alt: 'Retrato de una persona',
             },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
           ],
         },
         {
-          id: '9',
+          id: '11',
           name: 'Christian',
           photos: [
             {
@@ -748,16 +788,10 @@ export class AlbumComponent implements OnInit {
               url: 'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasChristian/rodg5djjidbstutgashz',
               alt: 'Retrato de una persona',
             },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
-            // { url: '', alt: 'Retrato de una persona' },
           ],
         },
         {
-          id: '10',
+          id: '12',
           name: 'Gabriela',
           photos: [
             {

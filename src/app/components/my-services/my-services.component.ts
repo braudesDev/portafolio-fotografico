@@ -1,5 +1,5 @@
 import { Component, signal, OnInit } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -35,6 +35,10 @@ import { ReservasService } from '../../services/reservas.service';
 export class MyServicesComponent implements OnInit {
   disableDates: Date[] = [];
 
+  //Constantes de negocio
+    readonly videoPricePerHour = 1500;
+    readonly maxPhotosPerHour = 15;
+
   constructor(
     private seoService: SeoService,
     private reservasService: ReservasService
@@ -44,7 +48,7 @@ export class MyServicesComponent implements OnInit {
     this.seoService.setSeoData({
       pageTitle: 'Servicios Fotográficos Profesionales',
       description:
-        'Paquetes para bodas, sesiones de embarazo, fotografía infantil y más. Consulta nuestros precios.',
+        'Paquetes para bodas y Xv años, sesiones en pareja, fotografía infantil y más. Consulta nuestros precios.',
       keywords:
         'precios fotografía, sesión de bodas, fotografía infantil Irapuato',
       // image: 'assets/images/services-og.jpg'
@@ -62,13 +66,13 @@ export class MyServicesComponent implements OnInit {
     );
   };
 
-  readonly videoPricePerHour = 1500;
+
 
   // Paquetes de servicios
   paquetes = [
     {
       name: 'Basico',
-      price: 4000,
+      price: 4300,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -87,7 +91,7 @@ export class MyServicesComponent implements OnInit {
     },
     {
       name: 'Estándar',
-      price: 5500,
+      price: 5800,
       features: [
         'Sesion durante el evento',
         'Cobertura de Ceremonia Religiosa',
@@ -102,11 +106,11 @@ export class MyServicesComponent implements OnInit {
         '1 Memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
       extras: ['(Fotografias impresas tienen un costo adicional)'],
-      popular: true,
+      popular: false,
     },
     {
       name: 'Premium',
-      price: 7500,
+      price: 7800,
       features: [
         'Sesion previa al evento (casual o vestidos)',
         'Sesion durante el evento',
@@ -125,11 +129,11 @@ export class MyServicesComponent implements OnInit {
         'Una ampliacion de 14x20"',
         'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
       ],
-      popular: false,
+      popular: true,
     },
     {
       name: 'Deluxe',
-      price: 9000,
+      price: 9300,
       features: [
         'Sesion previa al evento (casual o vestidos)',
         'Sesion durante el evento',
@@ -144,29 +148,54 @@ export class MyServicesComponent implements OnInit {
       ],
       entrega: [
         '70 Fotografias retocadas impresas',
-        '140 Fotografias digitales retocadas',
+        '150 Fotografias digitales retocadas',
         'Una ampliacion de 14x20"',
-        'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
+        'Una memoria USB (Fotografias y pelicula con duracion de 1 hora 20 minutos)',
+
       ],
       popular: false,
     },
+    {
+  name: 'Signature',
+  price: 13500,
+  features: [
+    'Sesión previa al evento (casual o formal)',
+    'Cobertura del evento por 6 horas',
+  ],
+  videoFeatures: [
+    'Cobertura de video del evento',
+    'Videoclip cinematográfico de 3 a 4 minutos',
+    'Película editada de 1 hora a 1 hora 20 minutos',
+    'Tomas aéreas con dron',
+  ],
+  entrega: [
+    '150 fotografías digitales retocadas',
+    'Álbum fotográfico profesional',
+    'Una ampliación 14x20"',
+    'Memoria USB con todo el material',
+  ],
+  extras: [
+    'Sesión Trash the Dress posterior al evento',
+  ],
+  popular: true,
+}
+
   ];
 
   // Signals para estado reactivo
   duration = signal(1);
   photos = signal(10);
-  videoHours = signal(1); //1 = 1 hora contratada
+  videoHours = signal(0); //1 = 1 hora contratada
   includeDrone = signal(false);
   includeAlbum = signal(false);
   selectedDate = new FormControl<Date | null>(null);
 
   // Propiedades para el PDF
-  whatsappNumber = '4622439905';
+  whatsappNumber = '4621304745';
   bankAccounts = [
     {
       banco: 'BBVA',
       cuenta: '4152 3144 1130 8664',
-      clabe: '',
       titular: 'Braulio Rodríguez',
     },
   ];
@@ -176,13 +205,19 @@ export class MyServicesComponent implements OnInit {
     const value = event?.target?.value ?? event?.value ?? event;
     const validatedValue = Math.min(12, Math.max(1, Number(value) || 1));
     this.duration.set(validatedValue);
+
+    // Ajustar fotos si excede el máximo permitido
+    const maxPhotos = this.maxAllowedPhotos;
+    if (this.photos() > maxPhotos) {
+      this.photos.set(maxPhotos);
+    }
   }
 
-  updatePhotos(event: any) {
-    const value = event?.target?.value ?? event?.value ?? event;
-    const validatedValue = Math.min(500, Math.max(1, Number(value) || 1));
-    this.photos.set(validatedValue);
-  }
+updatePhotos(event: any) {
+  const value = event?.target?.value ?? event?.value ?? event;
+  this.photos.set(Math.max(1, Number(value) || 1));
+}
+
 
   updateVideoHours(event: any) {
     const value = event?.target?.value ?? event?.value ?? event;
@@ -345,10 +380,6 @@ export class MyServicesComponent implements OnInit {
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
       yPosition += 7;
       doc.text(`Cuenta: ${account.cuenta}`, 20, yPosition);
-      if (account.clabe) {
-        yPosition += 7;
-        doc.text(`CLABE: ${account.clabe}`, 20, yPosition);
-      }
       yPosition += 7;
       doc.text(`Titular: ${account.titular}`, 20, yPosition);
     });
@@ -477,10 +508,6 @@ export class MyServicesComponent implements OnInit {
       doc.text(`Banco: ${account.banco}`, 20, yPosition);
       yPosition += 7;
       doc.text(`Cuenta: ${account.cuenta}`, 20, yPosition);
-      if (account.clabe) {
-        yPosition += 7;
-        doc.text(`CLABE: ${account.clabe}`, 20, yPosition);
-      }
       yPosition += 7;
       doc.text(`Titular: ${account.titular}`, 20, yPosition);
     });
@@ -499,6 +526,24 @@ export class MyServicesComponent implements OnInit {
       `presupuesto-personalizado-${new Date().toISOString().slice(0, 10)}.pdf`
     );
   }
+
+  get maxAllowedPhotos(): number {
+    return this.duration() * this.maxPhotosPerHour;
+  }
+
+  get isSession(): boolean {
+  return this.duration() <= 2;
+}
+
+get showPhotoSuggestion(): boolean {
+  return this.isSession && this.photos() > this.maxAllowedPhotos;
+}
+
+get photoSuggestionText(): string {
+  return `Recomendacion: Máximo ${this.maxAllowedPhotos} fotos para ${this.duration()} hora(s) de sesión`;
+}
+
+
 
   // Método auxiliar para imágenes
   private async getBase64Image(url: string): Promise<string> {
