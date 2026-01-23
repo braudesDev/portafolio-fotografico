@@ -6,7 +6,7 @@
     <mat-card class="package-card">
       <div class="package-image">
         <img
-          src="https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/comprimidasAndrea/rhokwm4uiqbes7zm9dml"
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/v1768703950/patyServices_cvzdvz.webp"
           alt="Ejemplo de cobertura básica"
           loading="lazy"
         />
@@ -66,9 +66,10 @@
         />
         <div class="image-overlay">
           <h3>Estándar</h3>
-          <p *ngIf="paquetes[1]?.price !== undefined">{{ formatPrice(paquetes[1].price) }}</p>
+          <p *ngIf="paquetes[1]?.price !== undefined">
+            {{ formatPrice(paquetes[1].price) }}
+          </p>
         </div>
-
       </div>
 
       <mat-card-content>
@@ -120,7 +121,7 @@
         <div class="image-overlay">
           <h3>Premium</h3>
           <p *ngIf="paquetes[2]?.price">{{ formatPrice(paquetes[2].price) }}</p>
-                  <div class="ribbon" *ngIf="paquetes[2].popular">¡Más vendido!</div>
+          <div class="ribbon" *ngIf="paquetes[2].popular">¡Más vendido!</div>
         </div>
       </div>
 
@@ -166,7 +167,9 @@
         />
         <div class="image-overlay">
           <h3>Deluxe</h3>
-          <p *ngIf="paquetes[3]?.price !== undefined">{{ formatPrice(paquetes[3].price) }}</p>
+          <p *ngIf="paquetes[3]?.price !== undefined">
+            {{ formatPrice(paquetes[3].price) }}
+          </p>
         </div>
         <div class="ribbon" *ngIf="paquetes[3].popular">¡Más vendido!</div>
       </div>
@@ -191,12 +194,6 @@
             <mat-icon>check</mat-icon> {{ feature }}
           </li>
         </ul>
-        <h4>Extras</h4>
-        <ul>
-          <li *ngFor="let feature of paquetes[3].extras">
-            <mat-icon>check</mat-icon> {{ feature }}
-          </li>
-        </ul>
 
         <button
           mat-flat-button
@@ -208,9 +205,58 @@
         </button>
       </mat-card-content>
     </mat-card>
+
+    <!--Paquete Signature-->
+        <!-- Paquete Deluxe -->
+    <mat-card class="package-card">
+      <div class="package-image">
+        <img
+          src="https://res.cloudinary.com/drsyb53ae/image/upload/v1768703959/luceroServices_bdnuzf.webp"
+          alt="Ejemplo de cobertura deluxe"
+          loading="lazy"
+        />
+        <div class="image-overlay">
+          <h3>Signature</h3>
+          <p *ngIf="paquetes[4]?.price !== undefined">
+            {{ formatPrice(paquetes[4].price) }}
+          </p>
+        </div>
+        <div class="ribbon" *ngIf="paquetes[4].popular">¡Más vendido!</div>
+      </div>
+
+      <mat-card-content>
+        <h3>Servicios:</h3>
+        <h4>📸 Fotografía</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[4].features">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+        <h4>🎥 Video</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[4].videoFeatures">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+        <h4>Entrega</h4>
+        <ul>
+          <li *ngFor="let feature of paquetes[4].entrega">
+            <mat-icon>check</mat-icon> {{ feature }}
+          </li>
+        </ul>
+
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width-btn"
+          (click)="selectPackage(4)"
+        >
+          <mat-icon>picture_as_pdf</mat-icon> SELECCIONAR Y DESCARGAR COTIZACION
+        </button>
+      </mat-card-content>
+    </mat-card>
   </div>
 </section>
-
 
 <!-- Calculadora de Presupuesto -->
 <section class="calculator">
@@ -297,22 +343,30 @@
         </mat-slider>
       </div>
 
-      <div class="slider-item">
-        <label>Fotos digitales: {{ formatPhotos(photos()) }}</label>
-        <mat-slider
-          min="1"
-          max="500"
-          step="1"
-          [disabled]="false"
-          (input)="updatePhotos($event)"
-        >
-          <input
-            matSliderThumb
-            [ngModel]="photos()"
-            (ngModelChange)="photos.set($event)"
-          />
-        </mat-slider>
-      </div>
+<div class="slider-item">
+  <label>Fotos digitales: {{ formatPhotos(photos()) }}</label>
+
+  <div class="slider-row">
+    <mat-slider
+      min="1"
+      max="500"
+      step="1"
+      (input)="updatePhotos($event)"
+    >
+      <input
+        matSliderThumb
+        [ngModel]="photos()"
+        (ngModelChange)="photos.set($event)"
+      />
+    </mat-slider>
+
+
+  </div>
+  <p *ngIf="showPhotoSuggestion" class="photo-suggestion">
+  {{ photoSuggestionText }}
+</p>
+</div>
+
 
       <div class="total-section">
         <h3>Total estimado:</h3>

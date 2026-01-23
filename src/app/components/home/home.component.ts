@@ -65,7 +65,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       mainImage:
         'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/cuapkisa2v03oparzqgj',
       hoverImage:
-        'https://res.cloudinary.com/drsyb53ae/image/upload/f_auto,q_auto/v1/fotos-comprimidas/imagesHomeComprimidas/wlxnuuj67bvnmizimvy3',
+        'https://res.cloudinary.com/drsyb53ae/image/upload/v1768703950/patyYpaco_wpaeff.webp',
     },
 
     //Agregamos mas imagenes cuando tengamos xd

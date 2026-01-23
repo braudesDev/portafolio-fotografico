@@ -35,6 +35,10 @@ import { ReservasService } from '../../services/reservas.service';
 export class MyServicesComponent implements OnInit {
   disableDates: Date[] = [];
 
+  //Constantes de negocio
+    readonly videoPricePerHour = 1500;
+    readonly maxPhotosPerHour = 15;
+
   constructor(
     private seoService: SeoService,
     private reservasService: ReservasService
@@ -62,7 +66,7 @@ export class MyServicesComponent implements OnInit {
     );
   };
 
-  readonly videoPricePerHour = 1500;
+
 
   // Paquetes de servicios
   paquetes = [
@@ -144,12 +148,38 @@ export class MyServicesComponent implements OnInit {
       ],
       entrega: [
         '70 Fotografias retocadas impresas',
-        '140 Fotografias digitales retocadas',
+        '150 Fotografias digitales retocadas',
         'Una ampliacion de 14x20"',
-        'Una memoria USB (Fotografias y pelicula con duracion de 1 hora)',
+        'Una memoria USB (Fotografias y pelicula con duracion de 1 hora 20 minutos)',
+
       ],
       popular: false,
     },
+    {
+  name: 'Signature',
+  price: 13500,
+  features: [
+    'Sesión previa al evento (casual o formal)',
+    'Cobertura del evento por 6 horas',
+  ],
+  videoFeatures: [
+    'Cobertura de video del evento',
+    'Videoclip cinematográfico de 3 a 4 minutos',
+    'Película editada de 1 hora a 1 hora 20 minutos',
+    'Tomas aéreas con dron',
+  ],
+  entrega: [
+    '150 fotografías digitales retocadas',
+    'Álbum fotográfico profesional',
+    'Una ampliación 14x20"',
+    'Memoria USB con todo el material',
+  ],
+  extras: [
+    'Sesión Trash the Dress posterior al evento',
+  ],
+  popular: true,
+}
+
   ];
 
   // Signals para estado reactivo
@@ -175,13 +205,19 @@ export class MyServicesComponent implements OnInit {
     const value = event?.target?.value ?? event?.value ?? event;
     const validatedValue = Math.min(12, Math.max(1, Number(value) || 1));
     this.duration.set(validatedValue);
+
+    // Ajustar fotos si excede el máximo permitido
+    const maxPhotos = this.maxAllowedPhotos;
+    if (this.photos() > maxPhotos) {
+      this.photos.set(maxPhotos);
+    }
   }
 
-  updatePhotos(event: any) {
-    const value = event?.target?.value ?? event?.value ?? event;
-    const validatedValue = Math.min(500, Math.max(1, Number(value) || 1));
-    this.photos.set(validatedValue);
-  }
+updatePhotos(event: any) {
+  const value = event?.target?.value ?? event?.value ?? event;
+  this.photos.set(Math.max(1, Number(value) || 1));
+}
+
 
   updateVideoHours(event: any) {
     const value = event?.target?.value ?? event?.value ?? event;
@@ -490,6 +526,24 @@ export class MyServicesComponent implements OnInit {
       `presupuesto-personalizado-${new Date().toISOString().slice(0, 10)}.pdf`
     );
   }
+
+  get maxAllowedPhotos(): number {
+    return this.duration() * this.maxPhotosPerHour;
+  }
+
+  get isSession(): boolean {
+  return this.duration() <= 2;
+}
+
+get showPhotoSuggestion(): boolean {
+  return this.isSession && this.photos() > this.maxAllowedPhotos;
+}
+
+get photoSuggestionText(): string {
+  return `Recomendacion: Máximo ${this.maxAllowedPhotos} fotos para ${this.duration()} hora(s) de sesión`;
+}
+
+
 
   // Método auxiliar para imágenes
   private async getBase64Image(url: string): Promise<string> {

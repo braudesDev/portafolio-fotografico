@@ -41,7 +41,7 @@ html {
 /* Texto mecanografiado */
 #typewriter-text {
   display: inline-block;
-  border-right: 0.15em solid rgb(0, 255, 191);
+  border-right: 0.15em solid #C9A24D;
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 0.15em;
@@ -51,37 +51,11 @@ html {
   line-height: 1.2;
 }
 
-/* Estilos para el SVG de fondo */
-.svg-background {
-  position: absolute; /* Asegura que el SVG esté posicionado correctamente */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* Asegura que el SVG ocupe toda la altura */
-  z-index: -1; /* Coloca el SVG detrás del contenido */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-svg-background svg {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-#gallery-section {
-  position: relative; /* Asegura que el contenido esté por encima del SVG */
-  min-height: 100vh; /* Asegura que la sección tenga una altura mínima */
-  background-color: transparent; /* Fondo transparente */
-}
 
 /* Estilos generales para la galería */
 .gallery {
   position: relative; /* Asegura que el contenido esté por encima del SVG */
-  background-color: transparent; /* Fondo transparente */
+  background-color: #FAF7F2; /* Fondo transparente */
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -97,9 +71,9 @@ svg-background svg {
 }
 
 .category-title {
-  color: rgb(0, 0, 0);
-  font-size: 40px;
-  font-family: "QuickSand", sans-serif;
+  color: #2F4F4F;
+  font-size: 4rem;
+  font-family: "Great Vibes", cursive;
   font-weight: bold;
   margin-bottom: 50px;
   text-align: center;
@@ -153,7 +127,7 @@ svg-background svg {
   color: white;
   font-size: 18px;
   font-weight: bold;
-  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  background: rgba(47, 79, 79, 0.85); /* Fondo semitransparente */
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -230,7 +204,7 @@ svg-background svg {
 }
 
 .scroll-indicator span {
-  color: azure;
+  color: #e9bea6;
   font-size: 2.5rem;
   margin-bottom: 15px;
   font-family: "Quicksand", sans-serif;
@@ -240,8 +214,8 @@ svg-background svg {
 .arrow {
   width: 20px;
   height: 20px;
-  border-left: 4px solid azure;
-  border-bottom: 4px solid azure;
+  border-left: 4px solid #E8CFC1;
+  border-bottom: 4px solid #E8CFC1;
   transform: rotate(-45deg);
   animation: bounce 1.5s infinite ease-in-out;
 }
@@ -274,7 +248,7 @@ svg-background svg {
   padding: 0; /* Elimina el padding para hacerlo más pequeño */
   width: 40px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
-  background-color: #007bff; /* Color de fondo */
+  background-color: #C9A24D; /* Color de fondo */
   color: white; /* Color del texto */
   border: none; /* Elimina el borde */
   border-radius: 50%; /* Hace el botón redondo */
@@ -288,7 +262,7 @@ svg-background svg {
 
 .volver-inicio:hover {
   transform: scale(1.05);
-  background-color: rgb(247, 187, 234);
+  background-color: #B8913F;
 }
 
 .volver-inicio mat-icon {
@@ -356,7 +330,7 @@ svg-background svg {
   }
 
   .category-title {
-    font-size: 24px; /* Reducir aún más el tamaño del título en móviles */
+    font-size: 2rem; /* Reducir aún más el tamaño del título en móviles */
     margin-bottom: 20px;
   }
 

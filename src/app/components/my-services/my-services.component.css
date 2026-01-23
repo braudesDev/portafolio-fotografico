@@ -310,6 +310,24 @@ mat-card-content li mat-icon {
   color: #444;
 }
 
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slider-row mat-slider {
+  flex: 1;
+}
+
+.photo-suggestion {
+  margin-top: 6px;           /* separación del slider */
+  font-size: 0.75rem;        /* 0.50rem es MUY pequeño, casi ilegible */
+  color: #c62828;            /* rojo elegante, no chillón */
+  font-weight: 500;
+}
+
+
 /* Precio adicional */
 .options-section .video-price {
   margin-top: 0.5rem;
