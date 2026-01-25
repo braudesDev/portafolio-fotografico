@@ -7,13 +7,13 @@
   padding: 1.5rem 1rem;
 
   /* Fondo marfil para sensación elegante/premium */
-  background: #FAF7F2;
+  background: #faf7f2;
 }
 
 /* Título principal "Nuestros Paquetes" */
 .packages h1 {
   /* Tipografía decorativa ideal para bodas y XV */
-  font-family: 'Great Vibes', cursive ;
+  font-family: "Great Vibes", cursive;
 
   /* Centrado del texto */
   text-align: center;
@@ -70,7 +70,9 @@
   border-radius: 15px !important;
 
   /* Animaciones suaves */
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 
   /* Oculta contenido desbordado */
   overflow: hidden;
@@ -86,7 +88,7 @@
   background: white;
 
   /* Color base del texto */
-  color: #2E2E2E;
+  color: #2e2e2e;
 }
 
 /* Hover: elevación de la tarjeta */
@@ -179,6 +181,30 @@
 }
 
 /* =====================================================
+   Medial del ribbon para pantallas pequeñas
+===================================================== */
+@media (max-width: 480px) {
+  .ribbon {
+    top: -58px;
+    right: -30px;
+    padding: 6px 20px;
+    font-size: 0.8rem;
+  }
+}
+
+/* =====================================================
+   medio del ribbon para pantallas medianas
+===================================================== */
+@media (max-width: 768px) {
+  .ribbon {
+    top: -58px;
+    right: -35px;
+    padding: 7px 25px;
+    font-size: 0.85rem;
+  }
+}
+
+/* =====================================================
    CONTENIDO DE TARJETA
 ===================================================== */
 mat-card-content {
@@ -229,10 +255,10 @@ mat-card-content li mat-icon {
   margin-top: auto;
   padding: 14px !important;
 
-  background-color: #C9A24D !important;
+  background-color: #c9a24d !important;
   color: #ffffff !important;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -249,7 +275,7 @@ mat-card-content li mat-icon {
 
 /* Hover del botón */
 .full-width-btn:hover {
-  background-color: #B8913F !important;
+  background-color: #b8913f !important;
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
@@ -259,7 +285,7 @@ mat-card-content li mat-icon {
 ===================================================== */
 .calculator {
   padding: 4rem 1rem;
-  background: #FAF7F2;
+  background: #faf7f2;
   border-top: 1px solid #eee;
 }
 
@@ -321,12 +347,11 @@ mat-card-content li mat-icon {
 }
 
 .photo-suggestion {
-  margin-top: 6px;           /* separación del slider */
-  font-size: 0.75rem;        /* 0.50rem es MUY pequeño, casi ilegible */
-  color: #c62828;            /* rojo elegante, no chillón */
+  margin-top: 6px; /* separación del slider */
+  font-size: 0.75rem; /* 0.50rem es MUY pequeño, casi ilegible */
+  color: #c62828; /* rojo elegante, no chillón */
   font-weight: 500;
 }
-
 
 /* Precio adicional */
 .options-section .video-price {
@@ -338,8 +363,13 @@ mat-card-content li mat-icon {
 .extra-option {
   padding: 1rem;
   border-radius: 8px;
-  background: white;
-  transition: background-color 0.3s;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.extra-option mat-icon {
+  color: #2f4f4f;
+  margin-right: 8px;
 }
 
 /* Hover opción extra */

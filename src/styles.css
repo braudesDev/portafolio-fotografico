@@ -1,9 +1,40 @@
-@import '@angular/material/prebuilt-themes/cyan-orange.css';
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+@import "@angular/material/prebuilt-themes/cyan-orange.css";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Quicksand', sans-serif !important; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif !important;
+}
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* TEXTO del checkbox */
+.mat-mdc-checkbox .mdc-form-field > label {
+  color: #1f1f1f !important;
+}
+
+/* CUADRO sin marcar */
+.mat-mdc-checkbox .mdc-checkbox__background {
+  border-color: #2f4f4f !important;
+}
+
+/* CUADRO marcado */
+.mat-mdc-checkbox.mdc-checkbox--selected .mdc-checkbox__background {
+  background-color: #2f4f4f !important;
+}
+
+/* Evita apariencia disabled fantasma */
+.mat-mdc-checkbox {
+  opacity: 1 !important;
+}

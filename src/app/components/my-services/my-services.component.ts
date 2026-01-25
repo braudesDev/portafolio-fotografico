@@ -1,5 +1,5 @@
 import { Component, signal, OnInit } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -36,12 +36,12 @@ export class MyServicesComponent implements OnInit {
   disableDates: Date[] = [];
 
   //Constantes de negocio
-    readonly videoPricePerHour = 1500;
-    readonly maxPhotosPerHour = 15;
+  readonly videoPricePerHour = 1500;
+  readonly maxPhotosPerHour = 15;
 
   constructor(
     private seoService: SeoService,
-    private reservasService: ReservasService
+    private reservasService: ReservasService,
   ) {}
 
   ngOnInit(): void {
@@ -62,11 +62,9 @@ export class MyServicesComponent implements OnInit {
     if (!d) return true;
     const time = d?.setHours(0, 0, 0, 0);
     return !this.disableDates.some(
-      (date) => date.setHours(0, 0, 0, 0) === time
+      (date) => date.setHours(0, 0, 0, 0) === time,
     );
   };
-
-
 
   // Paquetes de servicios
   paquetes = [
@@ -151,35 +149,34 @@ export class MyServicesComponent implements OnInit {
         '150 Fotografias digitales retocadas',
         'Una ampliacion de 14x20"',
         'Una memoria USB (Fotografias y pelicula con duracion de 1 hora 20 minutos)',
-
       ],
       popular: false,
     },
     {
-  name: 'Signature',
-  price: 13500,
-  features: [
-    'Sesión previa al evento (casual o formal)',
-    'Cobertura del evento por 6 horas',
-  ],
-  videoFeatures: [
-    'Cobertura de video del evento',
-    'Videoclip cinematográfico de 3 a 4 minutos',
-    'Película editada de 1 hora a 1 hora 20 minutos',
-    'Tomas aéreas con dron',
-  ],
-  entrega: [
-    '150 fotografías digitales retocadas',
-    'Álbum fotográfico profesional',
-    'Una ampliación 14x20"',
-    'Memoria USB con todo el material',
-  ],
-  extras: [
-    'Sesión Trash the Dress posterior al evento',
-  ],
-  popular: true,
-}
-
+      name: 'Signature',
+      price: 13500,
+      features: [
+        'Sesión previa al evento (casual o formal)',
+        'Sesión durante el evento',
+        'Cobertura de Ceremonia Religiosa',
+        'Cobertura del evento por 7 horas',
+        'Tomas aéreas con dron',
+      ],
+      videoFeatures: [
+        'Cobertura de video del evento',
+        'Videoclip cinematográfico de 3 a 4 minutos',
+        'Película editada de 1 hora a 1 hora 20 minutos',
+        'Tomas aéreas con dron',
+      ],
+      entrega: [
+        '150 fotografías digitales retocadas',
+        'Álbum fotográfico profesional',
+        'Una ampliación 14x20"',
+        'Memoria USB con todo el material',
+      ],
+      extras: ['Sesión Trash the Dress posterior al evento'],
+      popular: true,
+    },
   ];
 
   // Signals para estado reactivo
@@ -213,11 +210,10 @@ export class MyServicesComponent implements OnInit {
     }
   }
 
-updatePhotos(event: any) {
-  const value = event?.target?.value ?? event?.value ?? event;
-  this.photos.set(Math.max(1, Number(value) || 1));
-}
-
+  updatePhotos(event: any) {
+    const value = event?.target?.value ?? event?.value ?? event;
+    this.photos.set(Math.max(1, Number(value) || 1));
+  }
 
   updateVideoHours(event: any) {
     const value = event?.target?.value ?? event?.value ?? event;
@@ -281,7 +277,7 @@ updatePhotos(event: any) {
         pageWidth - logoWidth - 15,
         15,
         logoWidth,
-        logoHeight
+        logoHeight,
       );
     } catch (error) {
       console.warn('Error al cargar logo:', error);
@@ -365,7 +361,7 @@ updatePhotos(event: any) {
     doc.text(
       'Nota: El precio puede variar dependiendo de la temporada.',
       15,
-      yPosition
+      yPosition,
     );
     yPosition += 7;
 
@@ -414,7 +410,7 @@ updatePhotos(event: any) {
         pageWidth - logoWidth - 15,
         15,
         logoWidth,
-        logoHeight
+        logoHeight,
       );
     } catch (error) {
       console.warn('Error al cargar logo:', error);
@@ -432,7 +428,7 @@ updatePhotos(event: any) {
         this.selectedDate.value?.toLocaleDateString() || 'Por definir'
       }`,
       15,
-      yPosition
+      yPosition,
     );
     yPosition += 15;
 
@@ -447,7 +443,7 @@ updatePhotos(event: any) {
     doc.text(
       `• ${this.formatPhotos(this.photos())} fotos digitales`,
       20,
-      yPosition
+      yPosition,
     );
 
     // --- SECCIÓN EXTRAS ---
@@ -470,10 +466,10 @@ updatePhotos(event: any) {
         yPosition += 7;
         doc.text(
           `• ${this.videoHours()} hrs de cobertura de video (+${this.formatPrice(
-            this.videoHours() * this.videoPricePerHour
+            this.videoHours() * this.videoPricePerHour,
           )})`,
           20,
-          yPosition
+          yPosition,
         );
       }
     }
@@ -523,7 +519,7 @@ updatePhotos(event: any) {
     });
 
     doc.save(
-      `presupuesto-personalizado-${new Date().toISOString().slice(0, 10)}.pdf`
+      `presupuesto-personalizado-${new Date().toISOString().slice(0, 10)}.pdf`,
     );
   }
 
@@ -532,18 +528,16 @@ updatePhotos(event: any) {
   }
 
   get isSession(): boolean {
-  return this.duration() <= 2;
-}
+    return this.duration() <= 2;
+  }
 
-get showPhotoSuggestion(): boolean {
-  return this.isSession && this.photos() > this.maxAllowedPhotos;
-}
+  get showPhotoSuggestion(): boolean {
+    return this.isSession && this.photos() > this.maxAllowedPhotos;
+  }
 
-get photoSuggestionText(): string {
-  return `Recomendacion: Máximo ${this.maxAllowedPhotos} fotos para ${this.duration()} hora(s) de sesión`;
-}
-
-
+  get photoSuggestionText(): string {
+    return `Recomendacion: Máximo ${this.maxAllowedPhotos} fotos para ${this.duration()} hora(s) de sesión`;
+  }
 
   // Método auxiliar para imágenes
   private async getBase64Image(url: string): Promise<string> {
@@ -569,7 +563,7 @@ get photoSuggestionText(): string {
 
   // Método auxiliar para dimensiones de imagen (opcional)
   private async getImageDimensions(
-    url: string
+    url: string,
   ): Promise<{ width: number; height: number }> {
     return new Promise((resolve) => {
       const img = new Image();
