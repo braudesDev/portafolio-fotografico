@@ -38,3 +38,26 @@ body {
 .mat-mdc-checkbox {
   opacity: 1 !important;
 }
+
+/* BOTÓN RAISED – FORZADO PARA TODOS LOS BREAKPOINTS */
+button.mat-mdc-raised-button.mat-mdc-button-base.action-button {
+  --mdc-protected-button-container-color: #c9a24d;
+  --mdc-protected-button-label-text-color: #ffffff;
+  --mdc-protected-button-hover-container-color: #ce9e37;
+
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* Texto */
+button.mat-mdc-raised-button.mat-mdc-button-base.action-button
+  .mdc-button__label {
+  color: #ffffff;
+}
+
+/* Icono */
+button.mat-mdc-raised-button.mat-mdc-button-base.action-button mat-icon {
+  margin-right: 8px;
+}
